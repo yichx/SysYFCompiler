@@ -46,7 +46,7 @@ Mem2Reg may delete alloca instructions that are no longer needed due to the opti
 * In valueForwarding function, defined_var records the definitions of variables in each basic block before the current one.
 * In valueForwarding function, the second loop replacing load instructions with the ->second value in the value_status mapping represents replacing the load instruction with the value stored in the register, as indicated by the value_status mapping.
 #### B2-3
-
+The requirement for the example to include at least two nested structures composed of conditional branches and loops, and to have both value assignments and references for the same variable in different branches or iterations, demonstrates the effectiveness of Mem2Reg because it allows the optimization to handle complex control flow and variable usage. In such a scenario, Mem2Reg will be able to identify variables that can be stored in registers rather than in memory, and eliminate unnecessary alloca and store instructions. This can improve the program's performance by reducing the number of memory accesses and increasing the use of registers, which are faster than memory.
 ### 活跃变量分析
 
 #### B3-1

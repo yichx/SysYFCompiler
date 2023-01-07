@@ -8,6 +8,7 @@
 #include "DominateTree.h"
 #include "Mem2Reg.h"
 #include "ActiveVar.h"
+#include "Check.h"
 
 
 void print_help(const std::string& exe_name) {
@@ -98,6 +99,7 @@ int main(int argc, char *argv[])
                 }
                 //  ...
             }
+            passmgr.addPass<Check>();
             passmgr.execute();
             m->set_print_name();
         }

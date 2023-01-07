@@ -3,6 +3,22 @@
 
 #include <algorithm>
 
+std::set<Value*> operator + (std::set<Value*> A, std::set<Value*>B)
+{
+    std::set<Value*>C(A);
+    C.merge(B);
+    return C;
+}
+
+std::set<Value*> operator - (std::set<Value*>A, std::set<Value*>B)
+{
+    std::set<Value*>C;
+    for(auto x : A)
+        if(!B.count(x))
+            C.insert(x);
+    return C;
+}
+
 void ActiveVar::execute() {
     //  请不要修改该代码。在被评测时不要在中间的代码中重新调用set_print_name
     module->set_print_name();
@@ -13,7 +29,55 @@ void ActiveVar::execute() {
             continue;
         } else {
             func_ = func;  
-            
+            typedef std::map<BasicBlock*, std::set<Value*>> BBSET;
+            BBSET Phiuse, UpwardExposed, Defs, PhiFromSuc; 
+            //某个BB后继在phi中被使用的变量, 向上暴露的变量，定值变量和phi定义变量，phi定义活跃变量，在Phi中使用的变量
+
+            for(auto &bb : func_->get_basic_blocks())
+            {
+                for(auto &inst : bb->get_instructions())
+                {
+                    auto &inst_ops = inst->get_operands();
+                    for(int i = 0;i < inst_ops.size(); ++i)
+                    {
+                        auto &op = inst_ops[i];
+                        auto Type = op->get_type();
+                        if(dynamic_cast<Constant*>(op)) continue;
+                        if(!(Type->is_array_type() || 
+                        Type->is_float_type() || 
+                        Type->is_pointer_type() || 
+                        Type->is_integer_type())) continue;
+                        if(inst->is_phi()) 
+                        {
+                            PhiFromSuc[(BasicBlock*)inst_ops[i + 1]].insert(op);
+                            Phiuse[bb].insert(op);
+                        }
+                        else if(!Defs[bb].count(op)) //一个use
+                            UpwardExposed[bb].insert(op);
+                    }
+                    if(!inst->is_void()) 
+                        Defs[bb].insert(inst);
+                }
+            }
+
+            bool run = true;
+            while(run)
+            {
+                run = false;
+                for(auto &bb : func_->get_basic_blocks())
+                {
+                    std::set<Value*>lastin = bb->get_live_in(), &curin = bb->get_live_in();
+                    std::set<Value*>lastout = bb->get_live_out(), &curout = bb->get_live_out(); //update out
+                    curin = Phiuse[bb] + UpwardExposed[bb] + (curout - Defs[bb]);
+                    if(curin != lastin)
+                        run = true;
+                    curout = PhiFromSuc[bb];
+                    for(auto &suc : bb->get_succ_basic_blocks())
+                        curout.merge(suc->get_live_in() - Phiuse[suc]);
+                    if(curout != lastout)
+                        run = true;
+                }
+            }
             /*you need to finish this function*/
         }
     }

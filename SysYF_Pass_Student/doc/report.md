@@ -127,7 +127,7 @@ label15:                                                ; preds = %label9, %labe
 }
 ```
 insideBlockForwarding stores defined_list, forward_list, new_value and delete_list. It removed redundant store and load instructions locally:
-```
+```llvm
 define i32 @main() {
 label_entry:
   %op0 = alloca i32
@@ -199,7 +199,7 @@ label15:                                                ; preds = %label9, %labe
 }
 ```
 Finally, remove redundant alloca instructions:
-```
+```llvm
 define i32 @main() {
 label_entry:
   br label %label4

@@ -1,0 +1,315 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						11,
+						12
+					]
+				},
+				{
+					"build" : "src/ASTBuilder",
+					"jsonFile" : "directory-src.ASTBuilder-Debug-d65bd91f5208a2d562ed.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/ASTBuilder",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "src/ASTPrinter",
+					"jsonFile" : "directory-src.ASTPrinter-Debug-8366846ec503b92690b2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/ASTPrinter",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "src/Checker",
+					"jsonFile" : "directory-src.Checker-Debug-be9cbb3de709285c07c9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/Checker",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "src/ErrorReporter",
+					"jsonFile" : "directory-src.ErrorReporter-Debug-34edfa840f14faa66fda.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/ErrorReporter",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "src/Frontend",
+					"jsonFile" : "directory-src.Frontend-Debug-3b8d0dd8602d303ac4b2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/Frontend",
+					"targetIndexes" : 
+					[
+						3,
+						7,
+						8
+					]
+				},
+				{
+					"build" : "src/SysYFIR",
+					"jsonFile" : "directory-src.SysYFIR-Debug-5e95b0eeb20b96086be2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/SysYFIR",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "src/SysYFIRBuilder",
+					"jsonFile" : "directory-src.SysYFIRBuilder-Debug-0fcb88a9bb04bf471a6e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/SysYFIRBuilder",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "src/Optimize",
+					"jsonFile" : "directory-src.Optimize-Debug-7a6ce2dde5d2741d45fc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/Optimize",
+					"targetIndexes" : 
+					[
+						10
+					]
+				},
+				{
+					"build" : "src/Log",
+					"jsonFile" : "directory-src.Log-Debug-5cd8a0b0a4090e6c873e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/Log",
+					"targetIndexes" : 
+					[
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					],
+					"name" : "SysYFCompiler",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "ASTLib::@80b2aff033a7d4747ba7",
+					"jsonFile" : "target-ASTLib-Debug-6a2c6bd2a44a69b5accc.json",
+					"name" : "ASTLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "ASTPrinter::@5d42b4429cfc1547adcd",
+					"jsonFile" : "target-ASTPrinter-Debug-a25d0edb6d99fbcff96d.json",
+					"name" : "ASTPrinter",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "Checker::@49763b7d706e87e50ce9",
+					"jsonFile" : "target-Checker-Debug-a74a3eca194bbf1e7e6e.json",
+					"name" : "Checker",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "Driver::@0b016ee7c5b414e95873",
+					"jsonFile" : "target-Driver-Debug-1bf566b1f8bf25e8ca9e.json",
+					"name" : "Driver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "ErrReporter::@38368af917f072842415",
+					"jsonFile" : "target-ErrReporter-Debug-da64a1f04c52bbbcc6b3.json",
+					"name" : "ErrReporter",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "IRLib::@7bd47b404d1c486f666e",
+					"jsonFile" : "target-IRLib-Debug-1a661f648386f1ca9b3a.json",
+					"name" : "IRLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "Log::@8a08aaf113fd26d0041a",
+					"jsonFile" : "target-Log-Debug-cde2cf10f12475ce4516.json",
+					"name" : "Log",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "Parser::@0b016ee7c5b414e95873",
+					"jsonFile" : "target-Parser-Debug-3a35523572bfa25a39d1.json",
+					"name" : "Parser",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "Scanner::@0b016ee7c5b414e95873",
+					"jsonFile" : "target-Scanner-Debug-4bb09532e3cb02215d47.json",
+					"name" : "Scanner",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "SysYFIRBuilder::@7dba5afa2263daf2439d",
+					"jsonFile" : "target-SysYFIRBuilder-Debug-0a960d6619addd912787.json",
+					"name" : "SysYFIRBuilder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "SysYFPass::@ba2ff807a6c70bd5cec8",
+					"jsonFile" : "target-SysYFPass-Debug-29d05737a84749bd1254.json",
+					"name" : "SysYFPass",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "compiler::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-compiler-Debug-5a9941420cdb2b119aa1.json",
+					"name" : "compiler",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_logging::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_logging-Debug-659e9c22fd3ad159dd43.json",
+					"name" : "test_logging",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/user/expTeamProj-135/build",
+		"source" : "/home/user/expTeamProj-135/SysYF_Pass_Student"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

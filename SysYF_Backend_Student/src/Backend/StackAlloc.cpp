@@ -30,7 +30,5 @@ int CodeGen::stack_space_allocation(Function *fun)
     // std::vector<IR2asm::Regbase *> CodeGen::arg_on_stack
     arg_on_stack.clear();       // You need to maintain this information, the order is the same as parameter
 
-    /* TODO：put your code here */
-    
     return size;
 }

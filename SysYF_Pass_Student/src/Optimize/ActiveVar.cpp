@@ -43,6 +43,7 @@ void ActiveVar::execute() {
                         auto &op = inst_ops[i];
                         auto Type = op->get_type();
                         if(dynamic_cast<Constant*>(op)) continue;
+                        if(dynamic_cast<GlobalVariable*>(op)) continue;
                         if(!(Type->is_array_type() || 
                         Type->is_float_type() || 
                         Type->is_pointer_type() || 
@@ -73,7 +74,7 @@ void ActiveVar::execute() {
                         run = true;
                     curout = PhiFromSuc[bb];
                     for(auto &suc : bb->get_succ_basic_blocks())
-                        curout.merge(suc->get_live_in() - Phiuse[suc]);
+                        curout.merge(UpwardExposed[suc] + (suc->get_live_out() - Defs[suc]));
                     if(curout != lastout)
                         run = true;
                 }

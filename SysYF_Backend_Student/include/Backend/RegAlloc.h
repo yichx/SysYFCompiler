@@ -19,6 +19,8 @@ struct Range{
 
 
 class Interval{
+private:
+    int weight = 0;
 public:
     explicit Interval(Value* value):val(value){}
     int reg_num = -1;
@@ -31,6 +33,8 @@ public:
     bool covers(Instruction* inst);
     bool intersects(Interval* interval);
     void union_interval(Interval* interval);
+    int evalue_weight(int pos); //cacluate weight of interval;
+    int get_weight();
 };
 
 
@@ -40,6 +44,18 @@ struct cmp_interval{
         auto b_from = (*(b->range_list.begin()))->from;
         if(a_from!=b_from){
             return a_from < b_from;
+        }else{
+            return a->val->get_name() < b->val->get_name();
+        }
+    }
+};
+
+struct cmp_interval_reverse{
+    bool operator()(const Interval* a, const Interval* b) const {
+        auto a_to = (*(a->range_list.end()))->to;
+        auto b_to = (*(b->range_list.end()))->to;
+        if(a_to!=b_to){
+            return a_to < b_to;
         }else{
             return a->val->get_name() < b->val->get_name();
         }
@@ -104,12 +120,15 @@ private:
     void add_interval(Interval* interval){interval_list.insert(interval);}
     void add_reg_to_pool(Interval* inter);
     bool try_alloc_free_reg();
+    bool try_insert_current();
+    bool Spill();
     std::set<int> unused_reg_id = {all_reg_id.begin(),all_reg_id.end()};
     Interval* current = nullptr;
     std::map<Value*, Interval*> val2Inter;
     Function* func;
     std::list<BasicBlock*> block_order={};
     std::set<Interval*,cmp_interval> interval_list;
+    std::set<Interval*,cmp_interval>reg_for_intervals[12];//表示当前的寄存器所分配的intervals集合。
 };
 
 #endif // _SYSYF_REGALLOC_H_

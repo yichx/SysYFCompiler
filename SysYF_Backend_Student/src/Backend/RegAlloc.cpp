@@ -5,6 +5,7 @@
 #include "RegAlloc.h"
 #include <iostream>
 #include <set>
+#include<stack>
 
 void Interval::add_range(int from, int to) {
     if(range_list.empty()){
@@ -322,6 +323,67 @@ void RegAlloc::walk_intervals() {
         reg_for_intervals[reg_id].clear();
     }
 }
+
+void RegAlloc::build_graph()
+{
+    Graph.clear(); Deg.clear();
+    for(auto &u : interval_list)
+        for(auto &v : interval_list)
+            if(u != v && u->intersects(v))
+            {
+                Graph[u].insert(v);
+                ++Deg[u];
+            }
+}
+
+void RegAlloc::color_intervals()
+{
+    build_graph();
+    std::map<Interval*, bool>In_Stack;
+    std::stack<Interval*>Stack;
+    bool run = true;
+    while(run)
+    {
+        run = false;
+        Interval* max_deg_interval = NULL;
+        
+        for(auto &u : interval_list)
+            if(!In_Stack[u])
+            {
+                if(Deg[u] < 12) {
+                    run = true;
+                    Stack.push(u);
+                    In_Stack[u] = true;
+                    for(auto v : Graph[u])
+                        if(!In_Stack[v])
+                            Deg[v]--;
+                }
+                else if(Deg[u] > Deg[max_deg_interval])
+                    max_deg_interval = u;
+            }
+        if(run) continue;
+        if(max_deg_interval == NULL)
+            break;
+        In_Stack[max_deg_interval] = true;
+        Stack.push(max_deg_interval);
+        for(auto v : Graph[max_deg_interval])
+            if(!In_Stack[v])
+                Deg[v]--;
+    }
+    while(!Stack.empty())
+    {
+        auto u = Stack.top(); Stack.pop();
+        bool can_use[12] = {0};
+        for(auto v : Graph[u])
+            if(v->reg_num != -1)
+                can_use[v->reg_num] = false;
+        for(int reg_i = 0;reg_i < 12; ++reg_i)
+            if(can_use[reg_i]) {
+                u->reg_num = reg_i;
+                break;
+            }
+    }
+}   
 
 
 void RegAlloc::set_unused_reg_num() {

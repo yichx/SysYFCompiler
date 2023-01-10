@@ -72,12 +72,12 @@ main:
     sub sp, sp, #36
     ldr r0, =2
     push {r1}
-    ldr r1, Addr3_2
+    ldr r1, Addr3_0
     str r0, [r1]
     pop {r1}
     ldr r0, =3
     push {r1}
-    ldr r1, Addr3_0
+    ldr r1, Addr3_1
     str r0, [r1]
     pop {r1}
     STM SP, {r0}
@@ -94,7 +94,7 @@ main:
 bb3_0:
     b bb3_1
 bb3_1:
-    ldr r0, Addr3_2
+    ldr r0, Addr3_0
     ldr r0, [r0]
     STM SP, {r0}
     ldr r0, [sp]
@@ -102,7 +102,7 @@ bb3_1:
     LDM sp, {r0}
     ldr r0, =32
     bl put_char
-    ldr r0, Addr3_0
+    ldr r0, Addr3_1
     ldr r0, [r0]
     STM SP, {r0}
     ldr r0, [sp]
@@ -112,12 +112,12 @@ bb3_1:
     bl put_char
     ldr r0, =2
     push {r1}
-    ldr r1, Addr3_2
+    ldr r1, Addr3_0
     str r0, [r1]
     pop {r1}
     ldr r0, =3
     push {r1}
-    ldr r1, Addr3_0
+    ldr r1, Addr3_1
     str r0, [r1]
     pop {r1}
     STM SP, {r0}
@@ -149,7 +149,7 @@ litpool3_0:
 bb3_3:
     b bb3_4
 bb3_4:
-    ldr r0, Addr3_2
+    ldr r0, Addr3_0
     ldr r0, [r0]
     STM SP, {r0}
     ldr r0, [sp]
@@ -157,7 +157,7 @@ bb3_4:
     LDM sp, {r0}
     ldr r0, =32
     bl put_char
-    ldr r0, Addr3_0
+    ldr r0, Addr3_1
     ldr r0, [r0]
     STM SP, {r0}
     ldr r0, [sp]
@@ -167,7 +167,7 @@ bb3_4:
     bl put_char
     ldr r0, =2
     push {r1}
-    ldr r1, Addr3_1
+    ldr r1, Addr3_2
     str r0, [r1]
     pop {r1}
     ldr r0, =1
@@ -199,7 +199,7 @@ bb3_5:
 bb3_6:
     b bb3_7
 bb3_7:
-    ldr r0, Addr3_1
+    ldr r0, Addr3_2
     ldr r0, [r0]
     STM SP, {r0}
     ldr r0, [sp]
@@ -239,7 +239,7 @@ litpool3_1:
 bb3_9:
     b bb3_10
 bb3_10:
-    ldr r0, Addr3_1
+    ldr r0, Addr3_2
     ldr r0, [r0]
     STM SP, {r0}
     ldr r0, [sp]
@@ -651,11 +651,11 @@ bb3_45:
     bx lr
     .pool
 Addr3_0:
-    .long ..b
-Addr3_1:
-    .long ..d
-Addr3_2:
     .long ..a
+Addr3_1:
+    .long ..b
+Addr3_2:
+    .long ..d
 
     .type ..a, %object
     .comm ..a, 4, 4

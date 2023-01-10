@@ -5,32 +5,18 @@
     .type my_sum, %function
 my_sum:
     push {lr}
-    sub sp, sp, #96
-    str r0, [sp, #80]
-    str r1, [sp, #16]
-    str r0, [sp]
-    ldr r0, [sp, #80]
-    add r0, r0, #5
-    str r0, [sp, #32]
-    str r1, [sp, #4]
-    ldr r1, [sp, #16]
-    ldr r0, [sp, #32]
-    sub r0, r0, r1
-    str r0, [sp, #48]
-    ldr r0, [sp, #48]
+    sub sp, sp, #16
+    add r2, r0, #5
+    sub r0, r2, r1
     push {r1}
     ldr r1, Addr0_0
     str r0, [r1]
     pop {r1}
     ldr r0, Addr0_0
     ldr r0, [r0]
-    str r0, [sp, #64]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
     b bb0_0
 bb0_0:
-    ldr r0, [sp, #64]
-    add sp, sp, #96
+    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -43,26 +29,25 @@ Addr0_0:
 main:
     push {r11, lr}
     mov r11, sp
-    sub sp, sp, #100
+    sub sp, sp, #36
+    STM SP, {r0}
     ldr r0, =3
     ldr r1, =3
     bl my_sum
-    str r0, [sp, #36]
-    str r0, [sp, #20]
-    ldr r0, Addr1_0
-    ldr r0, [r0]
-    str r0, [sp, #52]
+    ldr r1, Addr1_0
+    ldr r1, [r1]
+    STM SP, {r0, r1, r2}
     ldr r0, =8
-    ldr r1, [sp, #52]
+    ldr r1, [sp, #4]
     bl my_sum
-    str r0, [sp, #68]
-    ldr r0, Addr1_0
-    ldr r0, [r0]
-    str r0, [sp, #84]
-    ldr r0, [sp, #20]
+    LDMIB SP, {r1, r2}
+    mov r2, r0
+    ldr r0, [SP]
+    ldr r1, Addr1_0
+    ldr r1, [r1]
     b bb1_0
 bb1_0:
-    ldr r0, [sp, #84]
+    mov r0, r1
     mov sp, r11
     pop {r11, lr}
     bx lr

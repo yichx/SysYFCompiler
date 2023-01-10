@@ -6,57 +6,43 @@
 reverse:
     push {r11, lr}
     mov r11, sp
-    ldr lr, =196
-    sub sp, sp, lr
-    str r0, [sp, #36]
-    str r0, [sp, #20]
-    ldr r0, =1
-    str r0, [sp, #148]
-    str r1, [sp, #24]
-    ldr r0, [sp, #36]
-    ldr r1, [sp, #148]
+    sub sp, sp, #36
+    ldr r1, =1
     cmp r0, r1
-    ldr r0, =0
-    ldrle r0, =1
-    str r0, [sp, #52]
-    ldr r0, [sp, #52]
-    mov r0, r0
-    str r0, [sp, #68]
-    ldr r0, =0
-    str r0, [sp, #164]
-    ldr r0, [sp, #68]
-    ldr r1, [sp, #164]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #84]
-    ldr r0, =0
-    str r0, [sp, #180]
-    ldr r0, [sp, #68]
-    ldr r1, [sp, #180]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
+    ldr r2, =0
+    ldrle r2, =1
+    mov r1, r2
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
     bne bb0_0
     b bb0_1
 bb0_0:
+    STM SP, {r0}
     bl get_int
-    str r0, [sp, #100]
-    ldr r0, [sp, #100]
+    STM SP, {r0}
+    ldr r0, [sp]
     bl put_int
+    LDM sp, {r0}
     b bb0_2
 bb0_1:
+    STM SP, {r0, r1}
     bl get_int
-    str r0, [sp, #116]
-    str r0, [sp, #20]
-    ldr r0, [sp, #36]
-    sub r0, r0, #1
-    str r0, [sp, #132]
-    ldr r0, [sp, #132]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    sub r2, r0, #1
+    STM SP, {r1, r2}
+    ldr r0, [sp, #4]
     bl reverse
-    ldr r0, [sp, #116]
+    LDM sp, {r1, r2}
+    STM SP, {r1}
+    ldr r0, [sp]
     bl put_int
-    ldr r0, [sp, #20]
+    LDM sp, {r1}
     b bb0_2
 bb0_2:
     b bb0_3
@@ -77,9 +63,6 @@ main:
     bl reverse
     b bb1_0
 bb1_0:
-    b litpool1_0
-    .pool
-litpool1_0:
     ldr r0, =0
     mov sp, r11
     pop {r11, lr}

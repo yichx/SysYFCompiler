@@ -6,22 +6,17 @@
 next_char:
     push {r11, lr}
     mov r11, sp
-    sub sp, sp, #68
+    sub sp, sp, #36
+    STM SP, {r0}
     bl get_char
-    str r0, [sp, #36]
-    str r0, [sp, #20]
-    ldr r0, [sp, #36]
     push {r1}
     ldr r1, Addr0_0
     str r0, [r1]
     pop {r1}
     ldr r0, Addr0_0
     ldr r0, [r0]
-    str r0, [sp, #52]
-    ldr r0, [sp, #20]
     b bb0_0
 bb0_0:
-    ldr r0, [sp, #52]
     mov sp, r11
     pop {r11, lr}
     bx lr
@@ -34,95 +29,54 @@ Addr0_0:
     .type is_space, %function
 is_space:
     push {lr}
-    ldr lr, =240
-    sub sp, sp, lr
-    str r0, [sp, #16]
-    str r0, [sp]
-    ldr r0, =32
-    str r0, [sp, #144]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #144]
+    sub sp, sp, #16
+    ldr r1, =32
     cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #32]
-    ldr r0, [sp, #32]
-    mov r0, r0
-    str r0, [sp, #48]
-    ldr r0, =0
-    str r0, [sp, #160]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #160]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #64]
-    ldr r0, =0
-    str r0, [sp, #176]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #176]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r2, =0
+    ldreq r2, =1
+    mov r1, r2
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
     bne bb1_0
     b bb1_1
 bb1_0:
     push {lr}
-    Ldr lr, =1
-    str lr, [sp, #132]
+    Ldr r0, =1
     pop {lr}
     b bb1_4
 bb1_1:
-    str r0, [sp]
-    ldr r0, =10
-    str r0, [sp, #192]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #192]
+    ldr r1, =10
     cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #80]
-    ldr r0, [sp, #80]
-    mov r0, r0
-    str r0, [sp, #96]
-    ldr r0, =0
-    str r0, [sp, #208]
-    ldr r0, [sp, #96]
-    ldr r1, [sp, #208]
+    ldr r2, =0
+    ldreq r2, =1
+    mov r0, r2
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #112]
-    ldr r0, =0
-    str r0, [sp, #224]
-    ldr r0, [sp, #96]
-    ldr r1, [sp, #224]
+    ldr r2, =0
+    ldrne r2, =1
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
     bne bb1_2
     b bb1_3
 bb1_2:
     push {lr}
-    Ldr lr, =1
-    str lr, [sp, #132]
+    Ldr r0, =1
     pop {lr}
     b bb1_4
 bb1_3:
-    b litpool1_0
-    .pool
-litpool1_0:
     push {lr}
-    Ldr lr, =0
-    str lr, [sp, #132]
+    Ldr r0, =0
     pop {lr}
     b bb1_4
 bb1_4:
-    ldr r0, [sp, #128]
-    ldr lr, =240
-    add sp, sp, lr
+    b litpool1_0
+    .pool
+litpool1_0:
+    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -132,97 +86,56 @@ bb1_4:
     .type is_num, %function
 is_num:
     push {lr}
-    ldr lr, =240
-    sub sp, sp, lr
-    str r0, [sp, #16]
-    str r0, [sp]
-    ldr r0, =48
-    str r0, [sp, #144]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #144]
+    sub sp, sp, #16
+    ldr r1, =48
     cmp r0, r1
-    ldr r0, =0
-    ldrge r0, =1
-    str r0, [sp, #32]
-    ldr r0, [sp, #32]
-    mov r0, r0
-    str r0, [sp, #48]
-    ldr r0, =0
-    str r0, [sp, #160]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #160]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #64]
-    ldr r0, =0
-    str r0, [sp, #176]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #176]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r2, =0
+    ldrge r2, =1
+    mov r1, r2
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
     bne bb2_0
     b bb2_1
 bb2_0:
-    str r0, [sp]
-    ldr r0, =57
-    str r0, [sp, #192]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #192]
+    ldr r1, =57
     cmp r0, r1
-    ldr r0, =0
-    ldrle r0, =1
-    str r0, [sp, #80]
-    ldr r0, [sp, #80]
-    mov r0, r0
-    str r0, [sp, #96]
-    ldr r0, =0
-    str r0, [sp, #208]
-    ldr r0, [sp, #96]
-    ldr r1, [sp, #208]
+    ldr r2, =0
+    ldrle r2, =1
+    mov r0, r2
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #112]
-    ldr r0, =0
-    str r0, [sp, #224]
-    ldr r0, [sp, #96]
-    ldr r1, [sp, #224]
+    ldr r2, =0
+    ldrne r2, =1
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
     bne bb2_3
     b bb2_4
 bb2_1:
     push {lr}
-    Ldr lr, =0
-    str lr, [sp, #132]
+    Ldr r0, =0
     pop {lr}
     b bb2_5
 bb2_2:
     push {lr}
-    Ldr lr, =0
-    str lr, [sp, #132]
+    Ldr r0, =0
     pop {lr}
     b bb2_5
 bb2_3:
     push {lr}
-    Ldr lr, =1
-    str lr, [sp, #132]
+    Ldr r0, =1
     pop {lr}
     b bb2_5
 bb2_4:
+    b bb2_2
+bb2_5:
     b litpool2_0
     .pool
 litpool2_0:
-    b bb2_2
-bb2_5:
-    ldr r0, [sp, #128]
-    ldr lr, =240
-    add sp, sp, lr
+    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -233,179 +146,116 @@ bb2_5:
 next_token:
     push {r11, lr}
     mov r11, sp
-    ldr lr, =500
-    sub sp, sp, lr
+    sub sp, sp, #36
     b bb3_0
 bb3_0:
-    str r0, [sp, #20]
     ldr r0, Addr3_0
     ldr r0, [r0]
-    str r0, [sp, #36]
-    ldr r0, [sp, #36]
+    STM SP, {r0, r1}
+    ldr r0, [sp]
     bl is_space
-    str r0, [sp, #52]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
     ldr r0, =0
-    str r0, [sp, #356]
-    str r1, [sp, #24]
-    ldr r0, [sp, #52]
-    ldr r1, [sp, #356]
-    cmp r0, r1
+    cmp r1, r0
+    ldr r2, =0
+    ldrne r2, =1
     ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #68]
-    ldr r0, =0
-    str r0, [sp, #372]
-    ldr r0, [sp, #52]
-    ldr r1, [sp, #372]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
+    cmp r1, r0
     bne bb3_1
     b bb3_2
 bb3_1:
+    STM SP, {r0}
     bl next_char
-    str r0, [sp, #84]
     b bb3_0
 bb3_2:
-    str r0, [sp, #20]
     ldr r0, Addr3_0
     ldr r0, [r0]
-    str r0, [sp, #100]
-    ldr r0, [sp, #100]
+    STM SP, {r0, r1}
+    ldr r0, [sp]
     bl is_num
-    str r0, [sp, #116]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
     ldr r0, =0
-    str r0, [sp, #388]
-    str r1, [sp, #24]
-    ldr r0, [sp, #116]
-    ldr r1, [sp, #388]
-    cmp r0, r1
+    cmp r1, r0
+    ldr r2, =0
+    ldrne r2, =1
     ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #132]
-    ldr r0, =0
-    str r0, [sp, #404]
-    ldr r0, [sp, #116]
-    ldr r1, [sp, #404]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
+    cmp r1, r0
     bne bb3_3
     b bb3_4
 bb3_3:
-    str r0, [sp, #20]
     ldr r0, Addr3_0
     ldr r0, [r0]
-    str r0, [sp, #148]
-    ldr r0, [sp, #148]
-    sub r0, r0, #48
-    str r0, [sp, #164]
-    ldr r0, [sp, #164]
-    push {r1}
-    ldr r1, Addr3_1
-    str r0, [r1]
-    pop {r1}
-    ldr r0, [sp, #20]
+    sub r1, r0, #48
+    push {r0}
+    ldr r0, Addr3_1
+    str r1, [r0]
+    pop {r0}
     b bb3_6
 bb3_4:
-    str r0, [sp, #20]
     ldr r0, Addr3_0
     ldr r0, [r0]
-    str r0, [sp, #308]
-    ldr r0, [sp, #308]
     push {r1}
     ldr r1, Addr3_2
     str r0, [r1]
     pop {r1}
+    STM SP, {r0}
     bl next_char
-    str r0, [sp, #324]
-    ldr r0, =1
-    str r0, [sp, #420]
-    ldr r0, [sp, #420]
-    push {r1}
-    ldr r1, Addr3_3
-    str r0, [r1]
-    pop {r1}
-    ldr r0, [sp, #20]
+    ldr r1, =1
+    push {r0}
+    ldr r0, Addr3_3
+    str r1, [r0]
+    pop {r0}
     b bb3_5
 bb3_5:
+    ldr r0, Addr3_3
+    ldr r0, [r0]
+    b bb3_9
+bb3_6:
     b litpool3_0
     .pool
 litpool3_0:
-    str r0, [sp, #20]
-    ldr r0, Addr3_3
-    ldr r0, [r0]
-    str r0, [sp, #340]
-    ldr r0, [sp, #20]
-    b bb3_9
-bb3_6:
+    STM SP, {r0}
     bl next_char
-    str r0, [sp, #180]
-    ldr r0, [sp, #180]
+    STM SP, {r0, r1}
+    ldr r0, [sp]
     bl is_num
-    str r0, [sp, #196]
-    str r0, [sp, #20]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
     ldr r0, =0
-    str r0, [sp, #436]
-    str r1, [sp, #24]
-    ldr r0, [sp, #196]
-    ldr r1, [sp, #436]
-    cmp r0, r1
+    cmp r1, r0
+    ldr r2, =0
+    ldrne r2, =1
     ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #212]
-    ldr r0, =0
-    str r0, [sp, #452]
-    ldr r0, [sp, #196]
-    ldr r1, [sp, #452]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
+    cmp r1, r0
     bne bb3_7
     b bb3_8
 bb3_7:
-    str r0, [sp, #20]
     ldr r0, Addr3_1
     ldr r0, [r0]
-    str r0, [sp, #228]
-    ldr r0, =10
-    str r0, [sp, #468]
-    str r1, [sp, #24]
-    ldr r0, [sp, #228]
-    ldr r1, [sp, #468]
-    mul r0, r0, r1
-    str r0, [sp, #244]
+    ldr r1, =10
+    mul r2, r0, r1
     ldr r0, Addr3_0
     ldr r0, [r0]
-    str r0, [sp, #260]
-    ldr r0, [sp, #244]
-    ldr r1, [sp, #260]
-    add r0, r0, r1
-    str r0, [sp, #276]
-    ldr r0, [sp, #276]
-    sub r0, r0, #48
-    str r0, [sp, #292]
-    ldr r0, [sp, #292]
+    add r1, r2, r0
+    sub r0, r1, #48
     push {r1}
     ldr r1, Addr3_1
     str r0, [r1]
     pop {r1}
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
     b bb3_6
 bb3_8:
-    str r0, [sp, #20]
     ldr r0, =0
-    str r0, [sp, #484]
-    ldr r0, [sp, #484]
     push {r1}
     ldr r1, Addr3_3
     str r0, [r1]
     pop {r1}
-    ldr r0, [sp, #20]
     b bb3_5
 bb3_9:
-    ldr r0, [sp, #340]
     mov sp, r11
     pop {r11, lr}
     bx lr
@@ -453,209 +303,114 @@ bb4_0:
     .type get_op_prec, %function
 get_op_prec:
     push {lr}
-    ldr lr, =528
-    sub sp, sp, lr
-    str r0, [sp, #16]
-    str r0, [sp]
-    ldr r0, =43
-    str r0, [sp, #288]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #288]
+    sub sp, sp, #16
+    ldr r1, =43
     cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #32]
-    ldr r0, [sp, #32]
-    mov r0, r0
-    str r0, [sp, #48]
-    ldr r0, =0
-    str r0, [sp, #304]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #304]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #64]
-    ldr r0, =0
-    str r0, [sp, #320]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #320]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r2, =0
+    ldreq r2, =1
+    mov r1, r2
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
     bne bb5_0
     b bb5_1
 bb5_0:
-    b litpool5_0
-    .pool
-litpool5_0:
     push {lr}
-    Ldr lr, =10
-    str lr, [sp, #276]
+    Ldr r0, =10
     pop {lr}
     b bb5_10
 bb5_1:
-    str r0, [sp]
-    ldr r0, =45
-    str r0, [sp, #336]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #336]
+    b litpool5_0
+    .pool
+litpool5_0:
+    ldr r1, =45
     cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #80]
-    ldr r0, [sp, #80]
-    mov r0, r0
-    str r0, [sp, #96]
-    ldr r0, =0
-    str r0, [sp, #352]
-    ldr r0, [sp, #96]
-    ldr r1, [sp, #352]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #112]
-    ldr r0, =0
-    str r0, [sp, #368]
-    ldr r0, [sp, #96]
-    ldr r1, [sp, #368]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r2, =0
+    ldreq r2, =1
+    mov r1, r2
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
     bne bb5_2
     b bb5_3
 bb5_2:
     push {lr}
-    Ldr lr, =10
-    str lr, [sp, #276]
+    Ldr r0, =10
     pop {lr}
     b bb5_10
 bb5_3:
-    str r0, [sp]
-    ldr r0, =42
-    str r0, [sp, #384]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #384]
+    ldr r1, =42
     cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #128]
-    ldr r0, [sp, #128]
-    mov r0, r0
-    str r0, [sp, #144]
-    ldr r0, =0
-    str r0, [sp, #400]
-    ldr r0, [sp, #144]
-    ldr r1, [sp, #400]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #160]
-    ldr r0, =0
-    str r0, [sp, #416]
-    ldr r0, [sp, #144]
-    ldr r1, [sp, #416]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r2, =0
+    ldreq r2, =1
+    mov r1, r2
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
     bne bb5_4
     b bb5_5
 bb5_4:
     push {lr}
-    Ldr lr, =20
-    str lr, [sp, #276]
+    Ldr r0, =20
     pop {lr}
     b bb5_10
 bb5_5:
-    str r0, [sp]
-    ldr r0, =47
-    str r0, [sp, #432]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #432]
+    ldr r1, =47
     cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #176]
-    ldr r0, [sp, #176]
-    mov r0, r0
-    str r0, [sp, #192]
-    ldr r0, =0
-    str r0, [sp, #448]
-    ldr r0, [sp, #192]
-    ldr r1, [sp, #448]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #208]
-    ldr r0, =0
-    str r0, [sp, #464]
-    ldr r0, [sp, #192]
-    ldr r1, [sp, #464]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r2, =0
+    ldreq r2, =1
+    mov r1, r2
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
     bne bb5_6
     b bb5_7
 bb5_6:
+    push {lr}
+    Ldr r0, =20
+    pop {lr}
+    b bb5_10
+bb5_7:
+    ldr r1, =37
+    cmp r0, r1
+    ldr r2, =0
+    ldreq r2, =1
+    mov r0, r2
+    ldr r1, =0
+    cmp r0, r1
+    ldr r2, =0
+    ldrne r2, =1
+    ldr r1, =0
+    cmp r0, r1
+    bne bb5_8
+    b bb5_9
+bb5_8:
     b litpool5_1
     .pool
 litpool5_1:
     push {lr}
-    Ldr lr, =20
-    str lr, [sp, #276]
-    pop {lr}
-    b bb5_10
-bb5_7:
-    str r0, [sp]
-    ldr r0, =37
-    str r0, [sp, #480]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #480]
-    cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #224]
-    ldr r0, [sp, #224]
-    mov r0, r0
-    str r0, [sp, #240]
-    ldr r0, =0
-    str r0, [sp, #496]
-    ldr r0, [sp, #240]
-    ldr r1, [sp, #496]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #256]
-    ldr r0, =0
-    str r0, [sp, #512]
-    ldr r0, [sp, #240]
-    ldr r1, [sp, #512]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
-    bne bb5_8
-    b bb5_9
-bb5_8:
-    push {lr}
-    Ldr lr, =20
-    str lr, [sp, #276]
+    Ldr r0, =20
     pop {lr}
     b bb5_10
 bb5_9:
     push {lr}
-    Ldr lr, =0
-    str lr, [sp, #276]
+    Ldr r0, =0
     pop {lr}
     b bb5_10
 bb5_10:
-    ldr r0, [sp, #272]
-    ldr lr, =528
-    add sp, sp, lr
+    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -664,200 +419,78 @@ bb5_10:
     .p2align 2
     .type stack_push, %function
 stack_push:
-    push {lr}
-    ldr lr, =848
-    sub sp, sp, lr
-    str r0, [sp, #16]
-    str r1, [sp, #32]
-    str r0, [sp]
-    ldr r0, =0
-    str r0, [sp, #576]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #576]
-    cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #48]
-    ldr r0, [sp, #48]
-    mov r0, r0
-    str r0, [sp, #64]
-    ldr r0, =0
-    str r0, [sp, #592]
-    ldr r0, [sp, #64]
-    ldr r1, [sp, #592]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #80]
-    ldr r0, =0
-    str r0, [sp, #608]
-    ldr r0, [sp, #64]
-    ldr r1, [sp, #608]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    push {r4, r5, lr}
+    sub sp, sp, #16
+    ldr r2, =0
+    cmp r0, r2
+    ldr r3, =0
+    ldreq r3, =1
+    mov r0, r3
+    ldr r2, =0
+    cmp r0, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r0, r2
     bne bb6_0
     b bb6_1
 bb6_0:
-    str r0, [sp]
     ldr r0, Addr6_0
-    str r0, [sp, #96]
-    ldr r0, =0
-    str r0, [sp, #624]
-    ldr r0, =4
-    str r0, [sp, #640]
-    str r1, [sp, #4]
-    ldr r0, [sp, #624]
-    ldr r1, [sp, #640]
-    mul r0, r0, r1
-    str r0, [sp, #320]
-    ldr r0, [sp, #96]
-    ldr r1, [sp, #320]
-    add r0, r0, r1
-    str r0, [sp, #336]
-    ldr r0, [sp, #336]
-    ldr r0, [r0]
-    str r0, [sp, #112]
-    ldr r0, [sp, #112]
-    add r0, r0, #1
-    str r0, [sp, #128]
+    ldr r2, =0
+    ldr r3, =4
+    mul r4, r2, r3
+    add r2, r0, r4
+    ldr r0, [r2]
+    add r2, r0, #1
     ldr r0, Addr6_0
-    str r0, [sp, #144]
-    ldr r0, =0
-    str r0, [sp, #656]
-    ldr r0, =4
-    str r0, [sp, #672]
-    ldr r0, [sp, #656]
-    ldr r1, [sp, #672]
-    mul r0, r0, r1
-    str r0, [sp, #352]
-    ldr r0, [sp, #144]
-    ldr r1, [sp, #352]
-    add r0, r0, r1
-    str r0, [sp, #368]
-    ldr r0, [sp, #128]
-    ldr r1, [sp, #368]
-    str r0, [r1]
+    ldr r3, =0
+    ldr r4, =4
+    mul r5, r3, r4
+    add r3, r0, r5
+    str r2, [r3]
     ldr r0, Addr6_0
-    str r0, [sp, #160]
-    ldr r0, =0
-    str r0, [sp, #688]
-    ldr r0, =4
-    str r0, [sp, #704]
-    ldr r0, [sp, #688]
-    ldr r1, [sp, #704]
-    mul r0, r0, r1
-    str r0, [sp, #384]
-    ldr r0, [sp, #160]
-    ldr r1, [sp, #384]
-    add r0, r0, r1
-    str r0, [sp, #400]
-    ldr r0, [sp, #400]
-    ldr r0, [r0]
-    str r0, [sp, #176]
-    ldr r0, Addr6_0
-    str r0, [sp, #192]
-    ldr r0, =4
-    str r0, [sp, #720]
-    ldr r0, [sp, #176]
-    ldr r1, [sp, #720]
-    mul r0, r0, r1
-    str r0, [sp, #416]
-    ldr r0, [sp, #192]
-    ldr r1, [sp, #416]
-    add r0, r0, r1
-    str r0, [sp, #432]
-    ldr r0, [sp, #32]
-    ldr r1, [sp, #432]
-    str r0, [r1]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r2, =0
+    ldr r3, =4
+    mul r4, r2, r3
+    add r2, r0, r4
+    ldr r0, [r2]
+    ldr r2, Addr6_0
+    ldr r3, =4
+    mul r4, r0, r3
+    add r0, r2, r4
+    str r1, [r0]
     b bb6_2
 bb6_1:
-    b litpool6_0
-    .pool
-litpool6_0:
-    str r0, [sp]
     ldr r0, Addr6_1
-    str r0, [sp, #208]
-    ldr r0, =0
-    str r0, [sp, #736]
-    ldr r0, =4
-    str r0, [sp, #752]
-    str r1, [sp, #4]
-    ldr r0, [sp, #736]
-    ldr r1, [sp, #752]
-    mul r0, r0, r1
-    str r0, [sp, #448]
-    ldr r0, [sp, #208]
-    ldr r1, [sp, #448]
-    add r0, r0, r1
-    str r0, [sp, #464]
-    ldr r0, [sp, #464]
-    ldr r0, [r0]
-    str r0, [sp, #224]
-    ldr r0, [sp, #224]
-    add r0, r0, #1
-    str r0, [sp, #240]
+    ldr r2, =0
+    ldr r3, =4
+    mul r4, r2, r3
+    add r2, r0, r4
+    ldr r0, [r2]
+    add r2, r0, #1
     ldr r0, Addr6_1
-    str r0, [sp, #256]
-    ldr r0, =0
-    str r0, [sp, #768]
-    ldr r0, =4
-    str r0, [sp, #784]
-    ldr r0, [sp, #768]
-    ldr r1, [sp, #784]
-    mul r0, r0, r1
-    str r0, [sp, #480]
-    ldr r0, [sp, #256]
-    ldr r1, [sp, #480]
-    add r0, r0, r1
-    str r0, [sp, #496]
-    ldr r0, [sp, #240]
-    ldr r1, [sp, #496]
-    str r0, [r1]
+    ldr r3, =0
+    ldr r4, =4
+    mul r5, r3, r4
+    add r3, r0, r5
+    str r2, [r3]
     ldr r0, Addr6_1
-    str r0, [sp, #272]
-    ldr r0, =0
-    str r0, [sp, #800]
-    ldr r0, =4
-    str r0, [sp, #816]
-    ldr r0, [sp, #800]
-    ldr r1, [sp, #816]
-    mul r0, r0, r1
-    str r0, [sp, #512]
-    ldr r0, [sp, #272]
-    ldr r1, [sp, #512]
-    add r0, r0, r1
-    str r0, [sp, #528]
-    ldr r0, [sp, #528]
-    ldr r0, [r0]
-    str r0, [sp, #288]
-    ldr r0, Addr6_1
-    str r0, [sp, #304]
-    ldr r0, =4
-    str r0, [sp, #832]
-    ldr r0, [sp, #288]
-    ldr r1, [sp, #832]
-    mul r0, r0, r1
-    str r0, [sp, #544]
-    ldr r0, [sp, #304]
-    ldr r1, [sp, #544]
-    add r0, r0, r1
-    str r0, [sp, #560]
-    ldr r0, [sp, #32]
-    ldr r1, [sp, #560]
-    str r0, [r1]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r2, =0
+    ldr r3, =4
+    mul r4, r2, r3
+    add r2, r0, r4
+    ldr r0, [r2]
+    ldr r2, Addr6_1
+    ldr r3, =4
+    mul r4, r0, r3
+    add r0, r2, r4
+    str r1, [r0]
     b bb6_2
 bb6_2:
     b bb6_3
 bb6_3:
-    ldr lr, =848
-    add sp, sp, lr
-    pop {lr}
+    add sp, sp, #16
+    pop {r4, r5, lr}
     bx lr
     .pool
 Addr6_0:
@@ -869,208 +502,87 @@ Addr6_1:
     .p2align 2
     .type stack_pop, %function
 stack_pop:
-    push {lr}
-    ldr lr, =880
-    sub sp, sp, lr
-    str r0, [sp, #16]
-    str r0, [sp]
-    ldr r0, =0
-    str r0, [sp, #608]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #608]
+    push {r4, r5, lr}
+    sub sp, sp, #16
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #32]
-    ldr r0, [sp, #32]
-    mov r0, r0
-    str r0, [sp, #48]
-    ldr r0, =0
-    str r0, [sp, #624]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #624]
+    ldr r2, =0
+    ldreq r2, =1
+    mov r0, r2
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #64]
-    ldr r0, =0
-    str r0, [sp, #640]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #640]
+    ldr r2, =0
+    ldrne r2, =1
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
     bne bb7_0
     b bb7_1
 bb7_0:
-    str r0, [sp]
-    ldr r0, Addr7_0
-    str r0, [sp, #80]
-    ldr r0, =0
-    str r0, [sp, #656]
-    ldr r0, =4
-    str r0, [sp, #672]
-    str r1, [sp, #4]
-    ldr r0, [sp, #656]
-    ldr r1, [sp, #672]
-    mul r0, r0, r1
-    str r0, [sp, #352]
-    ldr r0, [sp, #80]
-    ldr r1, [sp, #352]
-    add r0, r0, r1
-    str r0, [sp, #368]
-    ldr r0, [sp, #368]
-    ldr r0, [r0]
-    str r0, [sp, #96]
-    ldr r0, Addr7_0
-    str r0, [sp, #112]
-    ldr r0, =4
-    str r0, [sp, #688]
-    ldr r0, [sp, #96]
-    ldr r1, [sp, #688]
-    mul r0, r0, r1
-    str r0, [sp, #384]
-    ldr r0, [sp, #112]
-    ldr r1, [sp, #384]
-    add r0, r0, r1
-    str r0, [sp, #400]
-    ldr r0, [sp, #400]
-    ldr r0, [r0]
-    str r0, [sp, #128]
-    ldr r0, Addr7_0
-    str r0, [sp, #144]
-    ldr r0, =0
-    str r0, [sp, #704]
-    ldr r0, =4
-    str r0, [sp, #720]
-    ldr r0, [sp, #704]
-    ldr r1, [sp, #720]
-    mul r0, r0, r1
-    str r0, [sp, #416]
-    ldr r0, [sp, #144]
-    ldr r1, [sp, #416]
-    add r0, r0, r1
-    str r0, [sp, #432]
-    ldr r0, [sp, #432]
-    ldr r0, [r0]
-    str r0, [sp, #160]
-    ldr r0, [sp, #160]
-    sub r0, r0, #1
-    str r0, [sp, #176]
-    ldr r0, Addr7_0
-    str r0, [sp, #192]
-    ldr r0, =0
-    str r0, [sp, #736]
-    ldr r0, =4
-    str r0, [sp, #752]
-    ldr r0, [sp, #736]
-    ldr r1, [sp, #752]
-    mul r0, r0, r1
-    str r0, [sp, #448]
-    ldr r0, [sp, #192]
-    ldr r1, [sp, #448]
-    add r0, r0, r1
-    str r0, [sp, #464]
-    ldr r0, [sp, #176]
-    ldr r1, [sp, #464]
-    str r0, [r1]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
-    push {lr}
-    ldr lr, [sp, #132]
-    str lr, [sp, #340]
-    pop {lr}
-    b bb7_2
-bb7_1:
     b litpool7_0
     .pool
 litpool7_0:
-    str r0, [sp]
-    ldr r0, Addr7_1
-    str r0, [sp, #208]
-    ldr r0, =0
-    str r0, [sp, #768]
-    ldr r0, =4
-    str r0, [sp, #784]
-    str r1, [sp, #4]
-    ldr r0, [sp, #768]
-    ldr r1, [sp, #784]
-    mul r0, r0, r1
-    str r0, [sp, #480]
-    ldr r0, [sp, #208]
-    ldr r1, [sp, #480]
-    add r0, r0, r1
-    str r0, [sp, #496]
-    ldr r0, [sp, #496]
-    ldr r0, [r0]
-    str r0, [sp, #224]
-    ldr r0, Addr7_1
-    str r0, [sp, #240]
-    ldr r0, =4
-    str r0, [sp, #800]
-    ldr r0, [sp, #224]
-    ldr r1, [sp, #800]
-    mul r0, r0, r1
-    str r0, [sp, #512]
-    ldr r0, [sp, #240]
-    ldr r1, [sp, #512]
-    add r0, r0, r1
-    str r0, [sp, #528]
-    ldr r0, [sp, #528]
-    ldr r0, [r0]
-    str r0, [sp, #256]
-    ldr r0, Addr7_1
-    str r0, [sp, #272]
-    ldr r0, =0
-    str r0, [sp, #816]
-    ldr r0, =4
-    str r0, [sp, #832]
-    ldr r0, [sp, #816]
-    ldr r1, [sp, #832]
-    mul r0, r0, r1
-    str r0, [sp, #544]
-    ldr r0, [sp, #272]
-    ldr r1, [sp, #544]
-    add r0, r0, r1
-    str r0, [sp, #560]
-    ldr r0, [sp, #560]
-    ldr r0, [r0]
-    str r0, [sp, #288]
-    ldr r0, [sp, #288]
-    sub r0, r0, #1
-    str r0, [sp, #304]
-    ldr r0, Addr7_1
-    str r0, [sp, #320]
-    ldr r0, =0
-    str r0, [sp, #848]
-    ldr r0, =4
-    str r0, [sp, #864]
-    ldr r0, [sp, #848]
-    ldr r1, [sp, #864]
-    mul r0, r0, r1
-    str r0, [sp, #576]
-    ldr r0, [sp, #320]
-    ldr r1, [sp, #576]
-    add r0, r0, r1
-    str r0, [sp, #592]
-    ldr r0, [sp, #304]
-    ldr r1, [sp, #592]
-    str r0, [r1]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r0, Addr7_0
+    ldr r1, =0
+    ldr r2, =4
+    mul r3, r1, r2
+    add r1, r0, r3
+    ldr r0, [r1]
+    ldr r1, Addr7_0
+    ldr r2, =4
+    mul r3, r0, r2
+    add r0, r1, r3
+    ldr r1, [r0]
+    ldr r0, Addr7_0
+    ldr r2, =0
+    ldr r3, =4
+    mul r4, r2, r3
+    add r2, r0, r4
+    ldr r0, [r2]
+    sub r2, r0, #1
+    ldr r0, Addr7_0
+    ldr r3, =0
+    ldr r4, =4
+    mul r5, r3, r4
+    add r3, r0, r5
+    str r2, [r3]
     push {lr}
-    ldr lr, [sp, #260]
-    str lr, [sp, #340]
+    Mov r0, r1
+    pop {lr}
+    b bb7_2
+bb7_1:
+    ldr r0, Addr7_1
+    ldr r1, =0
+    ldr r2, =4
+    mul r3, r1, r2
+    add r1, r0, r3
+    ldr r0, [r1]
+    ldr r1, Addr7_1
+    ldr r2, =4
+    mul r3, r0, r2
+    add r0, r1, r3
+    ldr r1, [r0]
+    ldr r0, Addr7_1
+    ldr r2, =0
+    ldr r3, =4
+    mul r4, r2, r3
+    add r2, r0, r4
+    ldr r0, [r2]
+    sub r2, r0, #1
+    ldr r0, Addr7_1
+    ldr r3, =0
+    ldr r4, =4
+    mul r5, r3, r4
+    add r3, r0, r5
+    str r2, [r3]
+    push {lr}
+    Mov r0, r1
     pop {lr}
     b bb7_2
 bb7_2:
     b bb7_3
 bb7_3:
-    ldr r0, [sp, #336]
-    ldr lr, =880
-    add sp, sp, lr
-    pop {lr}
+    add sp, sp, #16
+    pop {r4, r5, lr}
     bx lr
     .pool
 Addr7_0:
@@ -1083,132 +595,59 @@ Addr7_1:
     .type stack_peek, %function
 stack_peek:
     push {lr}
-    ldr lr, =496
-    sub sp, sp, lr
-    str r0, [sp, #16]
-    str r0, [sp]
-    ldr r0, =0
-    str r0, [sp, #352]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #352]
+    sub sp, sp, #16
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #32]
-    ldr r0, [sp, #32]
-    mov r0, r0
-    str r0, [sp, #48]
-    ldr r0, =0
-    str r0, [sp, #368]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #368]
+    ldr r2, =0
+    ldreq r2, =1
+    mov r0, r2
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #64]
-    ldr r0, =0
-    str r0, [sp, #384]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #384]
+    ldr r2, =0
+    ldrne r2, =1
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
     bne bb8_0
     b bb8_1
 bb8_0:
-    str r0, [sp]
     ldr r0, Addr8_0
-    str r0, [sp, #80]
-    ldr r0, =0
-    str r0, [sp, #400]
-    ldr r0, =4
-    str r0, [sp, #416]
-    str r1, [sp, #4]
-    ldr r0, [sp, #400]
-    ldr r1, [sp, #416]
-    mul r0, r0, r1
-    str r0, [sp, #224]
-    ldr r0, [sp, #80]
-    ldr r1, [sp, #224]
-    add r0, r0, r1
-    str r0, [sp, #240]
-    ldr r0, [sp, #240]
-    ldr r0, [r0]
-    str r0, [sp, #96]
-    ldr r0, Addr8_0
-    str r0, [sp, #112]
-    ldr r0, =4
-    str r0, [sp, #432]
-    ldr r0, [sp, #96]
-    ldr r1, [sp, #432]
-    mul r0, r0, r1
-    str r0, [sp, #256]
-    ldr r0, [sp, #112]
-    ldr r1, [sp, #256]
-    add r0, r0, r1
-    str r0, [sp, #272]
-    ldr r0, [sp, #272]
-    ldr r0, [r0]
-    str r0, [sp, #128]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r1, =0
+    ldr r2, =4
+    mul r3, r1, r2
+    add r1, r0, r3
+    ldr r0, [r1]
+    ldr r1, Addr8_0
+    ldr r2, =4
+    mul r3, r0, r2
+    add r0, r1, r3
+    ldr r1, [r0]
     push {lr}
-    ldr lr, [sp, #132]
-    str lr, [sp, #212]
+    Mov r0, r1
     pop {lr}
     b bb8_2
 bb8_1:
     b litpool8_0
     .pool
 litpool8_0:
-    str r0, [sp]
     ldr r0, Addr8_1
-    str r0, [sp, #144]
-    ldr r0, =0
-    str r0, [sp, #448]
-    ldr r0, =4
-    str r0, [sp, #464]
-    str r1, [sp, #4]
-    ldr r0, [sp, #448]
-    ldr r1, [sp, #464]
-    mul r0, r0, r1
-    str r0, [sp, #288]
-    ldr r0, [sp, #144]
-    ldr r1, [sp, #288]
-    add r0, r0, r1
-    str r0, [sp, #304]
-    ldr r0, [sp, #304]
-    ldr r0, [r0]
-    str r0, [sp, #160]
-    ldr r0, Addr8_1
-    str r0, [sp, #176]
-    ldr r0, =4
-    str r0, [sp, #480]
-    ldr r0, [sp, #160]
-    ldr r1, [sp, #480]
-    mul r0, r0, r1
-    str r0, [sp, #320]
-    ldr r0, [sp, #176]
-    ldr r1, [sp, #320]
-    add r0, r0, r1
-    str r0, [sp, #336]
-    ldr r0, [sp, #336]
-    ldr r0, [r0]
-    str r0, [sp, #192]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r1, =0
+    ldr r2, =4
+    mul r3, r1, r2
+    add r1, r0, r3
+    ldr r0, [r1]
+    ldr r1, Addr8_1
+    ldr r2, =4
+    mul r3, r0, r2
+    add r0, r1, r3
+    ldr r1, [r0]
     push {lr}
-    ldr lr, [sp, #196]
-    str lr, [sp, #212]
+    Mov r0, r1
     pop {lr}
     b bb8_2
 bb8_2:
     b bb8_3
 bb8_3:
-    ldr r0, [sp, #208]
-    ldr lr, =496
-    add sp, sp, lr
+    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -1222,102 +661,43 @@ Addr8_1:
     .type stack_size, %function
 stack_size:
     push {lr}
-    ldr lr, =336
-    sub sp, sp, lr
-    str r0, [sp, #16]
-    str r0, [sp]
-    ldr r0, =0
-    str r0, [sp, #224]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #224]
+    sub sp, sp, #16
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #32]
-    ldr r0, [sp, #32]
-    mov r0, r0
-    str r0, [sp, #48]
-    ldr r0, =0
-    str r0, [sp, #240]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #240]
+    ldr r2, =0
+    ldreq r2, =1
+    mov r0, r2
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #64]
-    ldr r0, =0
-    str r0, [sp, #256]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #256]
+    ldr r2, =0
+    ldrne r2, =1
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
     bne bb9_0
     b bb9_1
 bb9_0:
-    str r0, [sp]
     ldr r0, Addr9_0
-    str r0, [sp, #80]
-    ldr r0, =0
-    str r0, [sp, #272]
-    ldr r0, =4
-    str r0, [sp, #288]
-    str r1, [sp, #4]
-    ldr r0, [sp, #272]
-    ldr r1, [sp, #288]
-    mul r0, r0, r1
-    str r0, [sp, #160]
-    ldr r0, [sp, #80]
-    ldr r1, [sp, #160]
-    add r0, r0, r1
-    str r0, [sp, #176]
-    ldr r0, [sp, #176]
-    ldr r0, [r0]
-    str r0, [sp, #96]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
-    push {lr}
-    ldr lr, [sp, #100]
-    str lr, [sp, #148]
-    pop {lr}
+    ldr r1, =0
+    ldr r2, =4
+    mul r3, r1, r2
+    add r1, r0, r3
+    ldr r0, [r1]
     b bb9_2
 bb9_1:
-    str r0, [sp]
     ldr r0, Addr9_1
-    str r0, [sp, #112]
-    ldr r0, =0
-    str r0, [sp, #304]
-    ldr r0, =4
-    str r0, [sp, #320]
-    str r1, [sp, #4]
-    ldr r0, [sp, #304]
-    ldr r1, [sp, #320]
-    mul r0, r0, r1
-    str r0, [sp, #192]
-    ldr r0, [sp, #112]
-    ldr r1, [sp, #192]
-    add r0, r0, r1
-    str r0, [sp, #208]
-    ldr r0, [sp, #208]
-    ldr r0, [r0]
-    str r0, [sp, #128]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
-    push {lr}
-    ldr lr, [sp, #132]
-    str lr, [sp, #148]
-    pop {lr}
+    ldr r1, =0
+    ldr r2, =4
+    mul r3, r1, r2
+    add r1, r0, r3
+    ldr r0, [r1]
     b bb9_2
 bb9_2:
+    b bb9_3
+bb9_3:
     b litpool9_0
     .pool
 litpool9_0:
-    b bb9_3
-bb9_3:
-    ldr r0, [sp, #144]
-    ldr lr, =336
-    add sp, sp, lr
+    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -1330,261 +710,108 @@ Addr9_1:
     .p2align 2
     .type eval_op, %function
 eval_op:
-    push {lr}
-    ldr lr, =688
-    sub sp, sp, lr
-    str r0, [sp, #16]
-    str r1, [sp, #32]
-    str r2, [sp, #48]
-    str r0, [sp]
-    ldr r0, =43
-    str r0, [sp, #448]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #448]
-    cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #64]
-    ldr r0, [sp, #64]
-    mov r0, r0
-    str r0, [sp, #80]
-    ldr r0, =0
-    str r0, [sp, #464]
-    ldr r0, [sp, #80]
-    ldr r1, [sp, #464]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #96]
-    ldr r0, =0
-    str r0, [sp, #480]
-    ldr r0, [sp, #80]
-    ldr r1, [sp, #480]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    push {r4, r5, lr}
+    sub sp, sp, #16
+    ldr r3, =43
+    cmp r0, r3
+    ldr r4, =0
+    ldreq r4, =1
+    mov r3, r4
+    ldr r4, =0
+    cmp r3, r4
+    ldr r5, =0
+    ldrne r5, =1
+    ldr r4, =0
+    cmp r3, r4
     bne bb10_0
     b bb10_1
 bb10_0:
-    str r0, [sp]
-    str r1, [sp, #4]
-    ldr r0, [sp, #32]
-    ldr r1, [sp, #48]
-    add r0, r0, r1
-    str r0, [sp, #112]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
-    push {lr}
-    ldr lr, [sp, #116]
-    str lr, [sp, #388]
-    pop {lr}
+    add r0, r1, r2
     b bb10_10
 bb10_1:
-    str r0, [sp]
-    ldr r0, =45
-    str r0, [sp, #496]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #496]
-    cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #128]
-    ldr r0, [sp, #128]
-    mov r0, r0
-    str r0, [sp, #144]
-    ldr r0, =0
-    str r0, [sp, #512]
-    ldr r0, [sp, #144]
-    ldr r1, [sp, #512]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #160]
-    ldr r0, =0
-    str r0, [sp, #528]
-    ldr r0, [sp, #144]
-    ldr r1, [sp, #528]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r3, =45
+    cmp r0, r3
+    ldr r4, =0
+    ldreq r4, =1
+    mov r3, r4
+    ldr r4, =0
+    cmp r3, r4
+    ldr r5, =0
+    ldrne r5, =1
+    ldr r4, =0
+    cmp r3, r4
     bne bb10_2
     b bb10_3
 bb10_2:
-    str r0, [sp]
-    str r1, [sp, #4]
-    ldr r0, [sp, #32]
-    ldr r1, [sp, #48]
-    sub r0, r0, r1
-    str r0, [sp, #176]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
-    push {lr}
-    ldr lr, [sp, #180]
-    str lr, [sp, #388]
-    pop {lr}
+    sub r0, r1, r2
     b bb10_10
 bb10_3:
-    str r0, [sp]
-    ldr r0, =42
-    str r0, [sp, #544]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #544]
-    cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #192]
-    ldr r0, [sp, #192]
-    mov r0, r0
-    str r0, [sp, #208]
-    ldr r0, =0
-    str r0, [sp, #560]
-    ldr r0, [sp, #208]
-    ldr r1, [sp, #560]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #224]
-    ldr r0, =0
-    str r0, [sp, #576]
-    ldr r0, [sp, #208]
-    ldr r1, [sp, #576]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r3, =42
+    cmp r0, r3
+    ldr r4, =0
+    ldreq r4, =1
+    mov r3, r4
+    ldr r4, =0
+    cmp r3, r4
+    ldr r5, =0
+    ldrne r5, =1
+    ldr r4, =0
+    cmp r3, r4
     bne bb10_4
     b bb10_5
 bb10_4:
+    mul r0, r1, r2
+    b bb10_10
+bb10_5:
     b litpool10_0
     .pool
 litpool10_0:
-    str r0, [sp]
-    str r1, [sp, #4]
-    ldr r0, [sp, #32]
-    ldr r1, [sp, #48]
-    mul r0, r0, r1
-    str r0, [sp, #240]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
-    push {lr}
-    ldr lr, [sp, #244]
-    str lr, [sp, #388]
-    pop {lr}
-    b bb10_10
-bb10_5:
-    str r0, [sp]
-    ldr r0, =47
-    str r0, [sp, #592]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #592]
-    cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #256]
-    ldr r0, [sp, #256]
-    mov r0, r0
-    str r0, [sp, #272]
-    ldr r0, =0
-    str r0, [sp, #608]
-    ldr r0, [sp, #272]
-    ldr r1, [sp, #608]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #288]
-    ldr r0, =0
-    str r0, [sp, #624]
-    ldr r0, [sp, #272]
-    ldr r1, [sp, #624]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r3, =47
+    cmp r0, r3
+    ldr r4, =0
+    ldreq r4, =1
+    mov r3, r4
+    ldr r4, =0
+    cmp r3, r4
+    ldr r5, =0
+    ldrne r5, =1
+    ldr r4, =0
+    cmp r3, r4
     bne bb10_6
     b bb10_7
 bb10_6:
-    str r0, [sp]
-    str r1, [sp, #4]
-    ldr r0, [sp, #32]
-    ldr r1, [sp, #48]
-    sdiv r0, r0, r1
-    str r0, [sp, #304]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
-    push {lr}
-    ldr lr, [sp, #308]
-    str lr, [sp, #388]
-    pop {lr}
+    sdiv r0, r1, r2
     b bb10_10
 bb10_7:
-    str r0, [sp]
-    ldr r0, =37
-    str r0, [sp, #640]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #640]
-    cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #320]
-    ldr r0, [sp, #320]
-    mov r0, r0
-    str r0, [sp, #336]
-    ldr r0, =0
-    str r0, [sp, #656]
-    ldr r0, [sp, #336]
-    ldr r1, [sp, #656]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #352]
-    ldr r0, =0
-    str r0, [sp, #672]
-    ldr r0, [sp, #336]
-    ldr r1, [sp, #672]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r3, =37
+    cmp r0, r3
+    ldr r4, =0
+    ldreq r4, =1
+    mov r0, r4
+    ldr r3, =0
+    cmp r0, r3
+    ldr r4, =0
+    ldrne r4, =1
+    ldr r3, =0
+    cmp r0, r3
     bne bb10_8
     b bb10_9
 bb10_8:
-    str r0, [sp]
-    str r1, [sp, #4]
-    ldr r0, [sp, #32]
-    ldr r1, [sp, #48]
-    sdiv r0, r0, r1
-    str r0, [sp, #400]
-    ldr r1, [sp, #48]
-    ldr r0, [sp, #400]
-    mul r0, r0, r1
-    str r0, [sp, #416]
-    ldr r0, [sp, #32]
-    ldr r1, [sp, #416]
-    sub r0, r0, r1
-    str r0, [sp, #432]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    sdiv r3, r1, r2
+    mul r4, r3, r2
+    sub r2, r1, r4
     push {lr}
-    ldr lr, [sp, #436]
-    str lr, [sp, #388]
+    Mov r0, r2
     pop {lr}
     b bb10_10
 bb10_9:
     push {lr}
-    Ldr lr, =0
-    str lr, [sp, #388]
+    Ldr r0, =0
     pop {lr}
     b bb10_10
 bb10_10:
-    b litpool10_1
-    .pool
-litpool10_1:
-    ldr r0, [sp, #384]
-    ldr lr, =688
-    add sp, sp, lr
-    pop {lr}
+    add sp, sp, #16
+    pop {r4, r5, lr}
     bx lr
     .pool
 
@@ -1592,362 +819,290 @@ litpool10_1:
     .p2align 2
     .type eval, %function
 eval:
-    push {r11, lr}
+    push {r4, r11, lr}
     mov r11, sp
-    ldr lr, =1092
-    sub sp, sp, lr
-    str r0, [sp, #20]
+    sub sp, sp, #36
     ldr r0, Addr11_2
     ldr r0, [r0]
-    str r0, [sp, #36]
-    ldr r0, =0
-    str r0, [sp, #804]
-    str r1, [sp, #24]
-    ldr r0, [sp, #36]
-    ldr r1, [sp, #804]
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #52]
-    ldr r0, [sp, #52]
-    mov r0, r0
-    str r0, [sp, #68]
-    ldr r0, =0
-    str r0, [sp, #820]
-    ldr r0, [sp, #68]
-    ldr r1, [sp, #820]
+    ldr r2, =0
+    ldrne r2, =1
+    mov r0, r2
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #84]
-    ldr r0, =0
-    str r0, [sp, #836]
-    ldr r0, [sp, #68]
-    ldr r1, [sp, #836]
+    ldr r2, =0
+    ldrne r2, =1
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
     bne bb11_0
     b bb11_1
 bb11_0:
+    STM SP, {r0}
     bl panic
-    str r0, [sp, #100]
     push {lr}
-    ldr lr, [sp, #104]
-    str lr, [sp, #744]
+    Mov r1, r0
     pop {lr}
     b bb11_18
 bb11_1:
-    str r0, [sp, #20]
-    ldr r0, Addr11_0
-    ldr r0, [r0]
-    str r0, [sp, #116]
-    ldr r0, =0
-    ldr r1, [sp, #116]
-    bl stack_push
-    bl next_token
-    str r0, [sp, #132]
-    ldr r0, [sp, #20]
-    b bb11_2
-bb11_2:
-    str r0, [sp, #20]
-    ldr r0, Addr11_2
-    ldr r0, [r0]
-    str r0, [sp, #148]
-    ldr r0, =1
-    str r0, [sp, #852]
-    str r1, [sp, #24]
-    ldr r0, [sp, #148]
-    ldr r1, [sp, #852]
-    cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #164]
-    ldr r0, [sp, #164]
-    mov r0, r0
-    str r0, [sp, #180]
-    ldr r0, =0
-    str r0, [sp, #868]
-    ldr r0, [sp, #180]
-    ldr r1, [sp, #868]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #196]
-    ldr r0, =0
-    str r0, [sp, #884]
-    ldr r0, [sp, #180]
-    ldr r1, [sp, #884]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
-    bne bb11_3
-    push {lr}
-    ldr lr, [sp, #776]
-    str lr, [sp, #792]
-    pop {lr}
-    b bb11_4
-bb11_3:
-    str r0, [sp, #20]
-    ldr r0, Addr11_1
-    ldr r0, [r0]
-    str r0, [sp, #212]
-    ldr r0, [sp, #212]
-    bl get_op_prec
-    str r0, [sp, #228]
-    ldr r0, =0
-    str r0, [sp, #900]
-    str r1, [sp, #24]
-    ldr r0, [sp, #228]
-    ldr r1, [sp, #900]
-    cmp r0, r1
-    ldr r0, =0
-    ldreq r0, =1
-    str r0, [sp, #244]
-    ldr r0, [sp, #244]
-    mov r0, r0
-    str r0, [sp, #260]
-    ldr r0, =0
-    str r0, [sp, #916]
-    ldr r0, [sp, #260]
-    ldr r1, [sp, #916]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #276]
-    ldr r0, =0
-    str r0, [sp, #932]
-    ldr r0, [sp, #260]
-    ldr r1, [sp, #932]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
-    bne bb11_5
-    b bb11_6
-bb11_4:
     b litpool11_0
     .pool
 litpool11_0:
+    ldr r0, Addr11_0
+    ldr r0, [r0]
+    STM SP, {r0}
+    ldr r0, =0
+    ldr r1, [sp]
+    bl stack_push
+    LDM sp, {r0}
+    STM SP, {r0}
     bl next_token
-    str r0, [sp, #612]
+    b bb11_2
+bb11_2:
+    ldr r1, Addr11_2
+    ldr r1, [r1]
+    ldr r2, =1
+    cmp r1, r2
+    ldr r3, =0
+    ldreq r3, =1
+    mov r1, r3
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
+    bne bb11_3
+    b bb11_4
+bb11_3:
+    ldr r0, Addr11_1
+    ldr r0, [r0]
+    STM SP, {r0, r1}
+    ldr r0, [sp]
+    bl get_op_prec
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldreq r3, =1
+    mov r1, r3
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
+    bne bb11_5
+    b bb11_6
+bb11_4:
+    STM SP, {r0, r1}
+    bl next_token
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
     b bb11_15
 bb11_5:
-    push {lr}
-    ldr lr, [sp, #216]
-    str lr, [sp, #792]
-    pop {lr}
     b bb11_4
 bb11_6:
+    STM SP, {r0, r1}
     bl next_token
-    str r0, [sp, #292]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
     b bb11_7
 bb11_7:
-    ldr r0, =1
-    bl stack_size
-    str r0, [sp, #308]
-    str r0, [sp, #20]
-    ldr r0, =0
-    str r0, [sp, #948]
-    str r1, [sp, #24]
-    ldr r0, [sp, #308]
-    ldr r1, [sp, #948]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #324]
-    ldr r0, =0
-    str r0, [sp, #964]
-    ldr r0, [sp, #308]
-    ldr r1, [sp, #964]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
-    bne bb11_8
-    b bb11_9
-bb11_8:
-    ldr r0, =1
-    bl stack_peek
-    str r0, [sp, #340]
-    ldr r0, [sp, #340]
-    bl get_op_prec
-    str r0, [sp, #356]
-    ldr r0, [sp, #212]
-    bl get_op_prec
-    str r0, [sp, #372]
-    str r0, [sp, #20]
-    str r1, [sp, #24]
-    ldr r0, [sp, #356]
-    ldr r1, [sp, #372]
-    cmp r0, r1
-    ldr r0, =0
-    ldrge r0, =1
-    str r0, [sp, #388]
-    ldr r0, [sp, #388]
-    mov r0, r0
-    str r0, [sp, #404]
-    ldr r0, =0
-    str r0, [sp, #980]
-    ldr r0, [sp, #404]
-    ldr r1, [sp, #980]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #420]
-    ldr r0, =0
-    str r0, [sp, #996]
-    ldr r0, [sp, #404]
-    ldr r1, [sp, #996]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
-    bne bb11_10
-    b bb11_11
-bb11_9:
-    ldr r0, =1
-    ldr r1, [sp, #212]
-    bl stack_push
-    str r0, [sp, #20]
-    ldr r0, Addr11_2
-    ldr r0, [r0]
-    str r0, [sp, #500]
-    ldr r0, =0
-    str r0, [sp, #1012]
-    str r1, [sp, #24]
-    ldr r0, [sp, #500]
-    ldr r1, [sp, #1012]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #516]
-    ldr r0, [sp, #516]
-    mov r0, r0
-    str r0, [sp, #532]
-    ldr r0, =0
-    str r0, [sp, #1028]
-    ldr r0, [sp, #532]
-    ldr r1, [sp, #1028]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #548]
-    ldr r0, =0
-    str r0, [sp, #1044]
-    ldr r0, [sp, #532]
-    ldr r1, [sp, #1044]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
-    bne bb11_13
-    b bb11_14
-bb11_10:
-    ldr r0, =1
-    bl stack_pop
-    str r0, [sp, #436]
-    ldr r0, =0
-    bl stack_pop
-    str r0, [sp, #452]
-    ldr r0, =0
-    bl stack_pop
-    str r0, [sp, #468]
-    ldr r0, [sp, #436]
-    ldr r1, [sp, #468]
-    ldr r2, [sp, #452]
-    bl eval_op
-    str r0, [sp, #484]
-    ldr r0, =0
-    ldr r1, [sp, #484]
-    bl stack_push
-    b bb11_12
-bb11_11:
     b litpool11_1
     .pool
 litpool11_1:
+    STM SP, {r0, r1}
+    ldr r0, =1
+    bl stack_size
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
+    bne bb11_8
+    b bb11_9
+bb11_8:
+    STM SP, {r0, r1}
+    ldr r0, =1
+    bl stack_peek
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2}
+    ldr r0, [sp, #4]
+    bl get_op_prec
+    LDMIB SP, {r1, r2}
+    mov r2, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2}
+    ldr r0, [sp]
+    bl get_op_prec
+    LDMIB SP, {r1, r2}
+    mov r1, r0
+    ldr r0, [SP]
+    cmp r2, r1
+    ldr r3, =0
+    ldrge r3, =1
+    mov r1, r3
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
+    bne bb11_10
+    b bb11_11
+bb11_9:
+    STM SP, {r0}
+    ldr r0, =1
+    ldr r1, [sp]
+    bl stack_push
+    LDM sp, {r0}
+    ldr r1, Addr11_2
+    ldr r1, [r1]
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    mov r1, r3
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
+    bne bb11_13
+    b bb11_14
+bb11_10:
+    STM SP, {r0, r1}
+    ldr r0, =1
+    bl stack_pop
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2}
+    ldr r0, =0
+    bl stack_pop
+    LDMIB SP, {r1, r2}
+    mov r2, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2, r3}
+    ldr r0, =0
+    bl stack_pop
+    LDMIB SP, {r1, r2, r3}
+    mov r3, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2, r3}
+    ldr r0, [sp, #4]
+    ldr r1, [sp, #12]
+    ldr r2, [sp, #8]
+    bl eval_op
+    LDMIB SP, {r1, r2, r3}
+    mov r4, r0
+    ldr r0, [SP]
+    STM SP, {r0}
+    ldr r0, =0
+    mov r1, r4
+    bl stack_push
+    LDM sp, {r0}
+    b bb11_12
+bb11_11:
     b bb11_9
 bb11_12:
     b bb11_7
 bb11_13:
+    b litpool11_2
+    .pool
+litpool11_2:
+    STM SP, {r0, r1}
     bl panic
-    str r0, [sp, #564]
-    push {lr}
-    ldr lr, [sp, #216]
-    str lr, [sp, #760]
-    ldr lr, [sp, #568]
-    str lr, [sp, #744]
-    pop {lr}
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
     b bb11_18
 bb11_14:
-    str r0, [sp, #20]
-    ldr r0, Addr11_0
-    ldr r0, [r0]
-    str r0, [sp, #580]
+    ldr r1, Addr11_0
+    ldr r1, [r1]
+    STM SP, {r0, r1}
     ldr r0, =0
-    ldr r1, [sp, #580]
+    ldr r1, [sp, #4]
     bl stack_push
+    LDM sp, {r0, r1}
+    STM SP, {r0, r1}
     bl next_token
-    str r0, [sp, #596]
-    ldr r0, [sp, #20]
-    push {lr}
-    ldr lr, [sp, #216]
-    str lr, [sp, #776]
-    pop {lr}
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
     b bb11_2
 bb11_15:
+    STM SP, {r0, r1}
     ldr r0, =1
     bl stack_size
-    str r0, [sp, #628]
-    str r0, [sp, #20]
-    ldr r0, =0
-    str r0, [sp, #1060]
-    str r1, [sp, #24]
-    ldr r0, [sp, #628]
-    ldr r1, [sp, #1060]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #644]
-    ldr r0, =0
-    str r0, [sp, #1076]
-    ldr r0, [sp, #628]
-    ldr r1, [sp, #1076]
-    cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    ldr r2, =0
+    cmp r1, r2
+    ldr r3, =0
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
     bne bb11_16
     b bb11_17
 bb11_16:
+    STM SP, {r0, r1}
     ldr r0, =1
     bl stack_pop
-    str r0, [sp, #660]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2}
     ldr r0, =0
     bl stack_pop
-    str r0, [sp, #676]
+    LDMIB SP, {r1, r2}
+    mov r2, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2, r3}
     ldr r0, =0
     bl stack_pop
-    str r0, [sp, #692]
-    ldr r0, [sp, #660]
-    ldr r1, [sp, #692]
-    ldr r2, [sp, #676]
+    LDMIB SP, {r1, r2, r3}
+    mov r3, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2, r3}
+    ldr r0, [sp, #4]
+    ldr r1, [sp, #12]
+    ldr r2, [sp, #8]
     bl eval_op
-    str r0, [sp, #708]
+    LDMIB SP, {r1, r2, r3}
+    mov r4, r0
+    ldr r0, [SP]
+    STM SP, {r0}
     ldr r0, =0
-    ldr r1, [sp, #708]
+    mov r1, r4
     bl stack_push
+    LDM sp, {r0}
     b bb11_15
 bb11_17:
+    STM SP, {r0, r1}
     ldr r0, =0
     bl stack_peek
-    str r0, [sp, #724]
-    push {lr}
-    ldr lr, [sp, #792]
-    str lr, [sp, #760]
-    ldr lr, [sp, #728]
-    str lr, [sp, #744]
-    pop {lr}
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
     b bb11_18
 bb11_18:
-    ldr r0, [sp, #740]
+    mov r0, r1
     mov sp, r11
-    pop {r11, lr}
+    pop {r4, r11, lr}
     bx lr
     .pool
 Addr11_0:
@@ -1963,57 +1118,49 @@ Addr11_2:
 main:
     push {r11, lr}
     mov r11, sp
-    ldr lr, =180
-    sub sp, sp, lr
+    sub sp, sp, #36
+    STM SP, {r0}
     bl get_int
-    str r0, [sp, #36]
+    STM SP, {r0, r1}
     bl get_char
-    str r0, [sp, #52]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2}
     bl next_token
-    str r0, [sp, #68]
-    push {lr}
-    ldr lr, [sp, #40]
-    str lr, [sp, #136]
-    pop {lr}
+    LDMIB SP, {r1, r2}
+    mov r2, r0
+    ldr r0, [SP]
     b bb12_0
 bb12_0:
     b litpool12_0
     .pool
 litpool12_0:
-    str r0, [sp, #20]
-    ldr r0, =0
-    str r0, [sp, #148]
-    str r1, [sp, #24]
-    ldr r0, [sp, #132]
-    ldr r1, [sp, #148]
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #84]
-    ldr r0, =0
-    str r0, [sp, #164]
-    ldr r0, [sp, #132]
-    ldr r1, [sp, #164]
+    ldr r2, =0
+    ldrne r2, =1
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, [sp, #20]
-    ldr r1, [sp, #24]
     bne bb12_1
     b bb12_2
 bb12_1:
+    STM SP, {r0, r1}
     bl eval
-    str r0, [sp, #100]
-    ldr r0, [sp, #100]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1}
+    ldr r0, [sp, #4]
     bl put_int
+    LDM sp, {r0, r1}
+    STM SP, {r0}
     ldr r0, =10
     bl put_char
-    str r0, [sp, #20]
-    ldr r0, [sp, #132]
-    sub r0, r0, #1
-    str r0, [sp, #116]
-    ldr r0, [sp, #20]
+    LDM sp, {r0}
+    sub r1, r0, #1
     push {lr}
-    ldr lr, [sp, #120]
-    str lr, [sp, #136]
+    Mov r0, r1
     pop {lr}
     b bb12_0
 bb12_2:

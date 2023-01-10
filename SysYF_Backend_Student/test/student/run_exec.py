@@ -42,7 +42,6 @@ if __name__ == '__main__':
                 #if 'long_arr' in file or 'sort' in file:
                     #continue
                 if os.path.exists('../test/student/'+dataset+'/'+level+'/'+file+'.in'):
-                    print(file)
                     input_file='../test/student/'+dataset+'/'+level+'/'+file+'.in'
                     try:
                         result=subprocess.run(test_cmd_with_input.format(input_file, '../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,timeout=1)
@@ -53,7 +52,7 @@ if __name__ == '__main__':
                             print(file+' passed!')
                         else:
                             print(dataset+'/'+level+'/'+file+' test failed! Expected:')
-                            print(content.strip())
+                            #print(content.strip())
                             print('Got:')
                             print(result.strip())
                             errors.append(dataset+'/'+level+'/'+file+' test failed')
@@ -61,7 +60,6 @@ if __name__ == '__main__':
                         print(dataset+'/'+level+'/'+file+' timed out!')
                         errors.append(dataset+'/'+level+'/'+file+' timed out')
                 else:
-                    print(file)
                     try:
                         result=subprocess.run(test_cmd_without_input.format('../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,timeout=1)
                         result=result.stdout.decode().strip()+'\n'+str(result.returncode)
@@ -71,7 +69,7 @@ if __name__ == '__main__':
                             print(file+' passed!')
                         else:
                             print(dataset+'/'+level+'/'+file+' test failed! Expected:')
-                            print(content.strip())
+                            #print(content.strip())
                             print('Got:')
                             print(result.strip())
                             errors.append(dataset+'/'+level+'/'+file+' test failed')

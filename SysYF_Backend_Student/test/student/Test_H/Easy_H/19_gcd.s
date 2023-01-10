@@ -4,146 +4,68 @@
     .p2align 2
     .type gcd, %function
 gcd:
-    push {lr}
-    ldr lr, =432
-    sub sp, sp, lr
-    str r0, [sp, #416]
-    str r1, [sp, #16]
-    str r0, [sp]
-    str r1, [sp, #4]
-    ldr r1, [sp, #16]
-    ldr r0, [sp, #416]
+    push {r4, r5, lr}
+    sub sp, sp, #16
     cmp r0, r1
-    ldr r0, =0
-    ldrlt r0, =1
-    str r0, [sp, #32]
-    ldr r0, [sp, #32]
-    mov r0, r0
-    str r0, [sp, #48]
-    ldr r0, =0
-    str r0, [sp, #336]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #336]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #64]
-    ldr r0, =0
-    str r0, [sp, #352]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #352]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r3, =0
+    ldrlt r3, =1
+    mov r4, r3
+    ldr r3, =0
+    cmp r4, r3
+    ldr r5, =0
+    ldrne r5, =1
+    ldr r3, =0
+    cmp r4, r3
     bne bb0_0
     push {lr}
-    ldr lr, [sp, #20]
-    str lr, [sp, #196]
-    ldr lr, [sp, #420]
-    str lr, [sp, #164]
+    Mov r3, r0
     pop {lr}
     b bb0_1
 bb0_0:
     push {lr}
-    ldr lr, [sp, #420]
-    str lr, [sp, #196]
-    ldr lr, [sp, #20]
-    str lr, [sp, #164]
+    Mov r3, r1
+    Mov r1, r0
     pop {lr}
     b bb0_1
 bb0_1:
-    str r0, [sp]
-    str r1, [sp, #4]
-    ldr r0, [sp, #160]
-    ldr r1, [sp, #192]
-    sdiv r0, r0, r1
-    str r0, [sp, #240]
-    ldr r1, [sp, #192]
-    ldr r0, [sp, #240]
-    mul r0, r0, r1
-    str r0, [sp, #256]
-    ldr r0, [sp, #160]
-    ldr r1, [sp, #256]
-    sub r0, r0, r1
-    str r0, [sp, #272]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    sdiv r4, r3, r1
+    mul r5, r4, r1
+    sub r4, r3, r5
     push {lr}
-    ldr lr, [sp, #276]
-    str lr, [sp, #228]
-    ldr lr, [sp, #196]
-    str lr, [sp, #212]
-    ldr lr, [sp, #164]
-    str lr, [sp, #180]
+    Mov r2, r4
+    Mov r0, r1
+    Mov r1, r3
     pop {lr}
     b bb0_2
 bb0_2:
-    str r0, [sp]
-    ldr r0, =0
-    str r0, [sp, #368]
-    str r1, [sp, #4]
-    ldr r0, [sp, #224]
-    ldr r1, [sp, #368]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #96]
-    ldr r0, [sp, #96]
-    mov r0, r0
-    str r0, [sp, #112]
-    ldr r0, =0
-    str r0, [sp, #384]
-    ldr r0, [sp, #112]
-    ldr r1, [sp, #384]
-    cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #128]
-    ldr r0, =0
-    str r0, [sp, #400]
-    ldr r0, [sp, #112]
-    ldr r1, [sp, #400]
-    cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr r3, =0
+    cmp r2, r3
+    ldr r4, =0
+    ldrne r4, =1
+    mov r3, r4
+    ldr r4, =0
+    cmp r3, r4
+    ldr r5, =0
+    ldrne r5, =1
+    ldr r4, =0
+    cmp r3, r4
     bne bb0_3
     b bb0_4
 bb0_3:
-    str r0, [sp]
-    str r1, [sp, #4]
-    ldr r0, [sp, #208]
-    ldr r1, [sp, #224]
-    sdiv r0, r0, r1
-    str r0, [sp, #288]
-    ldr r1, [sp, #224]
-    ldr r0, [sp, #288]
-    mul r0, r0, r1
-    str r0, [sp, #304]
-    ldr r0, [sp, #208]
-    ldr r1, [sp, #304]
-    sub r0, r0, r1
-    str r0, [sp, #320]
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    sdiv r3, r0, r2
+    mul r4, r3, r2
+    sub r3, r0, r4
     push {lr}
-    ldr lr, [sp, #212]
-    str lr, [sp, #180]
-    ldr lr, [sp, #228]
-    str lr, [sp, #212]
-    ldr lr, [sp, #324]
-    str lr, [sp, #228]
+    Mov r1, r0
+    Mov r0, r2
+    Mov r2, r3
     pop {lr}
     b bb0_2
 bb0_4:
-    b litpool0_0
-    .pool
-litpool0_0:
     b bb0_5
 bb0_5:
-    ldr r0, [sp, #208]
-    ldr lr, =432
-    add sp, sp, lr
-    pop {lr}
+    add sp, sp, #16
+    pop {r4, r5, lr}
     bx lr
     .pool
 
@@ -153,18 +75,27 @@ bb0_5:
 main:
     push {r11, lr}
     mov r11, sp
-    sub sp, sp, #84
+    sub sp, sp, #36
+    STM SP, {r0}
     bl get_int
-    str r0, [sp, #36]
+    STM SP, {r0, r1}
     bl get_int
-    str r0, [sp, #52]
-    ldr r0, [sp, #36]
-    ldr r1, [sp, #52]
+    LDMIB SP, {r1}
+    mov r1, r0
+    ldr r0, [SP]
+    STM SP, {r0, r1, r2}
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     bl gcd
-    str r0, [sp, #68]
+    LDMIB SP, {r1, r2}
+    mov r2, r0
+    ldr r0, [SP]
     b bb1_0
 bb1_0:
-    ldr r0, [sp, #68]
+    b litpool1_0
+    .pool
+litpool1_0:
+    mov r0, r2
     mov sp, r11
     pop {r11, lr}
     bx lr

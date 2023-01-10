@@ -5,64 +5,39 @@
     .type main, %function
 main:
     push {lr}
-    ldr lr, =160
-    sub sp, sp, lr
-    str r0, [sp]
+    sub sp, sp, #16
     ldr r0, =10
-    str r0, [sp, #96]
-    ldr r0, [sp, #96]
     push {r1}
     ldr r1, Addr0_0
     str r0, [r1]
     pop {r1}
     ldr r0, Addr0_0
     ldr r0, [r0]
-    str r0, [sp, #16]
-    ldr r0, =0
-    str r0, [sp, #112]
-    str r1, [sp, #4]
-    ldr r0, [sp, #16]
-    ldr r1, [sp, #112]
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrgt r0, =1
-    str r0, [sp, #32]
-    ldr r0, [sp, #32]
-    mov r0, r0
-    str r0, [sp, #48]
-    ldr r0, =0
-    str r0, [sp, #128]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #128]
+    ldr r2, =0
+    ldrgt r2, =1
+    mov r0, r2
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, =0
-    ldrne r0, =1
-    str r0, [sp, #64]
-    ldr r0, =0
-    str r0, [sp, #144]
-    ldr r0, [sp, #48]
-    ldr r1, [sp, #144]
+    ldr r2, =0
+    ldrne r2, =1
+    ldr r1, =0
     cmp r0, r1
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
     bne bb0_0
     b bb0_1
 bb0_0:
     push {lr}
-    Ldr lr, =1
-    str lr, [sp, #84]
+    Ldr r0, =1
     pop {lr}
     b bb0_2
 bb0_1:
     push {lr}
-    Ldr lr, =0
-    str lr, [sp, #84]
+    Ldr r0, =0
     pop {lr}
     b bb0_2
 bb0_2:
-    ldr r0, [sp, #80]
-    ldr lr, =160
-    add sp, sp, lr
+    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

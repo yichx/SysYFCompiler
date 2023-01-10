@@ -22,9 +22,10 @@
         - parameter `cmpop` is used to generate instructions with conditional excution method
     the function may generate more than one instruction.
 */
-    bool CodeGen::Dfs_Move(IR2asm::Location* u, std::string &code, std::string &cmpop) 
+    bool CodeGen::Dfs_Move(std::string u, std::string &code, std::string &cmpop) 
     //return whether u is in a circle
     {
+        //std::cout<<"DFS"<<u<<std::endl;
         In_Stack[u] = true;
         Stack.push_back(u);
         bool iscircle = false;
@@ -36,7 +37,10 @@
                 iscircle = true;
             }
             else if(IsDone[nxt] || !Dfs_Move(nxt, code, cmpop)) //nxt is done or not in circle
-                code += single_data_move(u, nxt, new IR2asm::Reg(IR2asm::lr), cmpop); //move data in order
+            {
+                //std::cout<<u<<" "<<nxt<<std::endl;
+                code += single_data_move(CodeToLoc[u], CodeToLoc[nxt], new IR2asm::Reg(IR2asm::lr), cmpop); //move data in order
+            }
             else //both u and nxt in circle
                 iscircle = true;
         }
@@ -50,30 +54,39 @@
                                    std::vector<IR2asm::Location*> &dst,
                                    std::string cmpop){
         std::string code;
-        
         /* TODO: put your code here */
         std::vector<int>reg_list = {IR2asm::lr};
         code += push_regs(reg_list); //保存临时寄存器
         auto tmp_Reg = new IR2asm::Reg(IR2asm::lr);//临时寄存器
         auto unUsed_RegLoc = new IR2asm::RegLoc(12);//处理环用的闲置寄存器
         MoveTo.clear();
+        CodeToLoc.clear();
         for(int i = 0;i < src.size(); ++i)//记录数据移动边
-            MoveTo[src[i]].insert(dst[i]);
+        {
+            MoveTo[src[i]->get_code()].insert(dst[i]->get_code());
+            CodeToLoc[src[i]->get_code()] = src[i];
+            CodeToLoc[dst[i]->get_code()] = dst[i];
+        }
     
         IsDone.clear();//表示这个点访问过
         Stack.clear();//dfs栈
         In_Stack.clear();//当前节点是否在栈里面
+        /*puts("IN");
+        for(int i = 0;i < src.size(); ++i)
+            std::cout<<src[i]->get_code()<<" "<<dst[i]->get_code()<<std::endl;*/
         for(auto &src_loc : src)
-            if(!IsDone[src_loc] && Dfs_Move(src_loc, code, cmpop))
+            if(!IsDone[src_loc->get_code()] && Dfs_Move(src_loc->get_code(), code, cmpop))
             {
                 if(Circle.size() == 1) // move itself
                     continue;
-                code += single_data_move(*Circle.end(), unUsed_RegLoc, tmp_Reg, cmpop);
+                code += single_data_move(CodeToLoc[*Circle.end()], unUsed_RegLoc, tmp_Reg, cmpop);
                 for(int i = Circle.size() - 2;i >= 0; ++i)
-                    code += single_data_move(Circle[i], Circle[i + 1], tmp_Reg, cmpop);
-                code += single_data_move(unUsed_RegLoc, *Circle.begin(), tmp_Reg, cmpop);
+                    code += single_data_move(CodeToLoc[Circle[i]], CodeToLoc[Circle[i + 1]], tmp_Reg, cmpop);
+                code += single_data_move(unUsed_RegLoc, CodeToLoc[*Circle.begin()], tmp_Reg, cmpop);
             }
         code += pop_regs(reg_list); //恢复临时寄存器
+        //std::cout<<code<<std::endl;
+        //puts("OUT");
         return code;
     }
 

@@ -48,12 +48,13 @@ class CodeGen{
     std::set<int> cur_tmp_regs;
     std::map<int, IR2asm::Regbase*> tmp_regs_loc;
     
-    std::map<IR2asm::Location*, bool> In_Stack;
-    std::map<IR2asm::Location*, bool> IsDone;
-    std::vector<IR2asm::Location*> Stack;
-    std::vector<IR2asm::Location*> Circle;
-    std::map<IR2asm::Location*, std::set<IR2asm::Location*>>MoveTo;
-    bool Dfs_Move(IR2asm::Location* u, std::string &code, std::string &cmpop);
+    std::map<std::string, bool> In_Stack;
+    std::map<std::string, bool> IsDone;
+    std::vector<std::string> Stack;
+    std::vector<std::string> Circle;
+    std::map<std::string, std::set<std::string>>MoveTo;
+    std::map<std::string, IR2asm::Location*>CodeToLoc;
+    bool Dfs_Move(std::string u, std::string &code, std::string &cmpop);
 public:
     std::string tmp_reg_restore(Instruction* inst);
     std::string ld_tmp_regs(Instruction* inst);

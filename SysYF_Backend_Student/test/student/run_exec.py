@@ -4,7 +4,7 @@ import os
 import shutil
 
 if __name__ == '__main__':
-    compile_cmd = 'gcc -march=armv7-a -g sylib.c {} -o {}'
+    compile_cmd = 'gcc -march=armv7-a -g ../lib/lib.c {} -o {}'
 
     # 修改当前的python的工作目录
     os.chdir('../../build')

@@ -3,6 +3,7 @@
 # 该脚本运行在希冀评测平台上
 import subprocess
 import os
+import shutil
 
 if __name__ == '__main__':
     compile_cmd = './compiler {} -O2 -S -o {}'
@@ -22,3 +23,5 @@ if __name__ == '__main__':
             for file in os.listdir('../test/'+dataset+'/'+level):
                 if file.endswith('.sy'):
                     subprocess.run(compile_cmd.format('../test/'+dataset+'/'+level+'/'+file,'../test/student/'+dataset+'/'+level+'/'+file[:-2]+'s'),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                elif file.endswith('in'):
+                    shutil.copy('../test/'+dataset+'/'+level+'/'+file,'../test/student/'+dataset+'/'+level+'/'+file[:-2]+'in')

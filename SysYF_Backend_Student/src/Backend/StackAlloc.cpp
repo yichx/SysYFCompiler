@@ -60,7 +60,7 @@ int CodeGen::stack_space_allocation(Function *fun)
     {
       if(caller_saved_reg_num>4)
       {
-        offset-=(caller_saved_reg_num-4)*reg_size;
+        offset-=(caller_saved_reg_num-5)*reg_size;
         for(int i=0;i<caller_saved_reg_num-4;i++)
         {
           arg_on_stack.push_back(new IR2asm::Regbase(IR2asm::sp,offset));

@@ -64,7 +64,7 @@
         Stack.clear();//dfs栈
         In_Stack.clear();//当前节点是否在栈里面
         for(auto &src_loc : src)
-            if(!IsDone[src_loc] || Dfs_Move(src_loc, code, cmpop))
+            if(!IsDone[src_loc] && Dfs_Move(src_loc, code, cmpop))
             {
                 if(Circle.size() == 1) // move itself
                     continue;

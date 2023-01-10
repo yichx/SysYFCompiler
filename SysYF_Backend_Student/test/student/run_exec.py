@@ -8,6 +8,7 @@ if __name__ == '__main__':
 
     # 修改当前的python的工作目录
     os.chdir('../../build')
+    errors=[]
     levels=['Easy','Medium','Hard']
     datasets=['Test','Test_H']
     print('Assemblying:')
@@ -25,12 +26,14 @@ if __name__ == '__main__':
                 if file.endswith('.out'):
                     asm_file = '../test/student/'+dataset+'/'+level+'/'+file[:-3]+'s'
                     if not os.path.exists(asm_file):
-                        print('File '+dataset+'/'+level+'/'+file[:-3]+'.sy assembly failed!')
+                        print('File '+dataset+'/'+level+'/'+file[:-3]+'sy assemble failed!')
+                        errors.append('File '+dataset+'/'+level+'/'+file[:-3]+'sy assemble failed')
                         continue
                     subprocess.run(compile_cmd.format(asm_file,'../test/student/executable/'+dataset+'/'+level+'/'+file[:-4]),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    print('File '+dataset+'/'+level+'/'+file[:-3]+'.sy assembly succeeded!')
+                    print('File '+dataset+'/'+level+'/'+file[:-3]+'sy assemble succeeded!')
     print('Testing:')
-    test_cmd='cat {} | {}'
+    test_cmd_with_input='cat {} | {}'
+    test_cmd_without_input='{}'
     for dataset in datasets:
         for level in levels:
             if dataset=='Test_H':
@@ -38,13 +41,36 @@ if __name__ == '__main__':
             for file in os.listdir('../test/student/executable/'+dataset+'/'+level):
                 if os.path.exists('../test/student/'+dataset+'/'+level+'/'+file+'.in'):
                     input_file='../test/student/'+dataset+'/'+level+'/'+file+'.in'
-                    result=subprocess.run(test_cmd.format(input_file, '../test/student/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    result=subprocess.run(test_cmd_with_input.format(input_file, '../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    result=result.stdout.decode().strip()+'\n'+str(result.returncode)
                     with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
                         content=fp.read()
-                    print(file,result,content)
+                    if result.strip()==content.strip():
+                        print(file+' passed!')
+                    else:
+                        print(dataset+'/'+level+'/'+file+' test failed! Expected:')
+                        print(content.strip())
+                        print('Got:')
+                        print(result.strip())
+                        errors.append(dataset+'/'+level+'/'+file+' test failed')
                 else:
-                    result=subprocess.run(test_cmd.format('', '../test/student/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    result=subprocess.run(test_cmd_without_input.format('../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    result=result.stdout.decode().strip()+'\n'+str(result.returncode)
                     with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
                         content=fp.read()
-                    print(file,result,content)
+                    if result.strip()==content.strip():
+                        print(file+' passed!')
+                    else:
+                        print(dataset+'/'+level+'/'+file+' test failed! Expected:')
+                        print(content.strip())
+                        print('Got:')
+                        print(result.strip())
+                        errors.append(dataset+'/'+level+'/'+file+' test failed')
+    if len(errors)==0:
+        print('\033[32mALL PASSED\033[0m')
+    else:
+        print('\033[31mError:\033[0m')
+        for error in errors:
+            print('\033[31m'+error+'\033[0m')
+
             

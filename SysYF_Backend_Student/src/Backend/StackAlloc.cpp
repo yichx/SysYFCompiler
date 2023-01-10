@@ -43,9 +43,10 @@ int CodeGen::stack_space_allocation(Function *fun)
     }
     for(auto inst:fun->get_entry_block()->get_instructions()) //处理alloca
     {
+      if(dynamic_cast<AllocaInst*>(inst)==nullptr) continue;
       if(dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->is_array_type())
       {
-        stack_map.insert(std::make_pair(inst,new IR2asm::Regbase(IR2asm::sp,offset)));
+        stack_map.insert(std::make_pair(inst,new IR2asm::Regbase(IR2asm::sp,offset-dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size())));
         size+=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
         offset-=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
       }

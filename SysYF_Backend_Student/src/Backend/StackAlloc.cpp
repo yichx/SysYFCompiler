@@ -30,5 +30,43 @@ int CodeGen::stack_space_allocation(Function *fun)
     // std::vector<IR2asm::Regbase *> CodeGen::arg_on_stack
     arg_on_stack.clear();       // You need to maintain this information, the order is the same as parameter
 
+    int offset = (-used_reg.second.size()-1)*reg_size;
+
+    for(auto reg_interval_map = _reg_map->begin(); reg_interval_map != _reg_map->end(); reg_interval_map++) //溢出到栈的局部变量
+    {
+      if(reg_interval_map->second->reg_num==-1)
+      {
+        stack_map.insert(std::make_pair(reg_interval_map->first,new IR2asm::Regbase(IR2asm::sp,offset)));
+        size+=reg_size;
+        offset-=reg_size;
+      }
+    }
+    for(auto inst:fun->get_entry_block()->get_instructions()) //处理alloca
+    {
+      if(inst->get_instr_type()==Instruction::OpID::alloca)
+      {
+        size+=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
+        offset-=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
+      }
+    }
+    if(have_temp_reg)
+    {
+      size+=reg_size * temp_reg_store_num;
+      offset-=reg_size * temp_reg_store_num;
+    }
+    if(have_func_call)
+    {
+      if(caller_saved_reg_num>4)
+      {
+        offset-=(caller_saved_reg_num-4)*reg_size;
+        for(int i=0;i<caller_saved_reg_num-4;i++)
+        {
+          arg_on_stack.push_back(new IR2asm::Regbase(IR2asm::sp,offset));
+          offset+=reg_size;
+        }
+      }
+      size+=caller_saved_reg_num*reg_size;
+    }
+
     return size;
 }

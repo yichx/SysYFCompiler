@@ -7,7 +7,7 @@ int my_sum(int x, int y){
 }
 
 int main(){
-    int a = 7;
+    int a = 8;
     {
         const int a = 3;
         my_sum(a, a);

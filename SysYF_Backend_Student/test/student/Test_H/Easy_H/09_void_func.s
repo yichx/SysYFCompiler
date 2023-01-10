@@ -5,15 +5,25 @@
     .type add, %function
 add:
     push {lr}
-    sub sp, sp, #16
-    add r2, r0, r1
-    push {r0}
-    ldr r0, Addr0_0
-    str r2, [r0]
-    pop {r0}
+    sub sp, sp, #64
+    str r0, [sp, #48]
+    str r1, [sp, #16]
+    str r0, [sp]
+    str r1, [sp, #4]
+    ldr r1, [sp, #16]
+    ldr r0, [sp, #48]
+    add r0, r0, r1
+    str r0, [sp, #32]
+    ldr r0, [sp, #32]
+    push {r1}
+    ldr r1, Addr0_0
+    str r0, [r1]
+    pop {r1}
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     b bb0_0
 bb0_0:
-    add sp, sp, #16
+    add sp, sp, #64
     pop {lr}
     bx lr
     .pool
@@ -26,30 +36,38 @@ Addr0_0:
 main:
     push {r11, lr}
     mov r11, sp
-    sub sp, sp, #36
+    sub sp, sp, #116
+    str r0, [sp, #20]
     ldr r0, =3
+    str r0, [sp, #84]
+    ldr r0, [sp, #84]
     push {r1}
     ldr r1, Addr1_0
     str r0, [r1]
     pop {r1}
     ldr r0, =2
+    str r0, [sp, #100]
+    ldr r0, [sp, #100]
     push {r1}
     ldr r1, Addr1_1
     str r0, [r1]
     pop {r1}
     ldr r0, Addr1_0
     ldr r0, [r0]
-    ldr r1, Addr1_1
-    ldr r1, [r1]
-    STM SP, {r0, r1}
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    str r0, [sp, #36]
+    ldr r0, Addr1_1
+    ldr r0, [r0]
+    str r0, [sp, #52]
+    ldr r0, [sp, #36]
+    ldr r1, [sp, #52]
     bl add
-    LDM sp, {r0, r1}
     ldr r0, Addr1_2
     ldr r0, [r0]
+    str r0, [sp, #68]
+    ldr r0, [sp, #20]
     b bb1_0
 bb1_0:
+    ldr r0, [sp, #68]
     mov sp, r11
     pop {r11, lr}
     bx lr

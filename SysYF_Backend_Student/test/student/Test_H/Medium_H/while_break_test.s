@@ -4,53 +4,118 @@
     .p2align 2
     .type inc, %function
 inc:
-    push {r4, lr}
-    sub sp, sp, #16
-    ldr r2, =10000
-    cmp r0, r2
-    ldr r3, =0
-    ldrgt r3, =1
-    mov r2, r3
-    ldr r3, =0
-    cmp r2, r3
-    ldr r4, =0
-    ldrne r4, =1
-    ldr r3, =0
-    cmp r2, r3
+    push {lr}
+    ldr lr, =368
+    sub sp, sp, lr
+    str r0, [sp, #16]
+    str r1, [sp, #32]
+    str r0, [sp]
+    ldr r0, =10000
+    str r0, [sp, #240]
+    str r1, [sp, #4]
+    ldr r0, [sp, #16]
+    ldr r1, [sp, #240]
+    cmp r0, r1
+    ldr r0, =0
+    ldrgt r0, =1
+    str r0, [sp, #48]
+    ldr r0, [sp, #48]
+    mov r0, r0
+    str r0, [sp, #64]
+    ldr r0, =0
+    str r0, [sp, #256]
+    ldr r0, [sp, #64]
+    ldr r1, [sp, #256]
+    cmp r0, r1
+    ldr r0, =0
+    ldrne r0, =1
+    str r0, [sp, #80]
+    ldr r0, =0
+    str r0, [sp, #272]
+    ldr r0, [sp, #64]
+    ldr r1, [sp, #272]
+    cmp r0, r1
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     bne bb0_0
     b bb0_1
 bb0_0:
-    ldr r2, =2
-    cmp r1, r2
-    ldr r3, =0
-    ldrlt r3, =1
-    mov r2, r3
-    ldr r3, =0
-    cmp r2, r3
-    ldr r4, =0
-    ldrne r4, =1
-    ldr r3, =0
-    cmp r2, r3
+    str r0, [sp]
+    ldr r0, =2
+    str r0, [sp, #288]
+    str r1, [sp, #4]
+    ldr r0, [sp, #32]
+    ldr r1, [sp, #288]
+    cmp r0, r1
+    ldr r0, =0
+    ldrlt r0, =1
+    str r0, [sp, #96]
+    ldr r0, [sp, #96]
+    mov r0, r0
+    str r0, [sp, #112]
+    ldr r0, =0
+    str r0, [sp, #304]
+    ldr r0, [sp, #112]
+    ldr r1, [sp, #304]
+    cmp r0, r1
+    ldr r0, =0
+    ldrne r0, =1
+    str r0, [sp, #128]
+    ldr r0, =0
+    str r0, [sp, #320]
+    ldr r0, [sp, #112]
+    ldr r1, [sp, #320]
+    cmp r0, r1
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     bne bb0_2
     b bb0_3
 bb0_1:
-    add r2, r0, r1
+    str r0, [sp]
+    str r1, [sp, #4]
+    ldr r0, [sp, #16]
+    ldr r1, [sp, #32]
+    add r0, r0, r1
+    str r0, [sp, #144]
     ldr r0, =65535
-    sdiv r1, r2, r0
+    str r0, [sp, #336]
+    ldr r0, [sp, #144]
+    ldr r1, [sp, #336]
+    sdiv r0, r0, r1
+    str r0, [sp, #192]
     ldr r0, =65535
-    mul r4, r1, r0
-    sub r0, r2, r4
+    str r0, [sp, #352]
+    ldr r0, [sp, #192]
+    ldr r1, [sp, #352]
+    mul r0, r0, r1
+    str r0, [sp, #208]
+    ldr r0, [sp, #144]
+    ldr r1, [sp, #208]
+    sub r0, r0, r1
+    str r0, [sp, #224]
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
+    push {lr}
+    ldr lr, [sp, #228]
+    str lr, [sp, #180]
+    pop {lr}
     b bb0_4
 bb0_2:
     push {lr}
-    Ldr r0, =-1
+    Ldr lr, =-1
+    str lr, [sp, #180]
     pop {lr}
     b bb0_4
 bb0_3:
     b bb0_1
 bb0_4:
-    add sp, sp, #16
-    pop {r4, lr}
+    b litpool0_0
+    .pool
+litpool0_0:
+    ldr r0, [sp, #176]
+    ldr lr, =368
+    add sp, sp, lr
+    pop {lr}
     bx lr
     .pool
 
@@ -60,35 +125,59 @@ bb0_4:
 find:
     push {r11, lr}
     mov r11, sp
-    sub sp, sp, #36
-    ldr r1, Addr1_1
-    ldr r1, [r1]
-    STM SP, {r0, r1, r2}
-    ldr r0, [sp, #4]
+    ldr lr, =244
+    sub sp, sp, lr
+    str r0, [sp, #36]
+    str r0, [sp, #20]
+    ldr r0, Addr1_1
+    ldr r0, [r0]
+    str r0, [sp, #52]
+    ldr r0, [sp, #52]
     ldr r1, =2
     bl inc
-    LDMIB SP, {r1, r2}
-    mov r2, r0
-    ldr r0, [SP]
-    push {r0}
-    ldr r0, Addr1_1
-    str r2, [r0]
-    pop {r0}
-    ldr r1, =5
-    sdiv r2, r0, r1
-    ldr r1, =5
-    mul r3, r2, r1
-    sub r1, r0, r3
+    str r0, [sp, #68]
+    ldr r0, [sp, #68]
+    push {r1}
+    ldr r1, Addr1_1
+    str r0, [r1]
+    pop {r1}
+    ldr r0, =5
+    str r0, [sp, #196]
+    str r1, [sp, #24]
+    ldr r0, [sp, #36]
+    ldr r1, [sp, #196]
+    sdiv r0, r0, r1
+    str r0, [sp, #148]
+    ldr r0, =5
+    str r0, [sp, #212]
+    ldr r0, [sp, #148]
+    ldr r1, [sp, #212]
+    mul r0, r0, r1
+    str r0, [sp, #164]
+    ldr r0, [sp, #36]
+    ldr r1, [sp, #164]
+    sub r0, r0, r1
+    str r0, [sp, #180]
     ldr r0, Addr1_0
-    ldr r2, =4
-    mul r3, r1, r2
-    add r1, r0, r3
-    ldr r0, [r1]
+    str r0, [sp, #84]
+    ldr r0, =4
+    str r0, [sp, #228]
+    ldr r0, [sp, #180]
+    ldr r1, [sp, #228]
+    mul r0, r0, r1
+    str r0, [sp, #116]
+    ldr r0, [sp, #84]
+    ldr r1, [sp, #116]
+    add r0, r0, r1
+    str r0, [sp, #132]
+    ldr r0, [sp, #132]
+    ldr r0, [r0]
+    str r0, [sp, #100]
+    ldr r0, [sp, #20]
+    ldr r1, [sp, #24]
     b bb1_0
 bb1_0:
-    b litpool1_0
-    .pool
-litpool1_0:
+    ldr r0, [sp, #100]
     mov sp, r11
     pop {r11, lr}
     bx lr
@@ -102,117 +191,194 @@ Addr1_1:
     .p2align 2
     .type main, %function
 main:
-    push {r4, r5, r11, lr}
+    push {r11, lr}
     mov r11, sp
-    sub sp, sp, #36
+    ldr lr, =628
+    sub sp, sp, lr
     b bb2_0
 bb2_0:
+    str r0, [sp, #20]
     ldr r0, Addr2_1
     ldr r0, [r0]
-    ldr r1, =0
+    str r0, [sp, #36]
+    ldr r0, =0
+    str r0, [sp, #452]
+    str r1, [sp, #24]
+    ldr r0, [sp, #36]
+    ldr r1, [sp, #452]
     cmp r0, r1
-    ldr r2, =0
-    ldrgt r2, =1
-    mov r0, r2
-    ldr r1, =0
+    ldr r0, =0
+    ldrgt r0, =1
+    str r0, [sp, #52]
+    ldr r0, [sp, #52]
+    mov r0, r0
+    str r0, [sp, #68]
+    ldr r0, =0
+    str r0, [sp, #468]
+    ldr r0, [sp, #68]
+    ldr r1, [sp, #468]
     cmp r0, r1
-    ldr r2, =0
-    ldrne r2, =1
-    ldr r1, =0
+    ldr r0, =0
+    ldrne r0, =1
+    str r0, [sp, #84]
+    ldr r0, =0
+    str r0, [sp, #484]
+    ldr r0, [sp, #68]
+    ldr r1, [sp, #484]
     cmp r0, r1
+    ldr r0, [sp, #20]
+    ldr r1, [sp, #24]
     bne bb2_1
     push {lr}
-    Ldr r1, =0
+    Ldr lr, =0
+    str lr, [sp, #360]
     pop {lr}
     b bb2_2
 bb2_1:
+    str r0, [sp, #20]
     ldr r0, Addr2_1
     ldr r0, [r0]
-    STM SP, {r0, r1}
-    ldr r0, [sp]
+    str r0, [sp, #100]
+    ldr r0, [sp, #100]
     bl find
-    LDMIB SP, {r1}
-    mov r1, r0
-    ldr r0, [SP]
+    str r0, [sp, #116]
     ldr r0, =0
-    cmp r1, r0
-    ldr r2, =0
-    ldrne r2, =1
+    str r0, [sp, #500]
+    str r1, [sp, #24]
+    ldr r0, [sp, #116]
+    ldr r1, [sp, #500]
+    cmp r0, r1
     ldr r0, =0
-    cmp r1, r0
+    ldrne r0, =1
+    str r0, [sp, #132]
+    ldr r0, =0
+    str r0, [sp, #516]
+    ldr r0, [sp, #116]
+    ldr r1, [sp, #516]
+    cmp r0, r1
+    ldr r0, [sp, #20]
+    ldr r1, [sp, #24]
     bne bb2_3
     b bb2_4
 bb2_2:
-    ldr r2, Addr2_1
-    ldr r2, [r2]
-    ldr r3, =127
-    sdiv r4, r2, r3
-    ldr r3, =127
-    mul r5, r4, r3
-    sub r3, r2, r5
+    b litpool2_0
+    .pool
+litpool2_0:
+    str r0, [sp, #20]
+    ldr r0, Addr2_1
+    ldr r0, [r0]
+    str r0, [sp, #308]
+    ldr r0, =127
+    str r0, [sp, #532]
+    str r1, [sp, #24]
+    ldr r0, [sp, #308]
+    ldr r1, [sp, #532]
+    sdiv r0, r0, r1
+    str r0, [sp, #404]
+    ldr r0, =127
+    str r0, [sp, #548]
+    ldr r0, [sp, #404]
+    ldr r1, [sp, #548]
+    mul r0, r0, r1
+    str r0, [sp, #420]
+    ldr r0, [sp, #308]
+    ldr r1, [sp, #420]
+    sub r0, r0, r1
+    str r0, [sp, #436]
+    ldr r0, [sp, #20]
+    ldr r1, [sp, #24]
     b bb2_7
 bb2_3:
+    str r0, [sp, #20]
     ldr r0, Addr2_1
     ldr r0, [r0]
-    STM SP, {r0, r1}
-    ldr r0, [sp]
+    str r0, [sp, #148]
+    ldr r0, [sp, #148]
     bl find
-    LDMIB SP, {r1}
-    mov r1, r0
-    ldr r0, [SP]
+    str r0, [sp, #164]
     ldr r0, Addr2_1
     ldr r0, [r0]
-    STM SP, {r0, r1, r2}
-    ldr r0, [sp]
+    str r0, [sp, #180]
+    ldr r0, [sp, #180]
     bl find
-    LDMIB SP, {r1, r2}
-    mov r2, r0
-    ldr r0, [SP]
+    str r0, [sp, #196]
     ldr r0, Addr2_0
-    ldr r3, =4
-    mul r4, r2, r3
-    add r2, r0, r4
-    str r1, [r2]
-    STM SP, {r0}
+    str r0, [sp, #212]
+    ldr r0, =4
+    str r0, [sp, #564]
+    str r1, [sp, #24]
+    ldr r0, [sp, #196]
+    ldr r1, [sp, #564]
+    mul r0, r0, r1
+    str r0, [sp, #372]
+    ldr r0, [sp, #212]
+    ldr r1, [sp, #372]
+    add r0, r0, r1
+    str r0, [sp, #388]
+    ldr r0, [sp, #164]
+    ldr r1, [sp, #388]
+    str r0, [r1]
     ldr r0, =0
     ldr r1, =0
     bl inc
-    ldr r1, =-1
+    str r0, [sp, #228]
+    ldr r0, =-1
+    str r0, [sp, #580]
+    ldr r0, [sp, #228]
+    ldr r1, [sp, #580]
     cmp r0, r1
-    ldr r2, =0
-    ldrne r2, =1
-    mov r0, r2
-    ldr r1, =0
+    ldr r0, =0
+    ldrne r0, =1
+    str r0, [sp, #244]
+    ldr r0, [sp, #244]
+    mov r0, r0
+    str r0, [sp, #260]
+    ldr r0, =0
+    str r0, [sp, #596]
+    ldr r0, [sp, #260]
+    ldr r1, [sp, #596]
     cmp r0, r1
-    ldr r2, =0
-    ldrne r2, =1
-    ldr r1, =0
+    ldr r0, =0
+    ldrne r0, =1
+    str r0, [sp, #276]
+    ldr r0, =0
+    str r0, [sp, #612]
+    ldr r0, [sp, #260]
+    ldr r1, [sp, #612]
     cmp r0, r1
+    ldr r0, [sp, #20]
+    ldr r1, [sp, #24]
     bne bb2_5
     push {lr}
-    Ldr r0, =0
+    Ldr lr, =0
+    str lr, [sp, #344]
     pop {lr}
     b bb2_6
 bb2_4:
     b bb2_0
 bb2_5:
-    STM SP, {r0}
     ldr r0, =0
     ldr r1, =1
     bl inc
+    str r0, [sp, #292]
+    push {lr}
+    ldr lr, [sp, #296]
+    str lr, [sp, #344]
+    pop {lr}
     b bb2_6
 bb2_6:
-    b litpool2_0
-    .pool
-litpool2_0:
     push {lr}
-    Mov r1, r0
+    ldr lr, [sp, #344]
+    str lr, [sp, #360]
     pop {lr}
     b bb2_2
 bb2_7:
-    mov r0, r3
+    b litpool2_1
+    .pool
+litpool2_1:
+    ldr r0, [sp, #436]
     mov sp, r11
-    pop {r4, r5, r11, lr}
+    pop {r11, lr}
     bx lr
     .pool
 Addr2_0:

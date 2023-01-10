@@ -5,41 +5,81 @@
     .type get_ans_se, %function
 get_ans_se:
     push {lr}
-    sub sp, sp, #16
-    cmp r1, r2
-    ldr r3, =0
-    ldreq r3, =1
-    mov r1, r3
-    ldr r2, =0
-    cmp r1, r2
-    ldr r3, =0
-    ldrne r3, =1
-    ldr r2, =0
-    cmp r1, r2
+    ldr lr, =240
+    sub sp, sp, lr
+    str r0, [sp, #16]
+    str r1, [sp, #32]
+    str r2, [sp, #48]
+    str r0, [sp]
+    str r1, [sp, #4]
+    ldr r0, [sp, #32]
+    ldr r1, [sp, #48]
+    cmp r0, r1
+    ldr r0, =0
+    ldreq r0, =1
+    str r0, [sp, #64]
+    ldr r0, [sp, #64]
+    mov r0, r0
+    str r0, [sp, #80]
+    ldr r0, =0
+    str r0, [sp, #192]
+    ldr r0, [sp, #80]
+    ldr r1, [sp, #192]
+    cmp r0, r1
+    ldr r0, =0
+    ldrne r0, =1
+    str r0, [sp, #96]
+    ldr r0, =0
+    str r0, [sp, #208]
+    ldr r0, [sp, #80]
+    ldr r1, [sp, #208]
+    cmp r0, r1
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     bne bb0_0
     push {lr}
-    Ldr r1, =0
+    Ldr lr, =0
+    str lr, [sp, #180]
     pop {lr}
     b bb0_1
 bb0_0:
     push {lr}
-    Ldr r1, =1
+    Ldr lr, =1
+    str lr, [sp, #180]
     pop {lr}
     b bb0_1
 bb0_1:
-    ldr r2, =2
-    mul r3, r0, r2
-    add r0, r3, r1
-    ldr r1, Addr0_0
-    ldr r1, [r1]
-    add r2, r1, r0
-    push {r0}
+    str r0, [sp]
+    ldr r0, =2
+    str r0, [sp, #224]
+    str r1, [sp, #4]
+    ldr r0, [sp, #16]
+    ldr r1, [sp, #224]
+    mul r0, r0, r1
+    str r0, [sp, #112]
+    ldr r0, [sp, #112]
+    ldr r1, [sp, #176]
+    add r0, r0, r1
+    str r0, [sp, #128]
     ldr r0, Addr0_0
-    str r2, [r0]
-    pop {r0}
+    ldr r0, [r0]
+    str r0, [sp, #144]
+    ldr r1, [sp, #128]
+    ldr r0, [sp, #144]
+    add r0, r0, r1
+    str r0, [sp, #160]
+    ldr r0, [sp, #160]
+    push {r1}
+    ldr r1, Addr0_0
+    str r0, [r1]
+    pop {r1}
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     b bb0_2
 bb0_2:
-    add sp, sp, #16
+    ldr r0, [sp, #128]
+    ldr lr, =240
+    add sp, sp, lr
     pop {lr}
     bx lr
     .pool
@@ -51,34 +91,72 @@ Addr0_0:
     .type get_ans, %function
 get_ans:
     push {lr}
-    sub sp, sp, #16
-    cmp r1, r2
-    ldr r3, =0
-    ldreq r3, =1
-    mov r1, r3
-    ldr r2, =0
-    cmp r1, r2
-    ldr r3, =0
-    ldrne r3, =1
-    ldr r2, =0
-    cmp r1, r2
+    ldr lr, =208
+    sub sp, sp, lr
+    str r0, [sp, #32]
+    str r1, [sp, #16]
+    str r2, [sp, #48]
+    str r0, [sp]
+    str r1, [sp, #4]
+    ldr r0, [sp, #16]
+    ldr r1, [sp, #48]
+    cmp r0, r1
+    ldr r0, =0
+    ldreq r0, =1
+    str r0, [sp, #64]
+    ldr r0, [sp, #64]
+    mov r0, r0
+    str r0, [sp, #80]
+    ldr r0, =0
+    str r0, [sp, #160]
+    ldr r0, [sp, #80]
+    ldr r1, [sp, #160]
+    cmp r0, r1
+    ldr r0, =0
+    ldrne r0, =1
+    str r0, [sp, #96]
+    ldr r0, =0
+    str r0, [sp, #176]
+    ldr r0, [sp, #80]
+    ldr r1, [sp, #176]
+    cmp r0, r1
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     bne bb1_0
     push {lr}
-    Ldr r1, =0
+    Ldr lr, =0
+    str lr, [sp, #148]
     pop {lr}
     b bb1_1
 bb1_0:
     push {lr}
-    Ldr r1, =1
+    Ldr lr, =1
+    str lr, [sp, #148]
     pop {lr}
     b bb1_1
 bb1_1:
-    ldr r2, =2
-    mul r3, r0, r2
-    add r0, r3, r1
+    b litpool1_0
+    .pool
+litpool1_0:
+    str r0, [sp]
+    ldr r0, =2
+    str r0, [sp, #192]
+    str r1, [sp, #4]
+    ldr r0, [sp, #32]
+    ldr r1, [sp, #192]
+    mul r0, r0, r1
+    str r0, [sp, #112]
+    ldr r0, [sp, #112]
+    ldr r1, [sp, #144]
+    add r0, r0, r1
+    str r0, [sp, #128]
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     b bb1_2
 bb1_2:
-    add sp, sp, #16
+    ldr r0, [sp, #128]
+    ldr lr, =208
+    add sp, sp, lr
     pop {lr}
     bx lr
     .pool
@@ -87,187 +165,141 @@ bb1_2:
     .p2align 2
     .type main, %function
 main:
-    push {r4, r11, lr}
+    push {r11, lr}
     mov r11, sp
-    sub sp, sp, #36
-    b litpool2_0
-    .pool
-litpool2_0:
-    STM SP, {r0}
+    ldr lr, =436
+    sub sp, sp, lr
     ldr r0, =0
     ldr r1, =-2147483648
     ldr r2, =-2147483648
     bl get_ans
-    STM SP, {r0, r1}
-    ldr r0, [sp]
+    str r0, [sp, #36]
+    ldr r0, [sp, #36]
     ldr r1, =-2147483647
     ldr r2, =-2147483647
     bl get_ans
-    LDMIB SP, {r1}
-    mov r1, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1}
-    ldr r0, [sp, #4]
+    str r0, [sp, #52]
+    ldr r0, [sp, #52]
     ldr r1, =-2147483648
     ldr r2, =-2147483648
     bl get_ans
-    LDMIB SP, {r1}
-    STM SP, {r0, r1}
-    ldr r0, [sp]
+    str r0, [sp, #68]
+    ldr r0, [sp, #68]
     ldr r1, =-2147483648
     ldr r2, =2147483647
     bl get_ans
-    LDMIB SP, {r1}
-    mov r1, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1}
-    ldr r0, [sp, #4]
+    str r0, [sp, #84]
+    ldr r0, [sp, #84]
     ldr r1, =-1073741824
     ldr r2, =-1073741823
     bl get_ans
-    LDMIB SP, {r1}
-    STM SP, {r0, r1}
-    ldr r0, [sp]
+    str r0, [sp, #100]
+    ldr r0, [sp, #100]
     ldr r1, =-2147483648
     ldr r2, =-2147483648
     bl get_ans
-    LDMIB SP, {r1}
-    mov r1, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1}
-    ldr r0, [sp, #4]
+    str r0, [sp, #116]
+    ldr r0, [sp, #116]
     ldr r1, =-2147483648
     ldr r2, =2147483647
     bl get_ans
-    LDMIB SP, {r1}
-    STM SP, {r0, r1}
+    str r0, [sp, #132]
     ldr r0, =0
     ldr r1, =-2147483647
     ldr r2, =2147483647
     bl get_ans
-    LDMIB SP, {r1}
-    mov r1, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2}
-    ldr r0, [sp, #4]
+    str r0, [sp, #148]
+    ldr r0, [sp, #148]
     ldr r1, =-2147483647
     ldr r2, =2147483646
     bl get_ans
-    LDMIB SP, {r1, r2}
-    mov r2, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2}
-    ldr r0, [sp, #8]
+    str r0, [sp, #164]
+    ldr r0, [sp, #164]
     ldr r1, =2147483647
     ldr r2, =2147483646
     bl get_ans
-    LDMIB SP, {r1, r2}
-    mov r1, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2}
-    ldr r0, [sp, #4]
+    str r0, [sp, #180]
+    ldr r0, [sp, #180]
     ldr r1, =-1073741824
     ldr r2, =-1073741824
     bl get_ans
-    LDMIB SP, {r1, r2}
-    mov r2, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2}
+    str r0, [sp, #196]
     ldr r0, =0
     ldr r1, =-2147483648
     ldr r2, =-2147483648
     bl get_ans_se
-    LDMIB SP, {r1, r2}
-    mov r1, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    ldr r0, [sp, #4]
+    str r0, [sp, #212]
+    ldr r0, [sp, #212]
     ldr r1, =-2147483647
     ldr r2, =-2147483647
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r3, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    ldr r0, [sp, #12]
+    str r0, [sp, #228]
+    ldr r0, [sp, #228]
     ldr r1, =-2147483648
     ldr r2, =-2147483648
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r1, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    ldr r0, [sp, #4]
+    str r0, [sp, #244]
+    ldr r0, [sp, #244]
     ldr r1, =-2147483648
     ldr r2, =2147483647
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r3, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    ldr r0, [sp, #12]
+    str r0, [sp, #260]
+    ldr r0, [sp, #260]
     ldr r1, =-1073741824
     ldr r2, =-1073741823
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r1, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    ldr r0, [sp, #4]
+    str r0, [sp, #276]
+    ldr r0, [sp, #276]
     ldr r1, =-2147483648
     ldr r2, =-2147483648
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r3, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    ldr r0, [sp, #12]
+    str r0, [sp, #292]
+    ldr r0, [sp, #292]
     ldr r1, =-2147483648
     ldr r2, =2147483647
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r1, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
+    str r0, [sp, #308]
     ldr r0, =0
     ldr r1, =-2147483647
     ldr r2, =2147483647
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r3, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    ldr r0, [sp, #12]
+    str r0, [sp, #324]
+    ldr r0, [sp, #324]
     ldr r1, =-2147483647
     ldr r2, =2147483646
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r4, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    mov r0, r4
+    str r0, [sp, #340]
+    ldr r0, [sp, #340]
     ldr r1, =2147483647
     ldr r2, =2147483646
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r3, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    ldr r0, [sp, #12]
+    str r0, [sp, #356]
+    ldr r0, [sp, #356]
     ldr r1, =-1073741824
     ldr r2, =-1073741824
     bl get_ans_se
-    LDMIB SP, {r1, r2, r3}
-    mov r4, r0
-    ldr r0, [SP]
-    add r3, r0, r2
-    add r0, r3, r1
-    add r1, r0, r4
+    str r0, [sp, #372]
+    str r0, [sp, #20]
+    str r1, [sp, #24]
+    ldr r0, [sp, #132]
+    ldr r1, [sp, #196]
+    add r0, r0, r1
+    str r0, [sp, #388]
+    ldr r1, [sp, #308]
+    ldr r0, [sp, #388]
+    add r0, r0, r1
+    str r0, [sp, #404]
+    ldr r1, [sp, #372]
+    ldr r0, [sp, #404]
+    add r0, r0, r1
+    str r0, [sp, #420]
+    ldr r0, [sp, #20]
+    ldr r1, [sp, #24]
     b bb2_0
 bb2_0:
-    mov r0, r1
+    ldr r0, [sp, #420]
     mov sp, r11
-    pop {r4, r11, lr}
+    pop {r11, lr}
     bx lr
     .pool
 

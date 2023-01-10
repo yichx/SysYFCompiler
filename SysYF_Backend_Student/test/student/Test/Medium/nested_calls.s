@@ -5,12 +5,21 @@
     .type f, %function
 f:
     push {lr}
-    sub sp, sp, #16
-    mul r2, r0, r1
+    sub sp, sp, #64
+    str r0, [sp, #16]
+    str r1, [sp, #32]
+    str r0, [sp]
+    str r1, [sp, #4]
+    ldr r0, [sp, #16]
+    ldr r1, [sp, #32]
+    mul r0, r0, r1
+    str r0, [sp, #48]
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     b bb0_0
 bb0_0:
-    mov r0, r2
-    add sp, sp, #16
+    ldr r0, [sp, #48]
+    add sp, sp, #64
     pop {lr}
     bx lr
     .pool
@@ -19,16 +28,31 @@ bb0_0:
     .p2align 2
     .type g, %function
 g:
-    push {r4, lr}
-    sub sp, sp, #16
-    sdiv r3, r0, r1
-    mul r4, r3, r1
-    sub r1, r0, r4
+    push {lr}
+    sub sp, sp, #112
+    str r0, [sp, #16]
+    str r1, [sp, #32]
+    str r0, [sp]
+    str r1, [sp, #4]
+    ldr r0, [sp, #16]
+    ldr r1, [sp, #32]
+    sdiv r0, r0, r1
+    str r0, [sp, #64]
+    ldr r1, [sp, #32]
+    ldr r0, [sp, #64]
+    mul r0, r0, r1
+    str r0, [sp, #80]
+    ldr r0, [sp, #16]
+    ldr r1, [sp, #80]
+    sub r0, r0, r1
+    str r0, [sp, #96]
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     b bb1_0
 bb1_0:
-    mov r0, r1
-    add sp, sp, #16
-    pop {r4, lr}
+    ldr r0, [sp, #96]
+    add sp, sp, #112
+    pop {lr}
     bx lr
     .pool
 
@@ -38,43 +62,33 @@ bb1_0:
 h:
     push {r11, lr}
     mov r11, sp
-    sub sp, sp, #36
-    STM SP, {r0, r1, r2}
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    ldr lr, =148
+    sub sp, sp, lr
+    str r0, [sp, #36]
+    str r1, [sp, #52]
+    ldr r0, [sp, #36]
+    ldr r1, [sp, #52]
     bl g
-    LDMIB SP, {r1, r2}
-    mov r2, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
+    str r0, [sp, #68]
     ldr r0, =2
-    ldr r1, [sp, #8]
+    ldr r1, [sp, #68]
     bl f
-    LDMIB SP, {r1, r2, r3}
-    mov r3, r0
-    ldr r0, [SP]
-    STM SP, {r0, r1, r2, r3}
-    ldr r0, [sp]
-    ldr r1, [sp, #4]
+    str r0, [sp, #84]
+    ldr r0, [sp, #36]
+    ldr r1, [sp, #52]
     bl f
-    LDMIB SP, {r1, r2, r3}
-    mov r2, r0
-    ldr r0, [SP]
-    STM SP, {r0, r2, r3}
-    ldr r0, [sp, #4]
+    str r0, [sp, #100]
+    ldr r0, [sp, #100]
     ldr r1, =4
     bl g
-    LDMIB SP, {r2, r3}
-    STM SP, {r0, r1, r3}
-    ldr r0, [sp, #8]
-    ldr r1, [sp]
+    str r0, [sp, #116]
+    ldr r0, [sp, #84]
+    ldr r1, [sp, #116]
     bl f
-    LDMIB SP, {r1, r3}
-    mov r1, r0
-    ldr r0, [SP]
+    str r0, [sp, #132]
     b bb2_0
 bb2_0:
-    mov r0, r1
+    ldr r0, [sp, #132]
     mov sp, r11
     pop {r11, lr}
     bx lr
@@ -86,15 +100,13 @@ bb2_0:
 main:
     push {r11, lr}
     mov r11, sp
-    sub sp, sp, #36
-    STM SP, {r0}
+    sub sp, sp, #52
     ldr r0, =11
     ldr r1, =3
     bl h
-    STM SP, {r0}
-    ldr r0, [sp]
+    str r0, [sp, #36]
+    ldr r0, [sp, #36]
     bl put_int
-    LDM sp, {r0}
     b bb3_0
 bb3_0:
     ldr r0, =0

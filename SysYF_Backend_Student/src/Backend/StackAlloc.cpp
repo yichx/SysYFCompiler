@@ -73,6 +73,21 @@ int CodeGen::stack_space_allocation(Function *fun)
         offset+=reg_size;
       }
     }
+    int arg_num=fun->get_num_of_args();
+    int arg_num_it=0;
+    for(auto arg_it=fun->get_args().begin();arg_it!=fun->get_args().end();arg_it++)
+    {
+	    if(arg_num_it<=3)
+	    {
+		    arg_num_it++;
+	    continue;
+	    }
+	    if(!stack_map.insert({(*arg_it),arg_on_stack[arg_num_it-4]}).second)
+	    {
+		    stack_map[*arg_it]=arg_on_stack[arg_num_it-4];
+	    }
+	    arg_num++;
+    }
 
     return size;
 }

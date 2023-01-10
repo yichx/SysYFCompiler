@@ -79,7 +79,7 @@
             {
                 if(Circle.size() == 1) // move itself
                     continue;
-                code += single_data_move(CodeToLoc[*Circle.end()], unUsed_RegLoc, tmp_Reg, cmpop);
+                code += single_data_move(CodeToLoc[Circle.back()], unUsed_RegLoc, tmp_Reg, cmpop);
                 for(int i = Circle.size() - 2;i >= 0; --i)
                     code += single_data_move(CodeToLoc[Circle[i]], CodeToLoc[Circle[i + 1]], tmp_Reg, cmpop);
                 code += single_data_move(unUsed_RegLoc, CodeToLoc[*Circle.begin()], tmp_Reg, cmpop);

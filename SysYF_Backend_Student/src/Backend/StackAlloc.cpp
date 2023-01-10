@@ -43,8 +43,9 @@ int CodeGen::stack_space_allocation(Function *fun)
     }
     for(auto inst:fun->get_entry_block()->get_instructions()) //处理alloca
     {
-      if(inst->get_instr_type()==Instruction::OpID::alloca)
+      if(dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->is_array_type())
       {
+        stack_map.insert(std::make_pair(inst,new IR2asm::Regbase(IR2asm::sp,offset)));
         size+=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
         offset-=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
       }

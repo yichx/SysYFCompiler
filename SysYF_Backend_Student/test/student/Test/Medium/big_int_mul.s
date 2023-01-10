@@ -779,8 +779,8 @@ bb0_8:
     sub r5, r4, #1
     push {lr}
     Ldr r4, =0
-    Mov r5, r2
     Mov r8, r5
+    Mov r5, r2
     pop {lr}
     b bb0_9
 bb0_9:
@@ -942,9 +942,9 @@ litpool0_3:
     sub r10, r0, #1
     ldr r0, [sp, #20]
     push {lr}
+    Mov r7, r4
     Mov r4, r9
     str r10, [sp, #-36]
-    Mov r7, r4
     pop {lr}
     b bb0_12
 bb0_18:

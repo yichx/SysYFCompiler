@@ -57,9 +57,9 @@ bb0_3:
     add r2, r1, r4
     ldr r1, [r2]
     push {lr}
-    Ldr r1, =1
     Mov r2, r1
     Mov r3, r1
+    Ldr r1, =1
     pop {lr}
     b bb0_4
 bb0_4:
@@ -95,8 +95,8 @@ litpool0_0:
 bb0_6:
     push {lr}
     Mov r4, r2
-    Mov r5, r1
     Mov r6, r2
+    Mov r5, r1
     Mov r7, r3
     pop {lr}
     b bb0_11

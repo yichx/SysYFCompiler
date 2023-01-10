@@ -4987,8 +4987,8 @@ bb11_11:
     mov r1, r0
     ldr r0, [SP]
     push {lr}
-    Mov r1, r0
     Mov r2, r1
+    Mov r1, r0
     pop {lr}
     b bb11_16
 bb11_12:
@@ -5107,8 +5107,8 @@ bb11_15:
     mov r1, r0
     ldr r0, [SP]
     push {lr}
-    Mov r1, r0
     Mov r2, r1
+    Mov r1, r0
     pop {lr}
     b bb11_16
 bb11_16:

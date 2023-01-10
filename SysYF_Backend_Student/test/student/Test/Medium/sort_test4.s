@@ -27,8 +27,8 @@ bb0_0:
 bb0_1:
     add r1, r3, #1
     push {lr}
-    Mov r1, r3
     Mov r2, r1
+    Mov r1, r3
     pop {lr}
     b bb0_3
 bb0_2:

@@ -39,33 +39,45 @@ if __name__ == '__main__':
             if dataset=='Test_H':
                 level+='_H'
             for file in os.listdir('../test/student/executable/'+dataset+'/'+level):
+                #if 'long_arr' in file or 'sort' in file:
+                    #continue
                 if os.path.exists('../test/student/'+dataset+'/'+level+'/'+file+'.in'):
+                    print(file)
                     input_file='../test/student/'+dataset+'/'+level+'/'+file+'.in'
-                    result=subprocess.run(test_cmd_with_input.format(input_file, '../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    result=result.stdout.decode().strip()+'\n'+str(result.returncode)
-                    with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
-                        content=fp.read()
-                    if result.strip()==content.strip():
-                        print(file+' passed!')
-                    else:
-                        print(dataset+'/'+level+'/'+file+' test failed! Expected:')
-                        print(content.strip())
-                        print('Got:')
-                        print(result.strip())
-                        errors.append(dataset+'/'+level+'/'+file+' test failed')
+                    try:
+                        result=subprocess.run(test_cmd_with_input.format(input_file, '../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,timeout=1)
+                        result=result.stdout.decode().strip()+'\n'+str(result.returncode)
+                        with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
+                            content=fp.read()
+                        if result.strip()==content.strip():
+                            print(file+' passed!')
+                        else:
+                            print(dataset+'/'+level+'/'+file+' test failed! Expected:')
+                            print(content.strip())
+                            print('Got:')
+                            print(result.strip())
+                            errors.append(dataset+'/'+level+'/'+file+' test failed')
+                    except:
+                        print(dataset+'/'+level+'/'+file+' timed out!')
+                        errors.append(dataset+'/'+level+'/'+file+' timed out')
                 else:
-                    result=subprocess.run(test_cmd_without_input.format('../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    result=result.stdout.decode().strip()+'\n'+str(result.returncode)
-                    with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
-                        content=fp.read()
-                    if result.strip()==content.strip():
-                        print(file+' passed!')
-                    else:
-                        print(dataset+'/'+level+'/'+file+' test failed! Expected:')
-                        print(content.strip())
-                        print('Got:')
-                        print(result.strip())
-                        errors.append(dataset+'/'+level+'/'+file+' test failed')
+                    print(file)
+                    try:
+                        result=subprocess.run(test_cmd_without_input.format('../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,timeout=1)
+                        result=result.stdout.decode().strip()+'\n'+str(result.returncode)
+                        with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
+                            content=fp.read()
+                        if result.strip()==content.strip():
+                            print(file+' passed!')
+                        else:
+                            print(dataset+'/'+level+'/'+file+' test failed! Expected:')
+                            print(content.strip())
+                            print('Got:')
+                            print(result.strip())
+                            errors.append(dataset+'/'+level+'/'+file+' test failed')
+                    except:
+                        print(dataset+'/'+level+'/'+file+' timed out')
+                        errors.append(dataset+'/'+level+'/'+file+' timed out')
     if len(errors)==0:
         print('\033[32mALL PASSED\033[0m')
     else:

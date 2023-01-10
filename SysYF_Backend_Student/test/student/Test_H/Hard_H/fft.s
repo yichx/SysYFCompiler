@@ -180,8 +180,8 @@ bb1_2:
     mov r1, r0
     ldr r0, [SP]
     push {lr}
-    Mov r1, r3
     Mov r2, r1
+    Mov r1, r3
     pop {lr}
     b bb1_4
 bb1_3:

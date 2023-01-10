@@ -200,8 +200,9 @@ bb1_5:
     str r1, [r4]
     add r4, r3, #1
     push {lr}
+    Mov r12, r1
     Mov r1, r2
-    Mov r2, r1
+    Mov r2, r12
     Mov r3, r4
     pop {lr}
     b bb1_0
@@ -642,8 +643,8 @@ litpool4_0:
     add r4, r3, r6
     ldr r3, [r4]
     push {lr}
-    Mov r3, r2
     Mov r4, r3
+    Mov r3, r2
     pop {lr}
     b bb4_7
 bb4_7:
@@ -992,8 +993,9 @@ bb8_7:
     add r9, r8, r11
     str r7, [r9]
     push {lr}
+    Mov r12, r5
     Mov r5, r6
-    Mov r6, r5
+    Mov r6, r12
     pop {lr}
     b bb8_8
 bb8_8:

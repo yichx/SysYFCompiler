@@ -425,9 +425,10 @@ bb1_29:
     b bb1_32
 bb1_30:
     push {lr}
+    Mov r12, r3
     Mov r3, r5
+    Mov r5, r12
     Mov r4, r6
-    Mov r5, r3
     pop {lr}
     b bb1_25
 bb1_31:

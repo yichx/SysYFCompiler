@@ -76,8 +76,9 @@ bb0_5:
     str r0, [r3]
     add r3, r2, #1
     push {lr}
+    Mov r12, r0
     Mov r0, r1
-    Mov r1, r0
+    Mov r1, r12
     Mov r2, r3
     pop {lr}
     b bb0_0

@@ -224,8 +224,8 @@ bb1_5:
     b bb1_0
 bb1_6:
     push {lr}
-    Mov r2, r1
     Mov r3, r2
+    Mov r2, r1
     Mov r4, r1
     pop {lr}
     b bb1_10
@@ -239,8 +239,8 @@ bb1_8:
     add r3, r2, #1
     add r2, r0, #1
     push {lr}
-    Mov r3, r2
     Mov r4, r3
+    Mov r3, r2
     pop {lr}
     b bb1_9
 bb1_9:

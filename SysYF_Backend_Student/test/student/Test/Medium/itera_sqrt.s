@@ -34,8 +34,8 @@ bb0_1:
     ldr r2, =2
     sdiv r4, r3, r2
     push {lr}
-    Mov r1, r4
     Mov r2, r1
+    Mov r1, r4
     pop {lr}
     b bb0_0
 bb0_2:

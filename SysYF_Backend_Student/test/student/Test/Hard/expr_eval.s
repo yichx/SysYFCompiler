@@ -1030,8 +1030,8 @@ litpool11_2:
     mov r1, r0
     ldr r0, [SP]
     push {lr}
-    Mov r1, r0
     Mov r2, r1
+    Mov r1, r0
     pop {lr}
     b bb11_18
 bb11_14:
@@ -1104,8 +1104,8 @@ bb11_17:
     mov r1, r0
     ldr r0, [SP]
     push {lr}
-    Mov r1, r0
     Mov r2, r1
+    Mov r1, r0
     pop {lr}
     b bb11_18
 bb11_18:

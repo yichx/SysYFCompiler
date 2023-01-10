@@ -45,8 +45,9 @@ heap_ajust:
     mul r4, r1, r3
     add r3, r4, #1
     push {lr}
+    Mov r12, r1
     Mov r1, r3
-    Mov r3, r1
+    Mov r3, r12
     pop {lr}
     b bb1_0
 bb1_0:

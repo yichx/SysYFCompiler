@@ -423,9 +423,10 @@ bb1_29:
     .pool
 litpool1_4:
     push {lr}
+    Mov r12, r4
     Mov r4, r6
+    Mov r6, r12
     Mov r5, r7
-    Mov r6, r4
     pop {lr}
     b bb1_24
 bb1_30:

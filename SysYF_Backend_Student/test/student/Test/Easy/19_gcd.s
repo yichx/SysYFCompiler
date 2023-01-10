@@ -57,9 +57,9 @@ bb0_3:
     mul r6, r5, r2
     sub r5, r3, r6
     push {lr}
-    Mov r2, r5
-    Mov r3, r2
     Mov r4, r3
+    Mov r3, r2
+    Mov r2, r5
     pop {lr}
     b bb0_2
 bb0_4:

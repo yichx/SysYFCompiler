@@ -198,9 +198,9 @@ bb3_1:
     add r2, r6, #1
     push {lr}
     Ldr r3, =0
-    Ldr r4, =0
-    Mov r5, r4
     Mov r6, r5
+    Mov r5, r4
+    Ldr r4, =0
     pop {lr}
     b bb3_3
 bb3_2:
@@ -292,8 +292,9 @@ bb3_7:
     push {lr}
     Mov r3, r7
     Mov r4, r8
+    Mov r12, r5
     Mov r5, r6
-    Mov r6, r5
+    Mov r6, r12
     pop {lr}
     b bb3_3
 bb3_8:
@@ -643,13 +644,13 @@ litpool3_5:
     b bb3_35
 bb3_35:
     push {lr}
+    Mov r7, r1
     Mov r1, r2
     Mov r2, r3
     Mov r3, r4
     Mov r4, r5
     Mov r5, r6
     Ldr r6, =10
-    Mov r7, r1
     pop {lr}
     b bb3_0
 bb3_36:

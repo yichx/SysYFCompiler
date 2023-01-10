@@ -34,8 +34,8 @@ bb0_1:
     add r3, r0, r2
     add r0, r1, #1
     push {lr}
-    Mov r0, r3
     Mov r1, r0
+    Mov r0, r3
     pop {lr}
     b bb0_0
 bb0_2:

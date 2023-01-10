@@ -155,9 +155,9 @@ bb0_7:
     b bb0_6
 bb0_8:
     push {lr}
-    Ldr r6, =0
     Ldr lr, =0
     str lr, [sp, #-36]
+    Ldr r6, =0
     pop {lr}
     b bb0_9
 bb0_9:
@@ -220,9 +220,9 @@ bb0_12:
     bl put_int
     LDM sp, {r0}
     push {lr}
+    Mov r9, r0
     Mov r0, r4
     ldr r8, [sp, #-40]
-    Mov r9, r0
     pop {lr}
     b bb0_14
 bb0_13:
@@ -326,8 +326,8 @@ bb0_20:
     bl put_int
     LDM sp, {r0}
     push {lr}
-    Mov r0, r4
     Mov r8, r0
+    Mov r0, r4
     Mov r9, r5
     pop {lr}
     b bb0_17
@@ -361,8 +361,8 @@ bb0_22:
     b bb0_23
 bb0_23:
     push {lr}
-    ldr r8, [sp, #-40]
     Mov r9, r8
+    ldr r8, [sp, #-40]
     pop {lr}
     b bb0_17
 bb0_24:
@@ -450,8 +450,9 @@ bb0_28:
     sub r5, r7, r11
     add r7, r0, #2
     push {lr}
+    Mov r12, r5
     Mov r5, r7
-    Mov r7, r5
+    Mov r7, r12
     pop {lr}
     b bb0_29
 bb0_29:

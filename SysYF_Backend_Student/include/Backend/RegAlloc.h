@@ -115,6 +115,7 @@ private:
     void number_operations();
     void build_intervals();
     void walk_intervals();
+    void color_intervals();
     void set_unused_reg_num();
     void get_dfs_order(BasicBlock* bb,std::set<BasicBlock*>& visited);
     void add_interval(Interval* interval){interval_list.insert(interval);}
@@ -122,6 +123,7 @@ private:
     bool try_alloc_free_reg();
     bool try_insert_current();
     bool Spill();
+    void build_graph();
     std::set<int> unused_reg_id = {all_reg_id.begin(),all_reg_id.end()};
     Interval* current = nullptr;
     std::map<Value*, Interval*> val2Inter;
@@ -129,6 +131,8 @@ private:
     std::list<BasicBlock*> block_order={};
     std::set<Interval*,cmp_interval> interval_list;
     std::set<Interval*,cmp_interval>reg_for_intervals[12];//表示当前的寄存器所分配的intervals集合。
+    std::map<Interval*, std::set<Interval*>> Graph;//冲突图
+    std::map<Interval*, int>Deg;
 };
 
 #endif // _SYSYF_REGALLOC_H_

@@ -24,4 +24,6 @@ if __name__ == '__main__':
                 if file.endswith('.sy'):
                     subprocess.run(compile_cmd.format('../test/'+dataset+'/'+level+'/'+file,'../test/student/'+dataset+'/'+level+'/'+file[:-2]+'s'),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 elif file.endswith('in'):
-                    shutil.copy('../test/'+dataset+'/'+level+'/'+file,'../test/student/'+dataset+'/'+level+'/'+file[:-2]+'in')
+                    shutil.copy('../test/'+dataset+'/'+level+'/'+file,'../test/student/'+dataset+'/'+level+'/'+file)
+                elif file.endswith('out'):
+                    shutil.copy('../test/'+dataset+'/'+level+'/'+file,'../test/student/'+dataset+'/'+level+'/'+file)

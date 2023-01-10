@@ -57,27 +57,24 @@ bb0_3:
     add r3, r1, r4
     str r2, [r3]
     push {lr}
-    Mov r3, r0
+    Mov r1, r0
+    Mov r0, r2
     pop {lr}
     b bb0_5
 bb0_4:
     ldr r2, Addr0_1
     ldr r3, =4
     mul r4, r0, r3
-    add r3, r2, r4
-    ldr r2, [r3]
+    add r0, r2, r4
+    ldr r2, [r0]
     push {lr}
-    Mov r3, r1
+    Mov r0, r2
     pop {lr}
     b bb0_5
 bb0_5:
     b litpool0_0
     .pool
 litpool0_0:
-    push {lr}
-    Mov r0, r2
-    Mov r1, r3
-    pop {lr}
     b bb0_0
 bb0_6:
     ldr r2, Addr0_0
@@ -164,9 +161,7 @@ bb1_1:
     b bb1_4
 bb1_2:
     push {lr}
-    Mov r2, r0
-    Mov r3, r1
-    Ldr r4, =-1
+    Ldr r2, =-1
     pop {lr}
     b bb1_10
 bb1_3:
@@ -197,50 +192,45 @@ litpool1_0:
     ldr r2, Addr1_2
     ldr r3, =4
     mul r4, r1, r3
-    add r3, r2, r4
-    ldr r2, [r3]
-    ldr r3, =-1
-    cmp r2, r3
+    add r1, r2, r4
+    ldr r2, [r1]
+    ldr r1, =-1
+    cmp r2, r1
+    ldr r3, =0
+    ldreq r3, =1
+    mov r1, r3
+    ldr r3, =0
+    cmp r1, r3
     ldr r4, =0
-    ldreq r4, =1
-    mov r3, r4
-    ldr r4, =0
-    cmp r3, r4
-    ldr r5, =0
-    ldrne r5, =1
-    ldr r4, =0
-    cmp r3, r4
+    ldrne r4, =1
+    ldr r3, =0
+    cmp r1, r3
     bne bb1_8
     push {lr}
-    Mov r3, r0
-    Mov r4, r2
+    Mov r1, r2
     pop {lr}
     b bb1_9
 bb1_5:
-    push {lr}
-    Mov r0, r3
-    Mov r1, r4
-    pop {lr}
     b bb1_0
 bb1_6:
     push {lr}
-    Mov r3, r2
+    Mov r0, r1
+    Mov r12, r2
     Mov r2, r1
-    Mov r4, r1
+    Mov r1, r12
     pop {lr}
     b bb1_10
 bb1_7:
     push {lr}
-    Mov r3, r1
-    Mov r4, r2
+    Mov r0, r1
+    Mov r1, r2
     pop {lr}
     b bb1_5
 bb1_8:
-    add r3, r2, #1
+    add r1, r2, #1
     add r2, r0, #1
     push {lr}
-    Mov r4, r3
-    Mov r3, r2
+    Mov r0, r2
     pop {lr}
     b bb1_9
 bb1_9:
@@ -249,7 +239,7 @@ bb1_10:
     b litpool1_1
     .pool
 litpool1_1:
-    mov r0, r4
+    mov r0, r2
     mov sp, r11
     pop {r4, r5, r11, lr}
     bx lr
@@ -339,8 +329,8 @@ bb2_4:
     ldr r1, =0
     str r1, [r2]
     push {lr}
+    Mov r1, r0
     Mov r2, r0
-    Mov r3, r0
     pop {lr}
     b bb2_12
 bb2_5:
@@ -402,8 +392,7 @@ bb2_9:
     ldr r1, =0
     str r1, [r2]
     push {lr}
-    Mov r1, r0
-    Mov r3, r0
+    Mov r2, r0
     pop {lr}
     b bb2_12
 bb2_10:
@@ -415,7 +404,7 @@ bb2_11:
     pop {lr}
     b bb2_7
 bb2_12:
-    mov r0, r3
+    mov r0, r2
     mov sp, r11
     pop {r4, r11, lr}
     bx lr

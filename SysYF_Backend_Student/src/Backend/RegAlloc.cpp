@@ -248,7 +248,7 @@ bool RegAlloc::try_insert_current()
     {
         bool caninsert = true;
         for(auto &Inter : reg_for_intervals[reg_id])
-            if(current->intersects(current))
+            if(Inter->intersects(current))
             {
                 caninsert = false;
                 break;

@@ -5,167 +5,167 @@
     .type func, %function
 func:
     push {r4, r5, r6, r7, r8, r9, r10, r11, lr}
-    ldr lr, =216
+    ldr lr, =816
     sub sp, sp, lr
     str r2, [sp]
     add r2, r0, r1
-    str r2, [sp, #-36]
+    str r2, [sp, #16]
     ldr r3, =1
     add r2, r3, #1
-    str r2, [sp, #-40]
+    str r2, [sp, #32]
     ldr r3, =2
     add r2, r3, #2
-    str r2, [sp, #-44]
+    str r2, [sp, #48]
     ldr r3, =3
     add r2, r3, #3
-    str r2, [sp, #-48]
+    str r2, [sp, #64]
     ldr r3, =4
     add r2, r3, #4
-    str r2, [sp, #-52]
-    ldr r2, [sp, #-40]
+    str r2, [sp, #80]
+    ldr r2, [sp, #32]
     add r2, r2, #1
-    str r2, [sp, #-56]
-    ldr r2, [sp, #-44]
+    str r2, [sp, #96]
+    ldr r2, [sp, #48]
     add r2, r2, #2
-    str r2, [sp, #-60]
-    ldr r2, [sp, #-48]
+    str r2, [sp, #112]
+    ldr r2, [sp, #64]
     add r2, r2, #3
-    str r2, [sp, #-64]
-    ldr r2, [sp, #-52]
+    str r2, [sp, #128]
+    ldr r2, [sp, #80]
     add r2, r2, #4
-    str r2, [sp, #-68]
-    ldr r2, [sp, #-56]
+    str r2, [sp, #144]
+    ldr r2, [sp, #96]
     add r2, r2, #1
-    str r2, [sp, #-72]
-    ldr r2, [sp, #-60]
+    str r2, [sp, #160]
+    ldr r2, [sp, #112]
     add r2, r2, #2
-    str r2, [sp, #-76]
-    ldr r2, [sp, #-64]
+    str r2, [sp, #176]
+    ldr r2, [sp, #128]
     add r2, r2, #3
-    str r2, [sp, #-80]
-    ldr r2, [sp, #-68]
+    str r2, [sp, #192]
+    ldr r2, [sp, #144]
     add r2, r2, #4
-    str r2, [sp, #-84]
-    ldr r2, [sp, #-72]
+    str r2, [sp, #208]
+    ldr r2, [sp, #160]
     add r2, r2, #1
-    str r2, [sp, #-88]
-    ldr r2, [sp, #-76]
+    str r2, [sp, #224]
+    ldr r2, [sp, #176]
     add r2, r2, #2
-    str r2, [sp, #-92]
-    ldr r2, [sp, #-80]
+    str r2, [sp, #240]
+    ldr r2, [sp, #192]
     add r2, r2, #3
-    str r2, [sp, #-96]
-    ldr r2, [sp, #-84]
+    str r2, [sp, #256]
+    ldr r2, [sp, #208]
     add r2, r2, #4
-    str r2, [sp, #-100]
-    ldr r2, [sp, #-88]
+    str r2, [sp, #272]
+    ldr r2, [sp, #224]
     add r8, r2, #1
-    ldr r2, [sp, #-92]
+    ldr r2, [sp, #240]
     add r2, r2, #2
-    str r2, [sp, #-104]
-    ldr r2, [sp, #-96]
+    str r2, [sp, #288]
+    ldr r2, [sp, #256]
     add r2, r2, #3
-    str r2, [sp, #-108]
-    ldr r2, [sp, #-100]
+    str r2, [sp, #304]
+    ldr r2, [sp, #272]
     add r2, r2, #4
-    str r2, [sp, #-112]
+    str r2, [sp, #320]
     add r2, r8, #1
     str r0, [sp]
-    ldr r0, [sp, #-104]
+    ldr r0, [sp, #288]
     add r11, r0, #2
-    ldr r0, [sp, #-108]
+    ldr r0, [sp, #304]
     add r9, r0, #3
-    ldr r0, [sp, #-112]
+    ldr r0, [sp, #320]
     add r10, r0, #4
     add r4, r2, #1
     add r5, r11, #2
     add r7, r9, #3
     add r6, r10, #4
     add r0, r4, #1
-    str r0, [sp, #-116]
+    str r0, [sp, #336]
     add r0, r5, #2
-    str r0, [sp, #-120]
+    str r0, [sp, #352]
     add r0, r7, #3
-    str r0, [sp, #-124]
+    str r0, [sp, #368]
     add r0, r6, #4
-    str r0, [sp, #-128]
+    str r0, [sp, #384]
     ldr r0, [sp]
     sub r3, r0, r1
     add r0, r3, #10
     str r0, [sp]
     add r0, r4, #1
-    str r0, [sp, #-132]
+    str r0, [sp, #400]
     add r0, r5, #2
-    str r0, [sp, #-136]
+    str r0, [sp, #416]
     add r0, r7, #3
-    str r0, [sp, #-140]
+    str r0, [sp, #432]
     add r0, r6, #4
-    str r0, [sp, #-144]
+    str r0, [sp, #448]
     add r0, r2, #1
-    str r0, [sp, #-148]
+    str r0, [sp, #464]
     add r0, r11, #2
-    str r0, [sp, #-152]
+    str r0, [sp, #480]
     add r0, r9, #3
-    str r0, [sp, #-156]
+    str r0, [sp, #496]
     add r0, r10, #4
-    str r0, [sp, #-160]
+    str r0, [sp, #512]
     add r0, r8, #1
-    str r0, [sp, #-164]
-    ldr r0, [sp, #-104]
+    str r0, [sp, #528]
+    ldr r0, [sp, #288]
     add r0, r0, #2
-    str r0, [sp, #-168]
-    ldr r0, [sp, #-108]
+    str r0, [sp, #544]
+    ldr r0, [sp, #304]
     add r0, r0, #3
-    str r0, [sp, #-172]
-    ldr r0, [sp, #-112]
+    str r0, [sp, #560]
+    ldr r0, [sp, #320]
     add r0, r0, #4
-    str r0, [sp, #-176]
-    ldr r0, [sp, #-88]
+    str r0, [sp, #576]
+    ldr r0, [sp, #224]
     add r0, r0, #1
-    str r0, [sp, #-180]
-    ldr r0, [sp, #-92]
+    str r0, [sp, #592]
+    ldr r0, [sp, #240]
     add r0, r0, #2
-    str r0, [sp, #-184]
-    ldr r0, [sp, #-96]
+    str r0, [sp, #608]
+    ldr r0, [sp, #256]
     add r0, r0, #3
-    str r0, [sp, #-188]
-    ldr r0, [sp, #-100]
+    str r0, [sp, #624]
+    ldr r0, [sp, #272]
     add r0, r0, #4
-    str r0, [sp, #-192]
-    ldr r0, [sp, #-72]
+    str r0, [sp, #640]
+    ldr r0, [sp, #160]
     add r0, r0, #1
-    str r0, [sp, #-196]
-    ldr r0, [sp, #-76]
+    str r0, [sp, #656]
+    ldr r0, [sp, #176]
     add r0, r0, #2
-    str r0, [sp, #-200]
-    ldr r0, [sp, #-80]
+    str r0, [sp, #672]
+    ldr r0, [sp, #192]
     add r0, r0, #3
-    str r0, [sp, #-204]
-    ldr r0, [sp, #-84]
+    str r0, [sp, #688]
+    ldr r0, [sp, #208]
     add r0, r0, #4
-    str r0, [sp, #-208]
-    ldr r0, [sp, #-56]
+    str r0, [sp, #704]
+    ldr r0, [sp, #96]
     add r0, r0, #1
-    str r0, [sp, #-212]
-    ldr r0, [sp, #-60]
+    str r0, [sp, #720]
+    ldr r0, [sp, #112]
     add r0, r0, #2
-    str r0, [sp, #-216]
-    ldr r0, [sp, #-64]
+    str r0, [sp, #736]
+    ldr r0, [sp, #128]
     add r0, r0, #3
-    str r0, [sp, #-220]
-    ldr r0, [sp, #-68]
+    str r0, [sp, #752]
+    ldr r0, [sp, #144]
     add r0, r0, #4
-    str r0, [sp, #-224]
-    ldr r0, [sp, #-40]
+    str r0, [sp, #768]
+    ldr r0, [sp, #32]
     add r1, r0, #1
-    ldr r0, [sp, #-44]
+    ldr r0, [sp, #48]
     add r3, r0, #2
-    ldr r0, [sp, #-48]
+    ldr r0, [sp, #64]
     add r0, r0, #3
-    str r0, [sp, #-228]
-    ldr r0, [sp, #-52]
+    str r0, [sp, #784]
+    ldr r0, [sp, #80]
     add r0, r0, #4
-    str r0, [sp, #-232]
+    str r0, [sp, #800]
     ldr r6, =1
     add r2, r6, #1
     ldr r6, =2
@@ -174,13 +174,13 @@ func:
     add r9, r6, #3
     ldr r6, =4
     add r10, r6, #4
-    ldr r0, [sp, #-132]
+    ldr r0, [sp, #400]
     add r6, r0, #1
-    ldr r0, [sp, #-136]
+    ldr r0, [sp, #416]
     add r8, r0, #2
-    ldr r0, [sp, #-140]
+    ldr r0, [sp, #432]
     add r11, r0, #3
-    ldr r0, [sp, #-144]
+    ldr r0, [sp, #448]
     add r5, r0, #4
     ldr r0, [sp]
     add r4, r0, r6
@@ -194,62 +194,62 @@ func:
     add r2, r0, r1
     add r0, r2, r3
     str r2, [sp]
-    ldr r2, [sp, #-228]
+    ldr r2, [sp, #784]
     add r1, r0, r2
-    ldr r2, [sp, #-232]
+    ldr r2, [sp, #800]
     add r0, r1, r2
-    ldr r2, [sp, #-212]
+    ldr r2, [sp, #720]
     sub r1, r0, r2
-    ldr r2, [sp, #-216]
+    ldr r2, [sp, #736]
     sub r0, r1, r2
-    ldr r2, [sp, #-220]
+    ldr r2, [sp, #752]
     sub r1, r0, r2
-    ldr r2, [sp, #-224]
+    ldr r2, [sp, #768]
     sub r0, r1, r2
-    ldr r2, [sp, #-196]
+    ldr r2, [sp, #656]
     add r1, r0, r2
-    ldr r2, [sp, #-200]
+    ldr r2, [sp, #672]
     add r0, r1, r2
-    ldr r2, [sp, #-204]
+    ldr r2, [sp, #688]
     add r1, r0, r2
-    ldr r2, [sp, #-208]
+    ldr r2, [sp, #704]
     add r0, r1, r2
-    ldr r2, [sp, #-180]
+    ldr r2, [sp, #592]
     sub r1, r0, r2
-    ldr r2, [sp, #-184]
+    ldr r2, [sp, #608]
     sub r0, r1, r2
-    ldr r2, [sp, #-188]
+    ldr r2, [sp, #624]
     sub r1, r0, r2
-    ldr r2, [sp, #-192]
+    ldr r2, [sp, #640]
     sub r0, r1, r2
-    ldr r2, [sp, #-164]
+    ldr r2, [sp, #528]
     add r1, r0, r2
-    ldr r2, [sp, #-168]
+    ldr r2, [sp, #544]
     add r0, r1, r2
-    ldr r2, [sp, #-172]
+    ldr r2, [sp, #560]
     add r1, r0, r2
-    ldr r2, [sp, #-176]
+    ldr r2, [sp, #576]
     add r0, r1, r2
-    ldr r2, [sp, #-148]
+    ldr r2, [sp, #464]
     sub r1, r0, r2
-    ldr r2, [sp, #-152]
+    ldr r2, [sp, #480]
     sub r0, r1, r2
-    ldr r2, [sp, #-156]
+    ldr r2, [sp, #496]
     sub r1, r0, r2
-    ldr r2, [sp, #-160]
+    ldr r2, [sp, #512]
     sub r0, r1, r2
-    ldr r2, [sp, #-132]
+    ldr r2, [sp, #400]
     add r1, r0, r2
-    ldr r2, [sp, #-136]
+    ldr r2, [sp, #416]
     add r0, r1, r2
-    ldr r2, [sp, #-140]
+    ldr r2, [sp, #432]
     add r1, r0, r2
-    ldr r2, [sp, #-144]
+    ldr r2, [sp, #448]
     add r0, r1, r2
     ldr r2, [sp]
     b bb0_0
 bb0_0:
-    ldr lr, =216
+    ldr lr, =816
     add sp, sp, lr
     pop {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     bx lr

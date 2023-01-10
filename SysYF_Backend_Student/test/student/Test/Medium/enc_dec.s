@@ -21,14 +21,19 @@ enc:
     b bb0_1
 bb0_0:
     add r1, r0, #60
+    push {lr}
+    Mov r0, r1
+    pop {lr}
     b bb0_2
 bb0_1:
     sub r1, r0, #15
+    push {lr}
+    Mov r0, r1
+    pop {lr}
     b bb0_2
 bb0_2:
     b bb0_3
 bb0_3:
-    mov r0, r1
     add sp, sp, #16
     pop {lr}
     bx lr
@@ -55,9 +60,15 @@ dec:
     b bb1_1
 bb1_0:
     sub r1, r0, #59
+    push {lr}
+    Mov r0, r1
+    pop {lr}
     b bb1_2
 bb1_1:
     add r1, r0, #14
+    push {lr}
+    Mov r0, r1
+    pop {lr}
     b bb1_2
 bb1_2:
     b litpool1_0
@@ -65,7 +76,6 @@ bb1_2:
 litpool1_0:
     b bb1_3
 bb1_3:
-    mov r0, r1
     add sp, sp, #16
     pop {lr}
     bx lr

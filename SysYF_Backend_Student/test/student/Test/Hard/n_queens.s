@@ -334,11 +334,10 @@ bb2_1:
     pop {lr}
     b bb2_0
 bb2_2:
-    ldr r1, Addr2_0
-    ldr r1, [r1]
+    ldr r0, Addr2_0
+    ldr r0, [r0]
     b bb2_3
 bb2_3:
-    mov r0, r1
     mov sp, r11
     pop {r11, lr}
     bx lr

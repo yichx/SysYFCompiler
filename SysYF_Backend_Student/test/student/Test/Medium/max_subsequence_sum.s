@@ -4,7 +4,7 @@
     .p2align 2
     .type maxSubArray, %function
 maxSubArray:
-    push {r4, r5, r6, r7, lr}
+    push {r4, r5, r6, lr}
     sub sp, sp, #16
     ldr r1, =0
     cmp r0, r1
@@ -21,7 +21,7 @@ maxSubArray:
     b bb0_1
 bb0_0:
     push {lr}
-    Ldr r4, =0
+    Ldr r0, =0
     pop {lr}
     b bb0_11
 bb0_1:
@@ -45,9 +45,6 @@ bb0_2:
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, [r1]
-    push {lr}
-    Mov r4, r0
-    pop {lr}
     b bb0_11
 bb0_3:
     ldr r1, Addr0_0
@@ -94,10 +91,7 @@ litpool0_0:
     b bb0_8
 bb0_6:
     push {lr}
-    Mov r4, r2
-    Mov r6, r2
-    Mov r5, r1
-    Mov r7, r3
+    Mov r0, r2
     pop {lr}
     b bb0_11
 bb0_7:
@@ -123,27 +117,22 @@ bb0_8:
     ldr r3, =0
     cmp r4, r3
     bne bb0_9
-    push {lr}
-    Mov r3, r2
-    pop {lr}
     b bb0_10
 bb0_9:
     push {lr}
-    Mov r3, r5
+    Mov r2, r5
     pop {lr}
     b bb0_10
 bb0_10:
-    add r4, r1, #1
+    add r3, r1, #1
     push {lr}
-    Mov r1, r4
-    Mov r2, r3
+    Mov r1, r3
     Mov r3, r5
     pop {lr}
     b bb0_4
 bb0_11:
-    mov r0, r4
     add sp, sp, #16
-    pop {r4, r5, r6, r7, lr}
+    pop {r4, r5, r6, lr}
     bx lr
     .pool
 Addr0_0:

@@ -123,88 +123,77 @@ main:
     ldr r1, Addr1_0
     str r0, [r1]
     pop {r1}
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =4
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =1
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =3
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =2
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =9
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =3
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =4
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =5
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =6
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =6
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =7
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =5
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =8
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =7
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =9
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =8
     str r0, [r1]
-    ldr r0, =-48
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
@@ -230,8 +219,7 @@ bb1_0:
     bne bb1_1
     b bb1_2
 bb1_1:
-    ldr r1, =-48
-    add r1, sp, r1
+    add r1, sp, #36
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3

@@ -4,7 +4,7 @@
     .p2align 2
     .type QuickSort, %function
 QuickSort:
-    push {r4, r5, r6, r7, r8, r9, r11, lr}
+    push {r4, r5, r6, r7, r8, r11, lr}
     mov r11, sp
     sub sp, sp, #36
     cmp r0, r1
@@ -61,13 +61,19 @@ bb0_4:
     LDMIB SP, {r1, r2, r3}
     mov r6, r0
     ldr r0, [SP]
-    add r5, r4, #1
-    STM SP, {r1, r2, r3}
-    mov r0, r5
-    ldr r1, [sp]
+    add r0, r4, #1
+    STM SP, {r0, r1, r2, r3}
+    ldr r0, [sp]
+    ldr r1, [sp, #4]
     bl QuickSort
-    LDM SP, {r1, r2, r3}
-    mov r7, r0
+    LDMIB SP, {r1, r2, r3}
+    mov r5, r0
+    ldr r0, [SP]
+    push {lr}
+    Mov r0, r2
+    Mov r1, r3
+    Mov r2, r4
+    pop {lr}
     b bb0_1
 bb0_5:
     b litpool0_0
@@ -116,9 +122,6 @@ bb0_7:
     ldr r5, =0
     cmp r6, r5
     bne bb0_11
-    push {lr}
-    Mov r5, r4
-    pop {lr}
     b bb0_12
 bb0_8:
     sub r5, r3, #1
@@ -145,58 +148,58 @@ litpool0_1:
     add r7, r6, r8
     str r5, [r7]
     add r5, r4, #1
+    push {lr}
+    Mov r4, r5
+    pop {lr}
     b bb0_12
 bb0_12:
     b bb0_13
 bb0_13:
-    cmp r5, r3
-    ldr r6, =0
-    ldrlt r6, =1
-    mov r7, r6
-    ldr r6, =0
-    cmp r7, r6
-    ldr r8, =0
-    ldrne r8, =1
-    ldr r6, =0
-    cmp r7, r6
+    cmp r4, r3
+    ldr r5, =0
+    ldrlt r5, =1
+    mov r6, r5
+    ldr r5, =0
+    cmp r6, r5
+    ldr r7, =0
+    ldrne r7, =1
+    ldr r5, =0
+    cmp r6, r5
     bne bb0_14
     b bb0_15
 bb0_14:
-    ldr r6, Addr0_0
-    ldr r7, =4
-    mul r8, r5, r7
-    add r7, r6, r8
-    ldr r6, [r7]
-    cmp r6, r2
+    ldr r5, Addr0_0
+    ldr r6, =4
+    mul r7, r4, r6
+    add r6, r5, r7
+    ldr r5, [r6]
+    cmp r5, r2
+    ldr r6, =0
+    ldrlt r6, =1
+    mov r5, r6
+    ldr r6, =0
+    cmp r5, r6
     ldr r7, =0
-    ldrlt r7, =1
-    mov r6, r7
-    ldr r7, =0
-    cmp r6, r7
-    ldr r8, =0
-    ldrne r8, =1
-    ldr r7, =0
-    cmp r6, r7
+    ldrne r7, =1
+    ldr r6, =0
+    cmp r5, r6
     bne bb0_16
     b bb0_17
 bb0_15:
-    cmp r5, r3
-    ldr r6, =0
-    ldrlt r6, =1
-    mov r7, r6
-    ldr r6, =0
-    cmp r7, r6
-    ldr r8, =0
-    ldrne r8, =1
-    ldr r6, =0
-    cmp r7, r6
+    cmp r4, r3
+    ldr r5, =0
+    ldrlt r5, =1
+    mov r6, r5
+    ldr r5, =0
+    cmp r6, r5
+    ldr r7, =0
+    ldrne r7, =1
+    ldr r5, =0
+    cmp r6, r5
     bne bb0_19
-    push {lr}
-    Mov r6, r3
-    pop {lr}
     b bb0_20
 bb0_16:
-    add r6, r5, #1
+    add r5, r4, #1
     b bb0_18
 bb0_17:
     b litpool0_2
@@ -205,32 +208,31 @@ litpool0_2:
     b bb0_15
 bb0_18:
     push {lr}
-    Mov r5, r6
+    Mov r4, r5
     pop {lr}
     b bb0_13
 bb0_19:
+    ldr r5, Addr0_0
+    ldr r6, =4
+    mul r7, r4, r6
+    add r6, r5, r7
+    ldr r5, [r6]
     ldr r6, Addr0_0
     ldr r7, =4
-    mul r8, r5, r7
+    mul r8, r3, r7
     add r7, r6, r8
-    ldr r6, [r7]
-    ldr r7, Addr0_0
-    ldr r8, =4
-    mul r9, r3, r8
-    add r8, r7, r9
-    str r6, [r8]
-    sub r6, r3, #1
+    str r5, [r7]
+    sub r5, r3, #1
+    push {lr}
+    Mov r3, r5
+    pop {lr}
     b bb0_20
 bb0_20:
-    push {lr}
-    Mov r3, r6
-    Mov r4, r5
-    pop {lr}
     b bb0_2
 bb0_21:
     ldr r0, =0
     mov sp, r11
-    pop {r4, r5, r6, r7, r8, r9, r11, lr}
+    pop {r4, r5, r6, r7, r8, r11, lr}
     bx lr
     .pool
 Addr0_0:

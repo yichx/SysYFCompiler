@@ -32,8 +32,8 @@ bb0_1:
     b bb0_3
 bb0_2:
     add r4, r2, r0
-    add r5, r3, r4
-    add r4, r5, r1
+    add r0, r3, r4
+    add r2, r0, r1
     b bb0_12
 bb0_3:
     ldr r3, =10
@@ -114,7 +114,7 @@ bb0_11:
     pop {lr}
     b bb0_6
 bb0_12:
-    mov r0, r4
+    mov r0, r2
     add sp, sp, #16
     pop {r4, r5, r6, lr}
     bx lr

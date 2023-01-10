@@ -35,9 +35,6 @@ bb0_0:
     add r2, r1, r4
     ldr r1, =0
     str r1, [r2]
-    push {lr}
-    Mov r1, r0
-    pop {lr}
     b bb0_2
 bb0_1:
     sdiv r2, r0, r1
@@ -69,26 +66,25 @@ bb0_1:
     add r6, r5, r8
     str r4, [r6]
     sdiv r4, r0, r1
-    ldr r1, Addr0_1
-    ldr r5, =0
-    ldr r6, =4
-    mul r7, r5, r6
-    add r5, r1, r7
-    ldr r1, [r5]
-    mul r5, r4, r1
-    sub r1, r2, r5
-    ldr r2, Addr0_1
-    ldr r4, =0
+    ldr r0, Addr0_1
+    ldr r1, =0
     ldr r5, =4
-    mul r6, r4, r5
-    add r4, r2, r6
-    str r1, [r4]
+    mul r6, r1, r5
+    add r1, r0, r6
+    ldr r0, [r1]
+    mul r1, r4, r0
+    sub r0, r2, r1
+    ldr r1, Addr0_1
+    ldr r2, =0
+    ldr r4, =4
+    mul r5, r2, r4
+    add r2, r1, r5
+    str r0, [r2]
     push {lr}
-    Mov r1, r3
+    Mov r0, r3
     pop {lr}
     b bb0_2
 bb0_2:
-    mov r0, r1
     mov sp, r11
     pop {r4, r5, r6, r7, r8, r11, lr}
     bx lr

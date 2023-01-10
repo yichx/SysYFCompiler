@@ -4,7 +4,7 @@
     .p2align 2
     .type myFunc, %function
 myFunc:
-    push {r4, lr}
+    push {lr}
     sub sp, sp, #16
     STMDB SP, {r0}
     Mov r0, r1
@@ -24,46 +24,38 @@ myFunc:
     b bb0_1
 bb0_0:
     push {lr}
-    Mov r2, r0
-    Ldr r3, =0
+    Ldr r1, =0
     pop {lr}
     b bb0_5
 bb0_1:
-    push {lr}
-    Mov r1, r0
-    pop {lr}
     b bb0_2
 bb0_2:
+    ldr r1, =0
+    cmp r0, r1
+    ldr r2, =0
+    ldrgt r2, =1
+    mov r1, r2
     ldr r2, =0
     cmp r1, r2
     ldr r3, =0
-    ldrgt r3, =1
-    mov r2, r3
-    ldr r3, =0
-    cmp r2, r3
-    ldr r4, =0
-    ldrne r4, =1
-    ldr r3, =0
-    cmp r2, r3
+    ldrne r3, =1
+    ldr r2, =0
+    cmp r1, r2
     bne bb0_3
     b bb0_4
 bb0_3:
-    sub r2, r1, #1
+    sub r1, r0, #1
     push {lr}
-    Mov r1, r2
+    Mov r0, r1
     pop {lr}
     b bb0_2
 bb0_4:
-    add r2, r1, #2
-    push {lr}
-    Mov r3, r2
-    Mov r2, r1
-    pop {lr}
+    add r1, r0, #2
     b bb0_5
 bb0_5:
-    mov r0, r3
+    mov r0, r1
     add sp, sp, #16
-    pop {r4, lr}
+    pop {lr}
     bx lr
     .pool
 

@@ -23,9 +23,6 @@ bb0_0:
     ldr r2, =0
     cmp r1, r2
     bne bb0_1
-    push {lr}
-    Mov r1, r0
-    pop {lr}
     b bb0_2
 bb0_1:
     sub r1, r0, #1
@@ -45,6 +42,9 @@ bb0_1:
 bb0_2:
     b bb0_5
 bb0_3:
+    push {lr}
+    Mov r0, r1
+    pop {lr}
     b bb0_2
 bb0_4:
     push {lr}
@@ -52,7 +52,6 @@ bb0_4:
     pop {lr}
     b bb0_0
 bb0_5:
-    mov r0, r1
     add sp, sp, #16
     pop {lr}
     bx lr

@@ -95,9 +95,6 @@ bb1_1:
     ldr r2, =0
     cmp r1, r2
     bne bb1_3
-    push {lr}
-    Mov r1, r0
-    pop {lr}
     b bb1_4
 bb1_2:
     ldr r1, Addr1_1
@@ -108,12 +105,11 @@ bb1_2:
     add r1, r2, r4
     ldr r2, [r1]
     rsb r1, r0, #0
-    STM SP, {r1, r2, r3}
-    ldr r0, [sp, #4]
-    ldr r1, [sp]
+    STM SP, {r0, r1, r2}
+    ldr r0, [sp, #8]
+    ldr r1, [sp, #4]
     bl sum
-    LDM SP, {r1, r2, r3}
-    mov r3, r0
+    LDMIB SP, {r1, r2}
     b bb1_5
 bb1_3:
     ldr r1, Addr1_0
@@ -122,20 +118,13 @@ bb1_3:
     add r0, r1, r3
     ldr r1, [r0]
     add r0, r1, #1
-    push {lr}
-    Mov r1, r0
-    pop {lr}
     b bb1_4
 bb1_4:
-    push {lr}
-    Mov r0, r1
-    pop {lr}
     b bb1_0
 bb1_5:
     b litpool1_0
     .pool
 litpool1_0:
-    mov r0, r3
     mov sp, r11
     pop {r4, r5, r11, lr}
     bx lr

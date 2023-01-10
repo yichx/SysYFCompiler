@@ -57,27 +57,24 @@ bb0_3:
     add r5, r3, r6
     str r4, [r5]
     push {lr}
-    Mov r5, r2
+    Mov r3, r2
+    Mov r2, r4
     pop {lr}
     b bb0_5
 bb0_4:
     add r4, r1, #0
     ldr r5, =4
     mul r6, r2, r5
-    add r5, r4, r6
-    ldr r4, [r5]
+    add r2, r4, r6
+    ldr r4, [r2]
     push {lr}
-    Mov r5, r3
+    Mov r2, r4
     pop {lr}
     b bb0_5
 bb0_5:
     b litpool0_0
     .pool
 litpool0_0:
-    push {lr}
-    Mov r2, r4
-    Mov r3, r5
-    pop {lr}
     b bb0_0
 bb0_6:
     add r4, r0, #0
@@ -116,8 +113,7 @@ KMP:
     mov r11, sp
     ldr lr, =16420
     sub sp, sp, lr
-    ldr r2, =-16408
-    add r2, sp, r2
+    add r2, sp, #36
     ldr r3, =0
     ldr r4, =4
     mul r5, r3, r4
@@ -171,9 +167,9 @@ bb1_1:
     b bb1_4
 bb1_2:
     push {lr}
-    Mov r4, r2
-    Mov r5, r3
-    Ldr r6, =-1
+    Mov r0, r2
+    Mov r1, r3
+    Ldr r2, =-1
     pop {lr}
     b bb1_10
 bb1_3:
@@ -201,54 +197,47 @@ litpool1_0:
     bne bb1_6
     b bb1_7
 bb1_4:
-    ldr r4, =-16408
-    add r4, sp, r4
+    add r4, sp, #36
     ldr r5, =4
     mul r6, r3, r5
-    add r5, r4, r6
-    ldr r4, [r5]
-    ldr r5, =-1
-    cmp r4, r5
+    add r3, r4, r6
+    ldr r4, [r3]
+    ldr r3, =-1
+    cmp r4, r3
+    ldr r5, =0
+    ldreq r5, =1
+    mov r3, r5
+    ldr r5, =0
+    cmp r3, r5
     ldr r6, =0
-    ldreq r6, =1
-    mov r5, r6
-    ldr r6, =0
-    cmp r5, r6
-    ldr r7, =0
-    ldrne r7, =1
-    ldr r6, =0
-    cmp r5, r6
+    ldrne r6, =1
+    ldr r5, =0
+    cmp r3, r5
     bne bb1_8
     push {lr}
-    Mov r5, r2
-    Mov r6, r4
+    Mov r3, r4
     pop {lr}
     b bb1_9
 bb1_5:
-    push {lr}
-    Mov r2, r5
-    Mov r3, r6
-    pop {lr}
     b bb1_0
 bb1_6:
     push {lr}
-    Mov r5, r4
-    Mov r4, r3
-    Mov r6, r3
+    Mov r0, r3
+    Mov r2, r3
+    Mov r1, r4
     pop {lr}
     b bb1_10
 bb1_7:
     push {lr}
-    Mov r5, r3
-    Mov r6, r4
+    Mov r2, r3
+    Mov r3, r4
     pop {lr}
     b bb1_5
 bb1_8:
-    add r5, r4, #1
+    add r3, r4, #1
     add r4, r2, #1
     push {lr}
-    Mov r6, r5
-    Mov r5, r4
+    Mov r2, r4
     pop {lr}
     b bb1_9
 bb1_9:
@@ -257,7 +246,7 @@ bb1_9:
 litpool1_1:
     b bb1_5
 bb1_10:
-    mov r0, r6
+    mov r0, r2
     mov sp, r11
     pop {r4, r5, r6, r7, r11, lr}
     bx lr
@@ -316,11 +305,11 @@ bb2_1:
     b bb2_4
 bb2_2:
     add r2, r0, #0
-    ldr r3, =4
-    mul r4, r1, r3
-    add r3, r2, r4
+    ldr r0, =4
+    mul r3, r1, r0
+    add r0, r2, r3
     ldr r2, =0
-    str r2, [r3]
+    str r2, [r0]
     b bb2_5
 bb2_3:
     b bb2_2
@@ -348,8 +337,7 @@ main:
     mov r11, sp
     ldr lr, =32804
     sub sp, sp, lr
-    ldr r0, =-16404
-    add r0, sp, r0
+    add r0, sp, #36
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
@@ -358,7 +346,7 @@ main:
     ldr r0, [sp, #4]
     bl read_str
     LDMIB SP, {r1}
-    ldr r1, =-32788
+    ldr r1, =-16348
     add r1, sp, r1
     ldr r2, =0
     ldr r3, =4
@@ -370,13 +358,12 @@ main:
     LDMIB SP, {r1, r2}
     mov r1, r0
     ldr r0, [SP]
-    ldr r2, =-16404
-    add r2, sp, r2
+    add r2, sp, #36
     ldr r3, =0
     ldr r4, =4
     mul r5, r3, r4
     add r3, r2, r5
-    ldr r2, =-32788
+    ldr r2, =-16348
     add r2, sp, r2
     ldr r4, =0
     ldr r5, =4

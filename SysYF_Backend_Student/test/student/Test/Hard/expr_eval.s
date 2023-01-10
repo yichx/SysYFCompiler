@@ -116,17 +116,17 @@ bb2_0:
     b bb2_4
 bb2_1:
     push {lr}
-    Ldr r1, =0
+    Ldr r0, =0
     pop {lr}
     b bb2_5
 bb2_2:
     push {lr}
-    Ldr r1, =0
+    Ldr r0, =0
     pop {lr}
     b bb2_5
 bb2_3:
     push {lr}
-    Ldr r1, =1
+    Ldr r0, =1
     pop {lr}
     b bb2_5
 bb2_4:
@@ -135,7 +135,6 @@ bb2_5:
     b litpool2_0
     .pool
 litpool2_0:
-    mov r0, r1
     add sp, sp, #16
     pop {lr}
     bx lr
@@ -800,9 +799,9 @@ bb10_7:
 bb10_8:
     sdiv r3, r1, r2
     mul r4, r3, r2
-    sub r3, r1, r4
+    sub r2, r1, r4
     push {lr}
-    Mov r0, r3
+    Mov r0, r2
     pop {lr}
     b bb10_10
 bb10_9:
@@ -842,7 +841,7 @@ bb11_0:
     STM SP, {r0}
     bl panic
     push {lr}
-    Mov r2, r0
+    Mov r1, r0
     pop {lr}
     b bb11_18
 bb11_1:
@@ -1029,10 +1028,6 @@ litpool11_2:
     LDMIB SP, {r1}
     mov r1, r0
     ldr r0, [SP]
-    push {lr}
-    Mov r2, r1
-    Mov r1, r0
-    pop {lr}
     b bb11_18
 bb11_14:
     ldr r1, Addr11_0
@@ -1103,13 +1098,9 @@ bb11_17:
     LDMIB SP, {r1}
     mov r1, r0
     ldr r0, [SP]
-    push {lr}
-    Mov r2, r1
-    Mov r1, r0
-    pop {lr}
     b bb11_18
 bb11_18:
-    mov r0, r2
+    mov r0, r1
     mov sp, r11
     pop {r4, r11, lr}
     bx lr

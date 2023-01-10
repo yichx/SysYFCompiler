@@ -26,7 +26,7 @@ bb0_0:
     bl put_int
     LDM sp, {r0}
     push {lr}
-    Ldr r1, =1
+    Ldr r0, =1
     pop {lr}
     b bb0_2
 bb0_1:
@@ -35,11 +35,10 @@ bb0_1:
     bl put_int
     LDM sp, {r0}
     push {lr}
-    Ldr r1, =0
+    Ldr r0, =0
     pop {lr}
     b bb0_2
 bb0_2:
-    mov r0, r1
     mov sp, r11
     pop {r11, lr}
     bx lr

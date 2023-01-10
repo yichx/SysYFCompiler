@@ -64,24 +64,24 @@ bb1_1:
     bne bb1_6
     b bb1_4
 bb1_2:
-    ldr r1, Addr1_0
-    ldr r1, [r1]
-    STM SP, {r1}
+    ldr r0, Addr1_0
+    ldr r0, [r0]
+    STM SP, {r0}
     ldr r0, [sp]
     bl put_int
-    LDM sp, {r1}
+    LDM sp, {r0}
     ldr r0, =32
     bl put_char
-    ldr r1, Addr1_1
-    ldr r1, [r1]
-    STM SP, {r1}
+    ldr r0, Addr1_1
+    ldr r0, [r0]
+    STM SP, {r0}
     ldr r0, [sp]
     bl put_int
-    LDM sp, {r1}
+    LDM sp, {r0}
     ldr r0, =10
     bl put_char
-    ldr r1, Addr1_0
-    ldr r1, [r1]
+    ldr r0, Addr1_0
+    ldr r0, [r0]
     b bb1_12
 bb1_3:
     ldr r1, Addr1_0
@@ -227,7 +227,6 @@ bb1_11:
     bne bb1_7
     b bb1_8
 bb1_12:
-    mov r0, r1
     mov sp, r11
     pop {r11, lr}
     bx lr

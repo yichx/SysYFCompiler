@@ -4,7 +4,7 @@
     .p2align 2
     .type inc, %function
 inc:
-    push {r4, r5, r6, lr}
+    push {r4, lr}
     sub sp, sp, #16
     ldr r2, =10000
     cmp r0, r2
@@ -35,26 +35,22 @@ bb0_0:
     b bb0_3
 bb0_1:
     add r2, r0, r1
-    ldr r4, =65535
-    sdiv r5, r2, r4
-    ldr r4, =65535
-    mul r6, r5, r4
-    sub r4, r2, r6
-    push {lr}
-    Mov r2, r4
-    pop {lr}
+    ldr r0, =65535
+    sdiv r1, r2, r0
+    ldr r0, =65535
+    mul r4, r1, r0
+    sub r0, r2, r4
     b bb0_4
 bb0_2:
     push {lr}
-    Ldr r2, =-1
+    Ldr r0, =-1
     pop {lr}
     b bb0_4
 bb0_3:
     b bb0_1
 bb0_4:
-    mov r0, r2
     add sp, sp, #16
-    pop {r4, r5, r6, lr}
+    pop {r4, lr}
     bx lr
     .pool
 

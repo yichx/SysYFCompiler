@@ -72,9 +72,6 @@ findfa:
     bne bb1_0
     b bb1_1
 bb1_0:
-    push {lr}
-    Mov r1, r0
-    pop {lr}
     b bb1_2
 bb1_1:
     ldr r1, Addr1_0
@@ -96,14 +93,16 @@ bb1_1:
     ldr r1, Addr1_0
     ldr r2, =4
     mul r3, r0, r2
-    add r2, r1, r3
-    ldr r1, [r2]
+    add r0, r1, r3
+    ldr r1, [r0]
+    push {lr}
+    Mov r0, r1
+    pop {lr}
     b bb1_2
 bb1_2:
     b litpool1_0
     .pool
 litpool1_0:
-    mov r0, r1
     mov sp, r11
     pop {r4, r11, lr}
     bx lr
@@ -245,9 +244,6 @@ bb3_4:
     ldr r8, =0
     cmp r7, r8
     bne bb3_6
-    push {lr}
-    Mov r7, r3
-    pop {lr}
     b bb3_7
 bb3_5:
     ldr r7, =0
@@ -288,10 +284,9 @@ bb3_6:
     bne bb3_8
     b bb3_9
 bb3_7:
-    add r8, r4, #1
+    add r7, r4, #1
     push {lr}
-    Mov r3, r7
-    Mov r4, r8
+    Mov r4, r7
     Mov r12, r5
     Mov r5, r6
     Mov r6, r12
@@ -522,9 +517,6 @@ bb3_22:
     ldr r8, =0
     cmp r7, r8
     bne bb3_27
-    push {lr}
-    Mov r7, r3
-    pop {lr}
     b bb3_25
 bb3_23:
     ldr r7, Addr3_1
@@ -549,17 +541,17 @@ bb3_23:
     bne bb3_21
     b bb3_22
 bb3_24:
-    add r7, r4, #1
-    STM SP, {r0, r1, r2}
-    mov r0, r7
+    add r3, r4, #1
+    STM SP, {r0, r1, r2, r3}
+    ldr r0, [sp, #12]
     bl put_int
-    LDM sp, {r0, r1, r2}
+    LDM sp, {r0, r1, r2, r3}
     STM SP, {r0, r1, r2}
     ldr r0, =10
     bl put_char
     LDM sp, {r0, r1, r2}
     push {lr}
-    Ldr r7, =1
+    Ldr r3, =1
     pop {lr}
     b bb3_25
 bb3_25:
@@ -588,9 +580,6 @@ bb3_26:
     ldr r8, =0
     cmp r7, r8
     bne bb3_24
-    push {lr}
-    Mov r7, r3
-    pop {lr}
     b bb3_25
 bb3_27:
     b litpool3_4
@@ -613,9 +602,6 @@ litpool3_4:
     ldr r8, =0
     cmp r7, r8
     bne bb3_26
-    push {lr}
-    Mov r7, r3
-    pop {lr}
     b bb3_25
 bb3_28:
     STM SP, {r0, r1, r2, r3}

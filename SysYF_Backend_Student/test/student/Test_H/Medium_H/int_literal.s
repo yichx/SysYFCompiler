@@ -29,17 +29,16 @@ bb0_0:
 bb0_1:
     ldr r2, =2
     mul r3, r0, r2
-    add r2, r3, r1
+    add r0, r3, r1
     ldr r1, Addr0_0
     ldr r1, [r1]
-    add r3, r1, r2
+    add r2, r1, r0
     push {r0}
     ldr r0, Addr0_0
-    str r3, [r0]
+    str r2, [r0]
     pop {r0}
     b bb0_2
 bb0_2:
-    mov r0, r2
     add sp, sp, #16
     pop {lr}
     bx lr
@@ -76,10 +75,9 @@ bb1_0:
 bb1_1:
     ldr r2, =2
     mul r3, r0, r2
-    add r2, r3, r1
+    add r0, r3, r1
     b bb1_2
 bb1_2:
-    mov r0, r2
     add sp, sp, #16
     pop {lr}
     bx lr

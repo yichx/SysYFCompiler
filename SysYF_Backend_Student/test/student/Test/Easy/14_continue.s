@@ -39,9 +39,6 @@ bb0_1:
     bne bb0_3
     b bb0_4
 bb0_2:
-    push {lr}
-    Mov r1, r0
-    pop {lr}
     b bb0_5
 bb0_3:
     sub r1, r0, #1
@@ -50,12 +47,8 @@ bb0_3:
     pop {lr}
     b bb0_0
 bb0_4:
-    push {lr}
-    Mov r1, r0
-    pop {lr}
     b bb0_5
 bb0_5:
-    mov r0, r1
     add sp, sp, #16
     pop {lr}
     bx lr

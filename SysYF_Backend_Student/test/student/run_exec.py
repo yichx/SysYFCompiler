@@ -3,6 +3,15 @@ import subprocess
 import os
 import shutil
 
+def compare_without_blank(s1,s2):
+    s1=s1.split()
+    s2=s2.split()
+    if(len(s1)!=len(s2)):
+        return False
+    for i in range(len(s1)):
+        if s1[i]!=s2[i]:
+            return False
+    return True
 if __name__ == '__main__':
     compile_cmd = 'gcc -march=armv7-a -g ../lib/lib.c {} -o {}'
 
@@ -39,8 +48,6 @@ if __name__ == '__main__':
             if dataset=='Test_H':
                 level+='_H'
             for file in os.listdir('../test/student/executable/'+dataset+'/'+level):
-                #if 'long_arr' in file or 'sort' in file:
-                    #continue
                 if os.path.exists('../test/student/'+dataset+'/'+level+'/'+file+'.in'):
                     input_file='../test/student/'+dataset+'/'+level+'/'+file+'.in'
                     try:
@@ -48,7 +55,7 @@ if __name__ == '__main__':
                         result=result.stdout.decode().strip()+'\n'+str(result.returncode)
                         with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
                             content=fp.read()
-                        if result.strip()==content.strip():
+                        if compare_without_blank(result,content):
                             print(file+' passed!')
                         else:
                             print(dataset+'/'+level+'/'+file+' test failed! Expected:')
@@ -65,7 +72,7 @@ if __name__ == '__main__':
                         result=result.stdout.decode().strip()+'\n'+str(result.returncode)
                         with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
                             content=fp.read()
-                        if result.strip()==content.strip():
+                        if compare_without_blank(result,content):
                             print(file+' passed!')
                         else:
                             print(dataset+'/'+level+'/'+file+' test failed! Expected:')

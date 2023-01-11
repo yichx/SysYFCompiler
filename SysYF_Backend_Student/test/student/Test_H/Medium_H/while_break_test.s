@@ -5,7 +5,6 @@
     .type inc, %function
 inc:
     push {r4, lr}
-    sub sp, sp, #16
     ldr r2, =10000
     cmp r0, r2
     ldr r3, =0
@@ -49,7 +48,6 @@ bb0_2:
 bb0_3:
     b bb0_1
 bb0_4:
-    add sp, sp, #16
     pop {r4, lr}
     bx lr
     .pool

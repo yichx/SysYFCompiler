@@ -127,7 +127,6 @@ bb2_2:
     .type func4, %function
 func4:
     push {r4, lr}
-    sub sp, sp, #16
     ldr r3, =0
     cmp r0, r3
     ldr r4, =0
@@ -150,7 +149,6 @@ bb3_2:
     b litpool3_0
     .pool
 litpool3_0:
-    add sp, sp, #16
     pop {r4, lr}
     bx lr
     .pool
@@ -160,12 +158,10 @@ litpool3_0:
     .type func5, %function
 func5:
     push {lr}
-    sub sp, sp, #16
     rsb r1, r0, #0
     b bb4_0
 bb4_0:
     mov r0, r1
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -175,7 +171,6 @@ bb4_0:
     .type func6, %function
 func6:
     push {lr}
-    sub sp, sp, #16
     ldr r2, =0
     cmp r0, r2
     ldr r3, =0
@@ -214,7 +209,6 @@ bb5_5:
     b litpool5_0
     .pool
 litpool5_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -224,7 +218,6 @@ litpool5_0:
     .type func7, %function
 func7:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =0
     cmp r0, r1
     ldr r2, =0
@@ -249,7 +242,6 @@ bb6_1:
     pop {lr}
     b bb6_2
 bb6_2:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

@@ -29,7 +29,6 @@ Addr0_0:
     .type is_space, %function
 is_space:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =32
     cmp r0, r1
     ldr r2, =0
@@ -76,7 +75,6 @@ bb1_4:
     b litpool1_0
     .pool
 litpool1_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -86,7 +84,6 @@ litpool1_0:
     .type is_num, %function
 is_num:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =48
     cmp r0, r1
     ldr r2, =0
@@ -135,7 +132,6 @@ bb2_5:
     b litpool2_0
     .pool
 litpool2_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -303,7 +299,6 @@ bb4_0:
     .type get_op_prec, %function
 get_op_prec:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =43
     cmp r0, r1
     ldr r2, =0
@@ -410,7 +405,6 @@ bb5_9:
     pop {lr}
     b bb5_10
 bb5_10:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -420,7 +414,6 @@ bb5_10:
     .type stack_push, %function
 stack_push:
     push {r4, r5, lr}
-    sub sp, sp, #16
     ldr r2, =0
     cmp r0, r2
     ldr r3, =0
@@ -489,7 +482,6 @@ bb6_1:
 bb6_2:
     b bb6_3
 bb6_3:
-    add sp, sp, #16
     pop {r4, r5, lr}
     bx lr
     .pool
@@ -503,7 +495,6 @@ Addr6_1:
     .type stack_pop, %function
 stack_pop:
     push {r4, r5, lr}
-    sub sp, sp, #16
     ldr r1, =0
     cmp r0, r1
     ldr r2, =0
@@ -581,7 +572,6 @@ bb7_1:
 bb7_2:
     b bb7_3
 bb7_3:
-    add sp, sp, #16
     pop {r4, r5, lr}
     bx lr
     .pool
@@ -595,7 +585,6 @@ Addr7_1:
     .type stack_peek, %function
 stack_peek:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =0
     cmp r0, r1
     ldr r2, =0
@@ -647,7 +636,6 @@ litpool8_0:
 bb8_2:
     b bb8_3
 bb8_3:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -661,7 +649,6 @@ Addr8_1:
     .type stack_size, %function
 stack_size:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =0
     cmp r0, r1
     ldr r2, =0
@@ -697,7 +684,6 @@ bb9_3:
     b litpool9_0
     .pool
 litpool9_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -711,7 +697,6 @@ Addr9_1:
     .type eval_op, %function
 eval_op:
     push {r4, r5, lr}
-    sub sp, sp, #16
     ldr r3, =43
     cmp r0, r3
     ldr r4, =0
@@ -810,7 +795,6 @@ bb10_9:
     pop {lr}
     b bb10_10
 bb10_10:
-    add sp, sp, #16
     pop {r4, r5, lr}
     bx lr
     .pool

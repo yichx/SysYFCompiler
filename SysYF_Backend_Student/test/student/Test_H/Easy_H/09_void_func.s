@@ -5,7 +5,6 @@
     .type add, %function
 add:
     push {lr}
-    sub sp, sp, #16
     add r2, r0, r1
     push {r0}
     ldr r0, Addr0_0
@@ -13,7 +12,6 @@ add:
     pop {r0}
     b bb0_0
 bb0_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

@@ -5,7 +5,6 @@
     .type inc_a, %function
 inc_a:
     push {lr}
-    sub sp, sp, #16
     ldr r0, Addr0_0
     ldr r0, [r0]
     add r1, r0, #1
@@ -17,7 +16,6 @@ inc_a:
     ldr r0, [r0]
     b bb0_0
 bb0_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

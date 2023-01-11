@@ -5,7 +5,6 @@
     .type insertsort, %function
 insertsort:
     push {r4, r5, r6, r7, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r2, =1
     pop {lr}
@@ -108,7 +107,6 @@ bb0_8:
     b bb0_3
 bb0_9:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, r7, lr}
     bx lr
     .pool

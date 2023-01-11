@@ -5,7 +5,6 @@
     .type whileIf, %function
 whileIf:
     push {r4, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r0, =0
     Ldr r1, =0
@@ -84,7 +83,6 @@ bb0_7:
 bb0_8:
     b bb0_5
 bb0_9:
-    add sp, sp, #16
     pop {r4, lr}
     bx lr
     .pool

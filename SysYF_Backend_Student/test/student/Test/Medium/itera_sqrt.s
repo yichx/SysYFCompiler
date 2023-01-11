@@ -5,7 +5,6 @@
     .type fsqrt, %function
 fsqrt:
     push {r4, lr}
-    sub sp, sp, #16
     ldr r2, =2
     sdiv r3, r0, r2
     push {lr}
@@ -42,7 +41,6 @@ bb0_2:
     b bb0_3
 bb0_3:
     mov r0, r1
-    add sp, sp, #16
     pop {r4, lr}
     bx lr
     .pool

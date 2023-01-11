@@ -5,7 +5,7 @@
     .type counting_sort, %function
 counting_sort:
     push {r4, r5, r6, lr}
-    sub sp, sp, #56
+    sub sp, sp, #40
     push {lr}
     Ldr r1, =0
     pop {lr}
@@ -25,7 +25,7 @@ bb0_0:
     bne bb0_1
     b bb0_2
 bb0_1:
-    add r2, sp, #16
+    add r2, sp, #0
     ldr r3, =4
     mul r4, r1, r3
     add r3, r2, r4
@@ -60,7 +60,7 @@ bb0_4:
     mul r4, r1, r3
     add r3, r2, r4
     ldr r2, [r3]
-    add r3, sp, #16
+    add r3, sp, #0
     ldr r4, =4
     mul r5, r2, r4
     add r2, r3, r5
@@ -71,7 +71,7 @@ bb0_4:
     mul r5, r1, r4
     add r4, r3, r5
     ldr r3, [r4]
-    add r4, sp, #16
+    add r4, sp, #0
     ldr r5, =4
     mul r6, r3, r5
     add r3, r4, r6
@@ -104,19 +104,19 @@ litpool0_0:
     bne bb0_7
     b bb0_8
 bb0_7:
-    add r2, sp, #16
+    add r2, sp, #0
     ldr r3, =4
     mul r4, r1, r3
     add r3, r2, r4
     ldr r2, [r3]
     sub r3, r1, #1
-    add r4, sp, #16
+    add r4, sp, #0
     ldr r5, =4
     mul r6, r3, r5
     add r3, r4, r6
     ldr r4, [r3]
     add r3, r2, r4
-    add r2, sp, #16
+    add r2, sp, #0
     ldr r4, =4
     mul r5, r1, r4
     add r4, r2, r5
@@ -149,7 +149,7 @@ bb0_10:
     mul r4, r1, r3
     add r1, r2, r4
     ldr r2, [r1]
-    add r1, sp, #16
+    add r1, sp, #0
     ldr r3, =4
     mul r4, r2, r3
     add r2, r1, r4
@@ -161,7 +161,7 @@ bb0_10:
     mul r5, r1, r4
     add r1, r3, r5
     ldr r3, [r1]
-    add r1, sp, #16
+    add r1, sp, #0
     ldr r4, =4
     mul r5, r3, r4
     add r3, r1, r5
@@ -178,7 +178,7 @@ bb0_10:
     mul r5, r1, r4
     add r1, r3, r5
     ldr r3, [r1]
-    add r1, sp, #16
+    add r1, sp, #0
     ldr r4, =4
     mul r5, r3, r4
     add r3, r1, r5
@@ -200,7 +200,7 @@ bb0_12:
     .pool
 litpool0_1:
     ldr r0, =0
-    add sp, sp, #56
+    add sp, sp, #40
     pop {r4, r5, r6, lr}
     bx lr
     .pool

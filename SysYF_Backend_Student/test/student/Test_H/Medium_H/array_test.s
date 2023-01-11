@@ -5,12 +5,10 @@
     .type sum, %function
 sum:
     push {lr}
-    sub sp, sp, #16
     add r2, r0, r1
     b bb0_0
 bb0_0:
     mov r0, r2
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

@@ -5,7 +5,6 @@
     .type get_next, %function
 get_next:
     push {r4, r5, lr}
-    sub sp, sp, #16
     ldr r0, Addr0_1
     ldr r1, =0
     ldr r2, =4
@@ -100,7 +99,6 @@ bb0_6:
     bne bb0_3
     b bb0_4
 bb0_7:
-    add sp, sp, #16
     pop {r4, r5, lr}
     bx lr
     .pool

@@ -5,7 +5,6 @@
     .type select_sort, %function
 select_sort:
     push {r4, r5, r6, r7, r8, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r3, =0
     pop {lr}
@@ -126,7 +125,6 @@ bb0_9:
     b bb0_0
 bb0_10:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, r7, r8, lr}
     bx lr
     .pool

@@ -5,7 +5,6 @@
     .type set_a, %function
 set_a:
     push {lr}
-    sub sp, sp, #16
     push {r1}
     ldr r1, Addr0_0
     str r0, [r1]
@@ -14,7 +13,6 @@ set_a:
     ldr r0, [r0]
     b bb0_0
 bb0_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -26,7 +24,6 @@ Addr0_0:
     .type set_b, %function
 set_b:
     push {lr}
-    sub sp, sp, #16
     push {r1}
     ldr r1, Addr1_0
     str r0, [r1]
@@ -35,7 +32,6 @@ set_b:
     ldr r0, [r0]
     b bb1_0
 bb1_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -47,7 +43,6 @@ Addr1_0:
     .type set_d, %function
 set_d:
     push {lr}
-    sub sp, sp, #16
     push {r1}
     ldr r1, Addr2_0
     str r0, [r1]
@@ -56,7 +51,6 @@ set_d:
     ldr r0, [r0]
     b bb2_0
 bb2_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

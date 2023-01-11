@@ -5,7 +5,6 @@
     .type myFunc, %function
 myFunc:
     push {lr}
-    sub sp, sp, #16
     STMDB SP, {r0}
     Mov r0, r1
     ldr r1, =0
@@ -54,7 +53,6 @@ bb0_4:
     b bb0_5
 bb0_5:
     mov r0, r1
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

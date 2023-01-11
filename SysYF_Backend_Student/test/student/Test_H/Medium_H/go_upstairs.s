@@ -5,7 +5,7 @@
     .type climbStairs, %function
 climbStairs:
     push {r4, r5, r6, lr}
-    sub sp, sp, #56
+    sub sp, sp, #40
     ldr r1, =4
     cmp r0, r1
     ldr r2, =0
@@ -22,21 +22,21 @@ climbStairs:
 bb0_0:
     b bb0_5
 bb0_1:
-    add r1, sp, #16
+    add r1, sp, #0
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
     add r2, r1, r4
     ldr r1, =0
     str r1, [r2]
-    add r1, sp, #16
+    add r1, sp, #0
     ldr r2, =1
     ldr r3, =4
     mul r4, r2, r3
     add r2, r1, r4
     ldr r1, =1
     str r1, [r2]
-    add r1, sp, #16
+    add r1, sp, #0
     ldr r2, =2
     ldr r3, =4
     mul r4, r2, r3
@@ -63,19 +63,19 @@ bb0_2:
     b bb0_4
 bb0_3:
     sub r2, r1, #1
-    add r3, sp, #16
+    add r3, sp, #0
     ldr r4, =4
     mul r5, r2, r4
     add r2, r3, r5
     ldr r3, [r2]
     sub r2, r1, #2
-    add r4, sp, #16
+    add r4, sp, #0
     ldr r5, =4
     mul r6, r2, r5
     add r2, r4, r6
     ldr r4, [r2]
     add r2, r3, r4
-    add r3, sp, #16
+    add r3, sp, #0
     ldr r4, =4
     mul r5, r1, r4
     add r4, r3, r5
@@ -86,7 +86,7 @@ bb0_3:
     pop {lr}
     b bb0_2
 bb0_4:
-    add r2, sp, #16
+    add r2, sp, #0
     ldr r3, =4
     mul r4, r0, r3
     add r0, r2, r4
@@ -99,7 +99,7 @@ bb0_5:
     b litpool0_0
     .pool
 litpool0_0:
-    add sp, sp, #56
+    add sp, sp, #40
     pop {r4, r5, r6, lr}
     bx lr
     .pool

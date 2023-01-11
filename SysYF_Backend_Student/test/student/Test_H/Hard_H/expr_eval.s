@@ -29,7 +29,6 @@ Addr0_0:
     .type is_space, %function
 is_space:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =32
     cmp r0, r1
     ldr r2, =0
@@ -68,7 +67,6 @@ bb1_2:
     bne bb1_0
     b bb1_1
 bb1_3:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -78,7 +76,6 @@ bb1_3:
     .type is_num, %function
 is_num:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =48
     cmp r0, r1
     ldr r2, =0
@@ -120,7 +117,6 @@ bb2_2:
     bne bb2_0
     b bb2_1
 bb2_3:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -291,7 +287,6 @@ litpool4_0:
     .type get_op_prec, %function
 get_op_prec:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =43
     cmp r0, r1
     ldr r2, =0
@@ -380,7 +375,6 @@ bb5_6:
     bne bb5_3
     b bb5_5
 bb5_7:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -390,7 +384,6 @@ bb5_7:
     .type stack_push, %function
 stack_push:
     push {r4, r5, r6, lr}
-    sub sp, sp, #16
     add r2, r0, #0
     ldr r3, =0
     ldr r4, =4
@@ -417,7 +410,6 @@ stack_push:
     str r1, [r0]
     b bb6_0
 bb6_0:
-    add sp, sp, #16
     pop {r4, r5, r6, lr}
     bx lr
     .pool
@@ -427,7 +419,6 @@ bb6_0:
     .type stack_pop, %function
 stack_pop:
     push {r4, r5, lr}
-    sub sp, sp, #16
     add r1, r0, #0
     ldr r2, =0
     ldr r3, =4
@@ -455,7 +446,6 @@ stack_pop:
     b bb7_0
 bb7_0:
     mov r0, r2
-    add sp, sp, #16
     pop {r4, r5, lr}
     bx lr
     .pool
@@ -465,7 +455,6 @@ bb7_0:
     .type stack_peek, %function
 stack_peek:
     push {r4, lr}
-    sub sp, sp, #16
     add r1, r0, #0
     ldr r2, =0
     ldr r3, =4
@@ -480,7 +469,6 @@ stack_peek:
     b bb8_0
 bb8_0:
     mov r0, r1
-    add sp, sp, #16
     pop {r4, lr}
     bx lr
     .pool
@@ -490,7 +478,6 @@ bb8_0:
     .type stack_size, %function
 stack_size:
     push {lr}
-    sub sp, sp, #16
     add r1, r0, #0
     ldr r0, =0
     ldr r2, =4
@@ -503,7 +490,6 @@ bb9_0:
     .pool
 litpool9_0:
     mov r0, r1
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -513,7 +499,6 @@ litpool9_0:
     .type eval_op, %function
 eval_op:
     push {r4, r5, lr}
-    sub sp, sp, #16
     ldr r3, =43
     cmp r0, r3
     ldr r4, =0
@@ -612,7 +597,6 @@ bb10_9:
     pop {lr}
     b bb10_10
 bb10_10:
-    add sp, sp, #16
     pop {r4, r5, lr}
     bx lr
     .pool

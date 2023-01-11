@@ -5,7 +5,6 @@
     .type bubblesort, %function
 bubblesort:
     push {r4, r5, r6, r7, r8, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r2, =0
     pop {lr}
@@ -115,7 +114,6 @@ bb0_7:
     b bb0_3
 bb0_8:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, r7, r8, lr}
     bx lr
     .pool

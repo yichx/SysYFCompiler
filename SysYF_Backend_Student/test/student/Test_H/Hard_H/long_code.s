@@ -5,7 +5,6 @@
     .type bubblesort, %function
 bubblesort:
     push {r4, r5, r6, r7, r8, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r2, =0
     pop {lr}
@@ -115,7 +114,6 @@ bb0_7:
     b bb0_3
 bb0_8:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, r7, r8, lr}
     bx lr
     .pool
@@ -127,7 +125,6 @@ Addr0_0:
     .type insertsort, %function
 insertsort:
     push {r4, r5, r6, r7, r8, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r3, =1
     pop {lr}
@@ -226,7 +223,6 @@ bb1_6:
     b bb1_5
 bb1_7:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, r7, r8, lr}
     bx lr
     .pool
@@ -468,7 +464,6 @@ bb2_17:
     .type getMid, %function
 getMid:
     push {r4, lr}
-    sub sp, sp, #16
     ldr r1, Addr3_0
     ldr r1, [r1]
     ldr r2, =2
@@ -530,7 +525,6 @@ bb3_2:
     b litpool3_0
     .pool
 litpool3_0:
-    add sp, sp, #16
     pop {r4, lr}
     bx lr
     .pool
@@ -542,7 +536,7 @@ Addr3_0:
     .type getMost, %function
 getMost:
     push {r4, r5, r6, r7, r8, lr}
-    ldr lr, =4016
+    ldr lr, =4000
     sub sp, sp, lr
     push {lr}
     Ldr r1, =0
@@ -563,7 +557,7 @@ bb4_0:
     bne bb4_1
     b bb4_2
 bb4_1:
-    add r2, sp, #16
+    add r2, sp, #0
     ldr r3, =4
     mul r4, r1, r3
     add r3, r2, r4
@@ -601,18 +595,18 @@ bb4_4:
     mul r6, r4, r5
     add r5, r1, r6
     ldr r1, [r5]
-    add r5, sp, #16
+    add r5, sp, #0
     ldr r6, =4
     mul r7, r1, r6
     add r6, r5, r7
     ldr r5, [r6]
     add r6, r5, #1
-    add r5, sp, #16
+    add r5, sp, #0
     ldr r7, =4
     mul r8, r1, r7
     add r7, r5, r8
     str r6, [r7]
-    add r5, sp, #16
+    add r5, sp, #0
     ldr r6, =4
     mul r7, r1, r6
     add r6, r5, r7
@@ -635,7 +629,7 @@ bb4_6:
     b litpool4_0
     .pool
 litpool4_0:
-    add r2, sp, #16
+    add r2, sp, #0
     ldr r3, =4
     mul r5, r1, r3
     add r3, r2, r5
@@ -653,7 +647,7 @@ bb4_7:
     b bb4_3
 bb4_8:
     mov r0, r2
-    ldr lr, =4016
+    ldr lr, =4000
     add sp, sp, lr
     pop {r4, r5, r6, r7, r8, lr}
     bx lr
@@ -666,7 +660,6 @@ Addr4_0:
     .type revert, %function
 revert:
     push {r4, r5, r6, r7, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r1, =0
     Ldr r2, =0
@@ -717,7 +710,6 @@ bb5_2:
     b bb5_3
 bb5_3:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, r7, lr}
     bx lr
     .pool
@@ -727,7 +719,6 @@ bb5_3:
     .type arrCopy, %function
 arrCopy:
     push {r4, r5, r6, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r2, =0
     pop {lr}
@@ -770,7 +761,6 @@ bb6_2:
     b bb6_3
 bb6_3:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, lr}
     bx lr
     .pool
@@ -782,7 +772,6 @@ Addr6_0:
     .type calSum, %function
 calSum:
     push {r4, r5, r6, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r2, =0
     Ldr r3, =0
@@ -860,7 +849,6 @@ bb7_5:
     b bb7_0
 bb7_6:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, lr}
     bx lr
     .pool
@@ -872,7 +860,6 @@ Addr7_0:
     .type avgPooling, %function
 avgPooling:
     push {r4, r5, r6, r7, r8, r9, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r3, =0
     Ldr r4, =0
@@ -1022,7 +1009,6 @@ bb8_11:
     b bb8_12
 bb8_12:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, r7, r8, r9, lr}
     bx lr
     .pool

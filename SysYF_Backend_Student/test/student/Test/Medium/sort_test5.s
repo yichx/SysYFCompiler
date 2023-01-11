@@ -5,7 +5,6 @@
     .type swap, %function
 swap:
     push {r4, r5, r6, lr}
-    sub sp, sp, #16
     ldr r2, Addr0_0
     ldr r3, =4
     mul r4, r0, r3
@@ -29,7 +28,6 @@ swap:
     b bb0_0
 bb0_0:
     ldr r0, =0
-    add sp, sp, #16
     pop {r4, r5, r6, lr}
     bx lr
     .pool

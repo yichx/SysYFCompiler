@@ -5,7 +5,6 @@
     .type my_sum, %function
 my_sum:
     push {lr}
-    sub sp, sp, #16
     add r2, r0, #5
     sub r0, r2, r1
     push {r1}
@@ -16,7 +15,6 @@ my_sum:
     ldr r0, [r0]
     b bb0_0
 bb0_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

@@ -5,11 +5,10 @@
     .type testParam8, %function
 testParam8:
     push {r4, r5, r6, r7, r8, lr}
-    sub sp, sp, #16
-    ldr r4, [sp, #40]
-    ldr r5, [sp, #44]
-    ldr r6, [sp, #48]
-    ldr r7, [sp, #52]
+    ldr r4, [sp, #24]
+    ldr r5, [sp, #28]
+    ldr r6, [sp, #32]
+    ldr r7, [sp, #36]
     add r8, r0, r1
     sub r0, r8, r2
     sub r1, r0, r3
@@ -20,7 +19,6 @@ testParam8:
     b bb0_0
 bb0_0:
     mov r0, r1
-    add sp, sp, #16
     pop {r4, r5, r6, r7, r8, lr}
     bx lr
     .pool
@@ -30,16 +28,16 @@ bb0_0:
     .type testParam16, %function
 testParam16:
     push {r4, r5, r6, r7, r8, r9, r10, lr}
-    sub sp, sp, #40
+    sub sp, sp, #24
     STMDB SP, {r3}
     Mov r8, r2
     Ldr r9, [sp, #-4]
-    ldr r10, [sp, #72]
-    ldr r7, [sp, #76]
-    ldr r6, [sp, #80]
-    ldr r5, [sp, #84]
-    ldr r4, [sp, #88]
-    ldr r3, [sp, #92]
+    ldr r10, [sp, #56]
+    ldr r7, [sp, #60]
+    ldr r6, [sp, #64]
+    ldr r5, [sp, #68]
+    ldr r4, [sp, #72]
+    ldr r3, [sp, #76]
     add r2, r0, r1
     add r0, r2, r8
     add r1, r0, r9
@@ -50,23 +48,23 @@ testParam16:
     sub r0, r1, r4
     add r1, r0, r3
     str r2, [sp]
+    ldr r2, [sp, #80]
+    add r0, r1, r2
+    ldr r2, [sp, #84]
+    add r1, r0, r2
+    ldr r2, [sp, #88]
+    add r0, r1, r2
+    ldr r2, [sp, #92]
+    add r1, r0, r2
     ldr r2, [sp, #96]
     add r0, r1, r2
     ldr r2, [sp, #100]
-    add r1, r0, r2
-    ldr r2, [sp, #104]
-    add r0, r1, r2
-    ldr r2, [sp, #108]
-    add r1, r0, r2
-    ldr r2, [sp, #112]
-    add r0, r1, r2
-    ldr r2, [sp, #116]
     add r1, r0, r2
     ldr r2, [sp]
     b bb1_0
 bb1_0:
     mov r0, r1
-    add sp, sp, #40
+    add sp, sp, #24
     pop {r4, r5, r6, r7, r8, r9, r10, lr}
     bx lr
     .pool
@@ -76,16 +74,16 @@ bb1_0:
     .type testParam32, %function
 testParam32:
     push {r4, r5, r6, r7, r8, r9, r10, lr}
-    sub sp, sp, #104
+    sub sp, sp, #88
     STMDB SP, {r3}
     Mov r10, r2
     Ldr r9, [sp, #-4]
-    ldr r8, [sp, #136]
-    ldr r7, [sp, #140]
-    ldr r6, [sp, #144]
-    ldr r5, [sp, #148]
-    ldr r4, [sp, #152]
-    ldr r3, [sp, #156]
+    ldr r8, [sp, #120]
+    ldr r7, [sp, #124]
+    ldr r6, [sp, #128]
+    ldr r5, [sp, #132]
+    ldr r4, [sp, #136]
+    ldr r3, [sp, #140]
     add r2, r0, r1
     add r0, r2, r10
     add r1, r0, r9
@@ -96,10 +94,18 @@ testParam32:
     add r0, r1, r4
     add r1, r0, r3
     str r2, [sp]
-    ldr r2, [sp, #160]
+    ldr r2, [sp, #144]
     add r0, r1, r2
-    ldr r2, [sp, #164]
+    ldr r2, [sp, #148]
     add r1, r0, r2
+    ldr r2, [sp, #152]
+    sub r0, r1, r2
+    ldr r2, [sp, #156]
+    sub r1, r0, r2
+    ldr r2, [sp, #160]
+    sub r0, r1, r2
+    ldr r2, [sp, #164]
+    sub r1, r0, r2
     ldr r2, [sp, #168]
     sub r0, r1, r2
     ldr r2, [sp, #172]
@@ -113,13 +119,13 @@ testParam32:
     ldr r2, [sp, #188]
     sub r1, r0, r2
     ldr r2, [sp, #192]
-    sub r0, r1, r2
+    add r0, r1, r2
     ldr r2, [sp, #196]
-    sub r1, r0, r2
+    add r1, r0, r2
     ldr r2, [sp, #200]
-    sub r0, r1, r2
+    add r0, r1, r2
     ldr r2, [sp, #204]
-    sub r1, r0, r2
+    add r1, r0, r2
     ldr r2, [sp, #208]
     add r0, r1, r2
     ldr r2, [sp, #212]
@@ -132,19 +138,11 @@ testParam32:
     add r0, r1, r2
     ldr r2, [sp, #228]
     add r1, r0, r2
-    ldr r2, [sp, #232]
-    add r0, r1, r2
-    ldr r2, [sp, #236]
-    add r1, r0, r2
-    ldr r2, [sp, #240]
-    add r0, r1, r2
-    ldr r2, [sp, #244]
-    add r1, r0, r2
     ldr r2, [sp]
     b bb2_0
 bb2_0:
     mov r0, r1
-    add sp, sp, #104
+    add sp, sp, #88
     pop {r4, r5, r6, r7, r8, r9, r10, lr}
     bx lr
     .pool

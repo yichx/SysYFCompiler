@@ -5,12 +5,10 @@
     .type inc, %function
 inc:
     push {lr}
-    sub sp, sp, #16
     add r1, r0, #1
     b bb0_0
 bb0_0:
     mov r0, r1
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -20,11 +18,9 @@ bb0_0:
     .type zero, %function
 zero:
     push {lr}
-    sub sp, sp, #16
     b bb1_0
 bb1_0:
     ldr r0, =0
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

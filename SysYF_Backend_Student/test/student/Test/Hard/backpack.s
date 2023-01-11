@@ -5,7 +5,6 @@
     .type KnapSack, %function
 KnapSack:
     push {r4, r5, r6, r7, r8, r9, r10, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r5, =1
     pop {lr}
@@ -261,7 +260,6 @@ bb0_18:
     .pool
 litpool0_2:
     mov r0, r1
-    add sp, sp, #16
     pop {r4, r5, r6, r7, r8, r9, r10, lr}
     bx lr
     .pool

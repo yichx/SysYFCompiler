@@ -5,7 +5,6 @@
     .type get_ans_se, %function
 get_ans_se:
     push {lr}
-    sub sp, sp, #16
     cmp r1, r2
     ldr r3, =0
     ldreq r3, =1
@@ -39,7 +38,6 @@ bb0_1:
     pop {r0}
     b bb0_2
 bb0_2:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -51,7 +49,6 @@ Addr0_0:
     .type get_ans, %function
 get_ans:
     push {lr}
-    sub sp, sp, #16
     cmp r1, r2
     ldr r3, =0
     ldreq r3, =1
@@ -78,7 +75,6 @@ bb1_1:
     add r0, r3, r1
     b bb1_2
 bb1_2:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

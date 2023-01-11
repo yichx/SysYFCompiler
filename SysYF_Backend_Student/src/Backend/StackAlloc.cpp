@@ -77,10 +77,6 @@ int CodeGen::stack_space_allocation(Function *fun)
     }
     else //无函数调用，从sp开始从上往下
     {
-      if(have_temp_reg) //临时寄存器保存区
-      {
-        size+=temp_reg_store_num*reg_size;
-      }
       for(auto reg_interval_map = _reg_map->begin(); reg_interval_map != _reg_map->end(); reg_interval_map++) //溢出到栈的局部变量
       {
         if(reg_interval_map->second->reg_num==-1)

@@ -199,7 +199,6 @@ bb1_4:
     .type memmove, %function
 memmove:
     push {r4, r5, r6, r7, r8, r9, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r4, =0
     pop {lr}
@@ -241,7 +240,6 @@ bb2_2:
     b bb2_3
 bb2_3:
     mov r0, r4
-    add sp, sp, #16
     pop {r4, r5, r6, r7, r8, r9, lr}
     bx lr
     .pool

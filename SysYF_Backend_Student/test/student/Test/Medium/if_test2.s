@@ -5,7 +5,6 @@
     .type if_if_Else, %function
 if_if_Else:
     push {lr}
-    sub sp, sp, #16
     ldr r0, =5
     ldr r1, =5
     cmp r0, r1
@@ -58,7 +57,6 @@ bb0_5:
     b litpool0_0
     .pool
 litpool0_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

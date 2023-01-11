@@ -5,7 +5,6 @@
     .type checkrange, %function
 checkrange:
     push {lr}
-    sub sp, sp, #16
     b bb0_0
 bb0_0:
     ldr r1, =1073741824
@@ -57,7 +56,6 @@ bb0_6:
     b litpool0_0
     .pool
 litpool0_0:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -446,8 +444,7 @@ litpool1_4:
     .type getvalue, %function
 getvalue:
     push {r4, r5, r6, r7, lr}
-    sub sp, sp, #16
-    ldr r4, [sp, #36]
+    ldr r4, [sp, #20]
     ldr r5, =0
     cmp r3, r5
     ldr r6, =0
@@ -522,7 +519,6 @@ bb2_5:
     b litpool2_0
     .pool
 litpool2_0:
-    add sp, sp, #16
     pop {r4, r5, r6, r7, lr}
     bx lr
     .pool
@@ -796,7 +792,6 @@ bb3_20:
     .type memmove, %function
 memmove:
     push {r4, r5, r6, r7, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r3, =0
     pop {lr}
@@ -836,7 +831,6 @@ litpool4_0:
 bb4_2:
     b bb4_3
 bb4_3:
-    add sp, sp, #16
     pop {r4, r5, r6, r7, lr}
     bx lr
     .pool

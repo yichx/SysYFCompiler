@@ -5,7 +5,6 @@
     .type enc, %function
 enc:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =25
     cmp r0, r1
     ldr r2, =0
@@ -34,7 +33,6 @@ bb0_1:
 bb0_2:
     b bb0_3
 bb0_3:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool
@@ -44,7 +42,6 @@ bb0_3:
     .type dec, %function
 dec:
     push {lr}
-    sub sp, sp, #16
     ldr r1, =85
     cmp r0, r1
     ldr r2, =0
@@ -76,7 +73,6 @@ bb1_2:
 litpool1_0:
     b bb1_3
 bb1_3:
-    add sp, sp, #16
     pop {lr}
     bx lr
     .pool

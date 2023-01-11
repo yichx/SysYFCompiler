@@ -5,113 +5,113 @@
     .type foo, %function
 foo:
     push {r4, lr}
-    sub sp, sp, #80
-    add r0, sp, #16
+    sub sp, sp, #64
+    add r0, sp, #0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =1
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =2
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =3
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =3
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =4
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =5
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =6
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =7
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =3
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =8
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =9
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =10
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =11
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =3
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =12
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =13
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =14
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #16
+    add r0, sp, #0
     ldr r1, =15
     ldr r2, =4
     mul r3, r1, r2
@@ -135,7 +135,7 @@ foo:
     add r0, r2, #4
     add r2, r0, #6
     add r0, r1, r2
-    add r1, sp, #16
+    add r1, sp, #0
     ldr r2, =3
     ldr r3, =4
     mul r4, r2, r3
@@ -145,7 +145,7 @@ foo:
     b bb0_0
 bb0_0:
     mov r0, r2
-    add sp, sp, #80
+    add sp, sp, #64
     pop {r4, lr}
     bx lr
     .pool

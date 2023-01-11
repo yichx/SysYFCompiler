@@ -5,7 +5,6 @@
     .type gcd, %function
 gcd:
     push {r4, r5, lr}
-    sub sp, sp, #16
     cmp r0, r1
     ldr r3, =0
     ldrlt r3, =1
@@ -64,7 +63,6 @@ bb0_3:
 bb0_4:
     b bb0_5
 bb0_5:
-    add sp, sp, #16
     pop {r4, r5, lr}
     bx lr
     .pool

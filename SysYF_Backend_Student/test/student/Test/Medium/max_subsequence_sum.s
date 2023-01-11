@@ -5,7 +5,6 @@
     .type maxSubArray, %function
 maxSubArray:
     push {r4, r5, r6, lr}
-    sub sp, sp, #16
     ldr r1, =0
     cmp r0, r1
     ldr r2, =0
@@ -131,7 +130,6 @@ bb0_10:
     pop {lr}
     b bb0_4
 bb0_11:
-    add sp, sp, #16
     pop {r4, r5, r6, lr}
     bx lr
     .pool

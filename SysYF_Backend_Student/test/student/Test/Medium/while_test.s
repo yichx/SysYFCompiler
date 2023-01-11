@@ -5,7 +5,6 @@
     .type FourWhile, %function
 FourWhile:
     push {r4, r5, r6, lr}
-    sub sp, sp, #16
     push {lr}
     Ldr r0, =10
     Ldr r1, =7
@@ -115,7 +114,6 @@ bb0_11:
     b bb0_6
 bb0_12:
     mov r0, r2
-    add sp, sp, #16
     pop {r4, r5, r6, lr}
     bx lr
     .pool

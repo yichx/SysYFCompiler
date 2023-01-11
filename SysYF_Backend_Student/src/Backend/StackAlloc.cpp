@@ -32,61 +32,83 @@ int CodeGen::stack_space_allocation(Function *fun)
 
     int offset = 0;
 
-    if(have_func_call) //调用方保存区
+    if(have_func_call) //函数参数
     {
-      size+=caller_saved_reg_num*reg_size;
-      offset+=caller_saved_reg_num*reg_size;
-    }
-    if(have_temp_reg)
-    {
-      size+=temp_reg_store_num*reg_size;
-      offset+=temp_reg_store_num*reg_size;
-    }
-    for(auto inst:fun->get_entry_block()->get_instructions()) //处理alloca
-    {
-      if(dynamic_cast<AllocaInst*>(inst)==nullptr) continue;
-      if(dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->is_array_type())
+        int base = (used_reg.second.size()+1)*reg_size; //被调用方保存的寄存器
+        if(fun->get_num_of_args()>4)
+        {
+          int arg_idx=0;
+          for(auto arg:fun->get_args())
+          {
+            if(arg_idx>=4)
+            {
+              arg_on_stack.push_back(new IR2asm::Regbase(IR2asm::frame_ptr,base+(arg_idx-4)*reg_size));
+              stack_map.insert(std::make_pair(arg,new IR2asm::Regbase(IR2asm::frame_ptr,base+(arg_idx-4)*reg_size)));
+            }
+            arg_idx++;
+          }
+        }
+      
+      for(auto reg_interval_map = _reg_map->begin(); reg_interval_map != _reg_map->end(); reg_interval_map++) //溢出到栈的局部变量
       {
-        stack_map.insert(std::make_pair(inst,new IR2asm::Regbase(IR2asm::sp,offset)));
-        size+=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
-        offset+=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
+        if(reg_interval_map->second->reg_num==-1)
+        {
+          int _sizeof=reg_interval_map->first->get_type()->get_size();
+          if(_sizeof<4) _sizeof=4;
+          size+=_sizeof;
+          stack_map.insert(std::make_pair(reg_interval_map->first,new IR2asm::Regbase(IR2asm::frame_ptr,-size)));
+        }
+      }
+      for(auto inst:fun->get_entry_block()->get_instructions()) //处理alloca
+      {
+        if(dynamic_cast<AllocaInst*>(inst)==nullptr) continue;
+        if(dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->is_array_type())
+        {
+          size+=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
+          stack_map.insert(std::make_pair(inst,new IR2asm::Regbase(IR2asm::frame_ptr,-size)));
+        }
+      }
+      if(have_temp_reg)
+      {
+        size+=temp_reg_store_num*reg_size;
       }
     }
-    
-    for(auto reg_interval_map = _reg_map->begin(); reg_interval_map != _reg_map->end(); reg_interval_map++) //溢出到栈的局部变量
+    else
     {
-      if(reg_interval_map->second->reg_num==-1)
+      size+=(temp_reg_store_num+1)*reg_size;
+      for(auto reg_interval_map = _reg_map->begin(); reg_interval_map != _reg_map->end(); reg_interval_map++) //溢出到栈的局部变量
       {
-        stack_map.insert(std::make_pair(reg_interval_map->first,new IR2asm::Regbase(IR2asm::sp,offset)));
-        int _sizeof=reg_interval_map->first->get_type()->get_size();
-        if(_sizeof<4) _sizeof=4;
-        size+=_sizeof*reg_size;
-        offset+=_sizeof*reg_size;
+        if(reg_interval_map->second->reg_num==-1)
+        {
+          stack_map.insert(std::make_pair(reg_interval_map->first,new IR2asm::Regbase(IR2asm::sp,size)));
+          int _sizeof=reg_interval_map->first->get_type()->get_size();
+          if(_sizeof<4) _sizeof=4;
+          size+=_sizeof;
+        }
       }
-    }
-    offset+=(used_reg.second.size()+1)*reg_size; //被调用方保存的寄存器
-    if(fun->get_num_of_args()>4) //函数参数
-    {
-      for(int i=0;i<fun->get_num_of_args()-4;i++)
+      for(auto inst:fun->get_entry_block()->get_instructions()) //处理alloca
       {
-        arg_on_stack.push_back(new IR2asm::Regbase(IR2asm::sp, offset));
-        offset+=reg_size;
+        if(dynamic_cast<AllocaInst*>(inst)==nullptr) continue;
+        if(dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->is_array_type())
+        {
+          stack_map.insert(std::make_pair(inst,new IR2asm::Regbase(IR2asm::sp,size)));
+          size+=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
+        }
       }
-    }
-    int arg_num=fun->get_num_of_args();
-    int arg_num_it=0;
-    for(auto arg_it=fun->get_args().begin();arg_it!=fun->get_args().end();arg_it++)
-    {
-	    if(arg_num_it<=3)
-	    {
-		    arg_num_it++;
-	    continue;
-	    }
-	    if(!stack_map.insert({(*arg_it),arg_on_stack[arg_num_it-4]}).second)
-	    {
-		    stack_map[*arg_it]=arg_on_stack[arg_num_it-4];
-	    }
-	    arg_num++;
+      int base = (used_reg.second.size()+1)*reg_size+size; //被调用方保存的寄存器
+      if(fun->get_num_of_args()>4)
+      {
+        int arg_idx=0;
+        for(auto arg:fun->get_args())
+        {
+          if(arg_idx>=4)
+          {
+            arg_on_stack.push_back(new IR2asm::Regbase(IR2asm::sp,base+(arg_idx-4)*reg_size));
+            stack_map.insert(std::make_pair(arg,new IR2asm::Regbase(IR2asm::sp,base+(arg_idx-4)*reg_size)));
+          }
+          arg_idx++;
+        }
+      }
     }
 
     return size;

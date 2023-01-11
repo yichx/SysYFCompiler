@@ -244,7 +244,7 @@ bool RegAlloc::try_insert_current()
 //从第一个可用的寄存器开始往下按顺序看看当前Interval（current）
 //可不可以插入这个reg_for_interval(是否和这个集合里面的所有Interval不相交)，如果可以，直接插入
 {
-    for(int reg_id = 0;reg_id < 12; ++reg_id)
+    for(int reg_id = 0;reg_id < 11; ++reg_id)
     {
         bool caninsert = true;
         for(auto &Inter : reg_for_intervals[reg_id])
@@ -270,7 +270,7 @@ bool RegAlloc::Spill()
 {
     Interval* max_weight = current;
     int reg_pos = -1;
-    for(int reg_id = 0;reg_id < 12; ++reg_id)
+    for(int reg_id = 0;reg_id < 11; ++reg_id)
         for(auto &Inter : reg_for_intervals[reg_id])
             if(Inter->get_weight() > max_weight->get_weight())
             {
@@ -284,12 +284,12 @@ bool RegAlloc::Spill()
 }
 
 void RegAlloc::walk_intervals() {
-
+    //puts("IN");
     /*you need to finish this function*/
     for(auto current_it=interval_list.begin();current_it!=interval_list.end();current_it++){
         current = *current_it;
-        int pos = (*current->range_list.begin())->from; //定义pos表示当前扫描到的Interval对应range_list的最左端点。
-        for(int reg_id = 0;reg_id < 12; ++reg_id)
+        int pos = (*current->range_list.begin())->from + 1; //定义pos表示当前扫描到的Interval对应range_list的最左端点。
+        for(int reg_id = 0;reg_id < 11; ++reg_id)
         {
             /*每扫描到一个pos，计算reg_for_intervals里面每个Interval的权重。
             权重定义为从pos开始往后这个Interval的range_list覆盖的活跃区域长度。
@@ -316,12 +316,25 @@ void RegAlloc::walk_intervals() {
             if(try_insert_current())
                 break;
     }
-    for(int reg_id = 0;reg_id < 12; ++reg_id)//扫描结束，将放在reg_for_interval中剩下的Interval分配。
+    for(int reg_id = 0;reg_id < 11; ++reg_id)//扫描结束，将放在reg_for_interval中剩下的Interval分配。
     {
         for(auto inter : reg_for_intervals[reg_id])
             inter->reg_num = reg_id;
         reg_for_intervals[reg_id].clear();
     }
+    for(auto InterA : interval_list)
+    if(InterA->reg_num != -1)
+    {
+        for(auto InterB : interval_list)
+            if(InterB->reg_num != -1 && InterA != InterB)
+                if(InterA->intersects(InterB) && InterA->reg_num == InterB->reg_num)
+                {
+                    puts("ERROR");
+                    exit(0);
+                }
+    }
+    puts("register allocation ok");
+    //puts("OUT");
 }
 
 void RegAlloc::build_graph()

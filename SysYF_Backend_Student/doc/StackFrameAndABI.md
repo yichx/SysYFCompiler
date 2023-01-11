@@ -18,9 +18,11 @@ bool have_temp_reg;
 
 ![img](./img/stack_frame_.png)
 
-其中栈传参部分由调用者完成，进入被调用者之后首先将保存被调用方保存的寄存器，其数目通过`used_reg.second.size() + 1`得到，`used_reg`是`CodeGen`类的属性，事先已经维护好可以直接使用。
+进入`stack_space_allocation`后首先要进行栈传参，随后为“其他被调用方保存寄存器”分配栈空间。这部分寄存器的数目通过`used_reg.second.size()`得到，`used_reg`是`CodeGen`类的属性，事先已经维护好可以直接使用。
 
-调用`stack_space_allocation`时，栈顶部是调用方传递的参数，而栈帧指针尚未移动，调用完成后，会产生将被调用方保存的寄存器压栈的操作，完成之后栈顶指针指向保存的lr寄存器值，之后栈顶指针会再次移动以预留此活动记录所需空间，这一空间是你在`stack_space_allocation`返回的活动记录大小。同时若被调用方内部有函数调用 (`have_func_call`为`True`)，栈帧指针将指向保存的lr，否则lr不会移动。请根据此来设计你的基址寄存器以及偏移量。
+`stack_space_allocation`只是**记录**栈分配信息，并返回size的大小。调用`stack_space_allocation`的过程中，并没有实际地产生栈分配。因此，在设计基址寄存器和偏移量时，应该以下一段对`stack_space_allocation`的描述结束时的状态为基准。
+
+调用`stack_space_allocation`时，栈顶部是调用方传递的参数，而栈帧指针尚未移动，调用完成后，会产生将被调用方保存的寄存器压栈的操作，完成之后栈顶指针指向保存的lr寄存器值，之后栈顶指针会再次移动以预留此活动记录所需空间，这一空间是你在`stack_space_allocation`返回的活动记录大小。同时若被调用方内部有函数调用 (`have_func_call`为`True`)，栈帧指针将指向保存的lr，否则栈帧指针不会移动。请根据此来设计你的基址寄存器以及偏移量。
 
 临时寄存器保存区是在函数内部需要用到临时寄存器时 (`have_temp_reg`为`True`)需要留出来的栈空间，其大小为`temp_reg_store_num`个寄存器的空间（寄存器字节数由`reg_size`给出）。
 

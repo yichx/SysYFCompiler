@@ -54,6 +54,89 @@
 
 为了处理环的情况，牺牲一个寄存器分配位置用来处理数据迁移的情况。（也可以把值放压栈然后弹栈，只是选择闲置了一个寄存器的方法）
 
+### 任务3：栈空间分配
+
+做这部分的时候，遇到了很大的麻烦，主要是栈的工作过程没有读懂，以及在stack_map踩的坑。在ARM汇编中，sp代表栈顶指针寄存器，它时刻标记着栈顶的位置，但是在寻址时我们通常是基于栈帧寄存器fp而不是sp，因为在入栈的过程中，sp的经常会变的，但是fp通常很稳定。建议文档增加对sp和fp位置的详细描述，并以流程图的形式展示寄存器分配的过程。我对ABI文档进行了略微的修改。
+
+当存在函数调用时，fp移到了lr的位置，因此可以以它为标准进行栈分配：其他被调用方保存的寄存器在fp下方，因此偏移量为正数。这里我们只需要记录这个偏移，在之后分配栈空间的时候把这一块空出来即可：
+```c++
+int base = (used_reg.second.size()+1)*reg_size;
+```
+再下方是函数参数，这时它就应该以base为基准进一步向下偏移。函数的参数个数可以由`fun->get_num_of_args()`，当它超过4时多余的参数依次入栈。
+
+接下来是fp上方的部分——溢出到栈的局部变量，寄存器的分配信息在变量reg_interval_map中，当第二个元素的reg_num为-1时，表示该不能分配到寄存器，需要分配到栈。我们可以对第一个Value*类型的元素使用get_type方法再使用get_size方法得到应分配的栈空间大小。当不足4时设为4进行对齐。这部分的代码如下：
+```c++
+for(auto reg_interval_map = _reg_map->begin(); reg_interval_map != _reg_map->end(); reg_interval_map++) //溢出到栈的局部变量
+{
+    if(reg_interval_map->second->reg_num==-1)
+    {
+        int _sizeof=reg_interval_map->first->get_type()->get_size();
+        if(_sizeof<4) _sizeof=4;
+        size+=_sizeof;
+        stack_map.insert(std::make_pair(reg_interval_map->first,new IR2asm::Regbase(IR2asm::frame_ptr,-size)));
+    }
+}
+```
+
+局部数组使用alloc进行内存分配，分配出的栈空间应该在其他局部变量之上、临时寄存器保存区之下。于是紧接着上述代码，我们有局部数组保存的部分：
+```c++
+for(auto bb:fun->get_basic_blocks()) //处理alloca
+{
+    for(auto inst:bb->get_instructions())
+    {
+        if(dynamic_cast<AllocaInst*>(inst)==nullptr) continue;
+        if(dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->is_array_type())
+        {
+        size+=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
+        stack_map.insert(std::make_pair(inst,new IR2asm::Regbase(IR2asm::frame_ptr,-size)));
+        }
+    }
+}
+```
+该依次扫描了函数的所有之类，遇到分配数组的alloca就申请相应的空间。
+
+最后由于存在函数调用，需要临时寄存器保存区和调用方保存区，这一部分直接对size进行操作，后面sp进行移动时空出相应空间即可。
+
+在没有函数调用时，栈帧不指向该活动记录中的lr，同时由于在调用过程中sp不会再变，我们就可以采用相对sp寻址的方式。由于sp在栈的上方，从上往下分配栈是一种较容易实现的方法。代码和前面类似，但是寻址的寄存器和偏移量有所调整，以及按照ABI约定，无需分配调用方保存区和临时寄存器保存区。这一部分的代码如下：
+```c++
+for(auto reg_interval_map = _reg_map->begin(); reg_interval_map != _reg_map->end(); reg_interval_map++) //溢出到栈的局部变量
+{
+    if(reg_interval_map->second->reg_num==-1)
+    {
+        stack_map.insert(std::make_pair(reg_interval_map->first,new IR2asm::Regbase(IR2asm::sp,size)));
+        int _sizeof=reg_interval_map->first->get_type()->get_size();
+        if(_sizeof<4) _sizeof=4;
+        size+=_sizeof;
+    }
+    }
+    for(auto bb:fun->get_basic_blocks()) //处理alloca
+    {
+    for(auto inst:bb->get_instructions())
+    {
+        if(dynamic_cast<AllocaInst*>(inst)==nullptr) continue;
+        if(dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->is_array_type())
+        {
+        stack_map.insert(std::make_pair(inst,new IR2asm::Regbase(IR2asm::sp,size)));
+        size+=dynamic_cast<AllocaInst*>(inst)->get_alloca_type()->get_size();
+        }
+    }
+    }
+    int base = (used_reg.second.size()+1)*reg_size+size; //被调用方保存的寄存器
+    if(fun->get_num_of_args()>4)
+    {
+    int arg_idx=0;
+    for(auto arg:fun->get_args())
+    {
+        if(arg_idx>=4)
+        {
+        arg_on_stack.push_back(new IR2asm::Regbase(IR2asm::sp,base+(arg_idx-4)*reg_size));
+        stack_map[arg]=new IR2asm::Regbase(IR2asm::sp,base+(arg_idx-4)*reg_size);
+        }
+        arg_idx++;
+    }
+}
+```
+
 ## 思考题
 
 ### 1

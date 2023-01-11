@@ -1043,236 +1043,270 @@ main:
     ldr r1, [lr]
     str r0, [r1]
     pop {r1}
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =7
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =1
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =23
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =2
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =89
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =3
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =26
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =4
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =282
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =5
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =254
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =6
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =27
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =7
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =5
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =8
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =83
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =9
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =273
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =10
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =574
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =11
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =905
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =12
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =354
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =13
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =657
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =14
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =935
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =15
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =264
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =16
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =639
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =17
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =459
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =18
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =29
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =19
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =68
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =20
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =929
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =21
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =756
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =22
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =452
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =23
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =279
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =24
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =58
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =25
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =87
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =26
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =96
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =27
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =36
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =28
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =39
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =29
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =28
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =30
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =31
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =290
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
-    add r0, sp, #164
+    ldr r0, =-256
+    add r0, r11, r0
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1282,7 +1316,8 @@ main:
     ldr r1, [sp, #8]
     bl arrCopy
     LDMIB SP, {r1, r2}
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1315,7 +1350,8 @@ bb9_1:
     b litpool9_0
     .pool
 litpool9_0:
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3
@@ -1330,7 +1366,8 @@ litpool9_0:
     pop {lr}
     b bb9_0
 bb9_2:
-    add r0, sp, #164
+    ldr r0, =-256
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
@@ -1358,7 +1395,8 @@ bb9_3:
     bne bb9_4
     b bb9_5
 bb9_4:
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3
@@ -1373,7 +1411,8 @@ bb9_4:
     pop {lr}
     b bb9_3
 bb9_5:
-    add r0, sp, #164
+    ldr r0, =-256
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
@@ -1386,7 +1425,8 @@ bb9_5:
     ldr r0, [sp]
     bl put_int
     LDM sp, {r0}
-    add r0, sp, #164
+    ldr r0, =-256
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
@@ -1399,12 +1439,14 @@ bb9_5:
     ldr r0, [sp]
     bl put_int
     LDM sp, {r0}
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
-    add r0, sp, #164
+    ldr r0, =-256
+    add r0, r11, r0
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1414,7 +1456,8 @@ bb9_5:
     ldr r1, [sp, #8]
     bl arrCopy
     LDMIB SP, {r1, r2}
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1447,7 +1490,8 @@ bb9_7:
     b litpool9_1
     .pool
 litpool9_1:
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3
@@ -1462,12 +1506,14 @@ litpool9_1:
     pop {lr}
     b bb9_6
 bb9_8:
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
-    add r0, sp, #164
+    ldr r0, =-256
+    add r0, r11, r0
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1477,7 +1523,8 @@ bb9_8:
     ldr r1, [sp, #8]
     bl arrCopy
     LDMIB SP, {r1, r2}
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1507,7 +1554,8 @@ bb9_9:
     bne bb9_10
     b bb9_11
 bb9_10:
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3
@@ -1522,12 +1570,14 @@ bb9_10:
     pop {lr}
     b bb9_9
 bb9_11:
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
-    add r0, sp, #164
+    ldr r0, =-256
+    add r0, r11, r0
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1537,7 +1587,8 @@ bb9_11:
     ldr r1, [sp, #8]
     bl arrCopy
     LDMIB SP, {r1, r2}
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1555,15 +1606,15 @@ bb9_11:
     pop {lr}
     b bb9_12
 bb9_12:
+    b litpool9_2
+    .pool
+litpool9_2:
     ldr r1, =32
     cmp r0, r1
     ldr r2, =0
     ldrlt r2, =1
     mov r1, r2
     ldr r2, =0
-    b litpool9_2
-    .pool
-litpool9_2:
     cmp r1, r2
     ldr r3, =0
     ldrne r3, =1
@@ -1572,7 +1623,8 @@ litpool9_2:
     bne bb9_13
     b bb9_14
 bb9_13:
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3
@@ -1587,12 +1639,14 @@ bb9_13:
     pop {lr}
     b bb9_12
 bb9_14:
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
-    add r0, sp, #164
+    ldr r0, =-256
+    add r0, r11, r0
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1602,7 +1656,8 @@ bb9_14:
     ldr r1, [sp, #8]
     bl arrCopy
     LDMIB SP, {r1, r2}
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1633,7 +1688,8 @@ bb9_15:
     bne bb9_16
     b bb9_17
 bb9_16:
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3
@@ -1648,12 +1704,14 @@ bb9_16:
     pop {lr}
     b bb9_15
 bb9_17:
-    add r0, sp, #36
+    ldr r0, =-128
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
-    add r0, sp, #164
+    ldr r0, =-256
+    add r0, r11, r0
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1663,7 +1721,8 @@ bb9_17:
     ldr r1, [sp, #8]
     bl arrCopy
     LDMIB SP, {r1, r2}
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -1697,7 +1756,8 @@ litpool9_3:
     bne bb9_19
     b bb9_20
 bb9_19:
-    add r1, sp, #164
+    ldr r1, =-256
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3

@@ -41,7 +41,7 @@ int CodeGen::stack_space_allocation(Function *fun)
             if(arg_idx>=4)
             {
               arg_on_stack.push_back(new IR2asm::Regbase(IR2asm::frame_ptr,base+(arg_idx-4)*reg_size));
-              stack_map.insert(std::make_pair(arg,new IR2asm::Regbase(IR2asm::frame_ptr,base+(arg_idx-4)*reg_size)));
+              stack_map[arg]=new IR2asm::Regbase(IR2asm::frame_ptr,base+(arg_idx-4)*reg_size);
             }
             arg_idx++;
           }
@@ -79,7 +79,7 @@ int CodeGen::stack_space_allocation(Function *fun)
     {
       if(have_temp_reg) //临时寄存器保存区
       {
-        size+=(temp_reg_store_num+1)*reg_size;
+        size+=temp_reg_store_num*reg_size;
       }
       for(auto reg_interval_map = _reg_map->begin(); reg_interval_map != _reg_map->end(); reg_interval_map++) //溢出到栈的局部变量
       {
@@ -112,7 +112,7 @@ int CodeGen::stack_space_allocation(Function *fun)
           if(arg_idx>=4)
           {
             arg_on_stack.push_back(new IR2asm::Regbase(IR2asm::sp,base+(arg_idx-4)*reg_size));
-            stack_map.insert(std::make_pair(arg,new IR2asm::Regbase(IR2asm::sp,base+(arg_idx-4)*reg_size)));
+            stack_map[arg]=new IR2asm::Regbase(IR2asm::sp,base+(arg_idx-4)*reg_size);
           }
           arg_idx++;
         }

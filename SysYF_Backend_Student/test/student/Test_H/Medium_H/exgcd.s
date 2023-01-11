@@ -99,26 +99,30 @@ main:
     push {r4, r5, r11, lr}
     mov r11, sp
     sub sp, sp, #44
-    add r0, sp, #36
+    ldr r0, =-4
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #40
+    ldr r0, =-8
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-4
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
-    add r0, sp, #40
+    ldr r0, =-8
+    add r0, r11, r0
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -130,7 +134,8 @@ main:
     ldr r3, [sp, #8]
     bl exgcd
     LDMIB SP, {r1, r2}
-    add r1, sp, #36
+    ldr r1, =-4
+    add r1, r11, r1
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -147,13 +152,15 @@ main:
     ldr r2, =15
     mul r4, r3, r2
     sub r2, r1, r4
-    add r1, sp, #36
+    ldr r1, =-4
+    add r1, r11, r1
     ldr r3, =0
     ldr r4, =4
     mul r5, r3, r4
     add r3, r1, r5
     str r2, [r3]
-    add r1, sp, #36
+    ldr r1, =-4
+    add r1, r11, r1
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3

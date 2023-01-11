@@ -113,7 +113,8 @@ KMP:
     mov r11, sp
     ldr lr, =16420
     sub sp, sp, lr
-    add r2, sp, #36
+    ldr r2, =-16384
+    add r2, r11, r2
     ldr r3, =0
     ldr r4, =4
     mul r5, r3, r4
@@ -197,7 +198,8 @@ litpool1_0:
     bne bb1_6
     b bb1_7
 bb1_4:
-    add r4, sp, #36
+    ldr r4, =-16384
+    add r4, r11, r4
     ldr r5, =4
     mul r6, r3, r5
     add r3, r4, r6
@@ -337,7 +339,8 @@ main:
     mov r11, sp
     ldr lr, =32804
     sub sp, sp, lr
-    add r0, sp, #36
+    ldr r0, =-16384
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
@@ -346,8 +349,8 @@ main:
     ldr r0, [sp, #4]
     bl read_str
     LDMIB SP, {r1}
-    ldr r1, =16420
-    add r1, sp, r1
+    ldr r1, =-32768
+    add r1, r11, r1
     ldr r2, =0
     ldr r3, =4
     mul r4, r2, r3
@@ -358,13 +361,14 @@ main:
     LDMIB SP, {r1, r2}
     mov r1, r0
     ldr r0, [SP]
-    add r2, sp, #36
+    ldr r2, =-16384
+    add r2, r11, r2
     ldr r3, =0
     ldr r4, =4
     mul r5, r3, r4
     add r3, r2, r5
-    ldr r2, =16420
-    add r2, sp, r2
+    ldr r2, =-32768
+    add r2, r11, r2
     ldr r4, =0
     ldr r5, =4
     mul r6, r4, r5

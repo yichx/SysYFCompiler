@@ -33,7 +33,8 @@ bb0_1:
     ldr r3, =10
     mul r5, r4, r3
     sub r3, r2, r5
-    add r2, sp, #36
+    ldr r2, =-40000
+    add r2, r11, r2
     ldr r4, =4
     mul r5, r1, r4
     add r4, r2, r5
@@ -63,12 +64,14 @@ bb0_3:
     bne bb0_4
     b bb0_5
 bb0_4:
-    add r2, sp, #36
+    ldr r2, =-40000
+    add r2, r11, r2
     ldr r3, =4
     mul r4, r1, r3
     add r3, r2, r4
     ldr r2, [r3]
-    add r3, sp, #36
+    ldr r3, =-40000
+    add r3, r11, r3
     ldr r4, =4
     mul r5, r1, r4
     add r4, r3, r5
@@ -79,8 +82,8 @@ bb0_4:
     ldr r2, =10
     mul r5, r3, r2
     sub r2, r4, r5
-    ldr r3, =40036
-    add r3, sp, r3
+    ldr r3, =-80000
+    add r3, r11, r3
     ldr r4, =4
     mul r5, r1, r4
     add r4, r3, r5
@@ -113,14 +116,14 @@ litpool0_0:
     bne bb0_7
     b bb0_8
 bb0_7:
-    ldr r2, =40036
-    add r2, sp, r2
+    ldr r2, =-80000
+    add r2, r11, r2
     ldr r3, =4
     mul r4, r1, r3
     add r3, r2, r4
     ldr r2, [r3]
-    ldr r3, =40036
-    add r3, sp, r3
+    ldr r3, =-80000
+    add r3, r11, r3
     ldr r4, =4
     mul r5, r1, r4
     add r4, r3, r5
@@ -131,14 +134,15 @@ bb0_7:
     ldr r2, =100
     mul r5, r3, r2
     sub r2, r4, r5
-    add r3, sp, #36
+    ldr r3, =-40000
+    add r3, r11, r3
     ldr r4, =4
     mul r5, r1, r4
     add r4, r3, r5
     ldr r3, [r4]
     add r4, r2, r3
-    ldr r2, =80036
-    add r2, sp, r2
+    ldr r2, =-120000
+    add r2, r11, r2
     ldr r3, =4
     mul r5, r1, r3
     add r3, r2, r5
@@ -183,13 +187,13 @@ bb0_10:
     bne bb0_12
     b bb0_13
 bb0_11:
-    b bb0_30
-bb0_12:
     b litpool0_1
     .pool
 litpool0_1:
-    ldr r5, =80036
-    add r5, sp, r5
+    b bb0_30
+bb0_12:
+    ldr r5, =-120000
+    add r5, r11, r5
     ldr r7, =4
     mul r8, r4, r7
     add r7, r5, r8
@@ -264,14 +268,15 @@ litpool0_2:
     bne bb0_19
     b bb0_20
 bb0_19:
-    ldr r5, =80036
-    add r5, sp, r5
+    ldr r5, =-120000
+    add r5, r11, r5
     ldr r6, =4
     mul r7, r4, r6
     add r6, r5, r7
     ldr r5, [r6]
     add r6, r3, r5
-    add r3, sp, #36
+    ldr r3, =-40000
+    add r3, r11, r3
     ldr r5, =4
     mul r7, r2, r5
     add r5, r3, r7
@@ -295,8 +300,8 @@ bb0_21:
     pop {lr}
     b bb0_24
 bb0_22:
-    ldr r5, =80036
-    add r5, sp, r5
+    ldr r5, =-120000
+    add r5, r11, r5
     ldr r7, =4
     mul r8, r4, r7
     add r7, r5, r8
@@ -349,14 +354,15 @@ bb0_26:
     LDM sp, {r0, r1, r2, r3}
     b bb0_23
 bb0_27:
-    ldr r5, =40036
-    add r5, sp, r5
+    ldr r5, =-80000
+    add r5, r11, r5
     ldr r6, =4
     mul r7, r4, r6
     add r6, r5, r7
     ldr r5, [r6]
     add r6, r3, r5
-    add r3, sp, #36
+    ldr r3, =-40000
+    add r3, r11, r3
     ldr r5, =4
     mul r7, r1, r5
     add r5, r3, r7
@@ -369,14 +375,15 @@ bb0_27:
     pop {lr}
     b bb0_29
 bb0_28:
-    add r5, sp, #36
+    ldr r5, =-40000
+    add r5, r11, r5
     ldr r7, =4
     mul r8, r4, r7
     add r7, r5, r8
     ldr r5, [r7]
     add r7, r3, r5
-    ldr r3, =80036
-    add r3, sp, r3
+    ldr r3, =-120000
+    add r3, r11, r3
     ldr r5, =4
     mul r8, r1, r5
     add r5, r3, r8

@@ -7,21 +7,24 @@ main:
     push {r11, lr}
     mov r11, sp
     sub sp, sp, #48
-    add r0, sp, #36
+    ldr r0, =-12
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-12
+    add r0, r11, r0
     ldr r1, =1
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-12
+    add r0, r11, r0
     ldr r1, =2
     ldr r2, =4
     mul r3, r1, r2
@@ -38,7 +41,8 @@ main:
     ldr r0, =5
     sdiv r2, r1, r0
     sub r0, r2, #2
-    add r1, sp, #36
+    ldr r1, =-12
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r0, r1, r3

@@ -252,8 +252,9 @@ bb2_3:
 fft:
     push {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r11, sp
-    sub sp, sp, #52
-    str r0, [sp, #36]
+    sub sp, sp, #44
+    str r0, [r11, #-4]
+    str r1, [r11, #-8]
     ldr r4, =1
     cmp r2, r4
     ldr r5, =0
@@ -295,21 +296,21 @@ litpool3_0:
     b bb3_4
 bb3_3:
     ldr r0, =2
-    sdiv r5, r4, r0
+    sdiv r1, r4, r0
     ldr r0, =2
-    mul r6, r5, r0
-    sub r0, r4, r6
+    mul r5, r1, r0
+    sub r0, r4, r5
+    ldr r1, =0
+    cmp r0, r1
     ldr r5, =0
-    cmp r0, r5
-    ldr r6, =0
-    ldreq r6, =1
-    mov r0, r6
+    ldreq r5, =1
+    mov r0, r5
+    ldr r1, =0
+    cmp r0, r1
     ldr r5, =0
-    cmp r0, r5
-    ldr r6, =0
-    ldrne r6, =1
-    ldr r5, =0
-    cmp r0, r5
+    ldrne r5, =1
+    ldr r1, =0
+    cmp r0, r1
     bne bb3_5
     b bb3_6
 bb3_4:
@@ -318,92 +319,99 @@ bb3_4:
     ldr r6, =4
     mul r7, r5, r6
     add r5, r4, r7
-    STM SP, {r1, r2, r3}
-    ldr r0, [sp, #36]
-    ldr r1, [sp]
+    STM SP, {r2, r3}
+    ldr r0, [r11, #-4]
+    ldr r1, [r11, #-8]
     mov r2, r5
-    ldr r3, [sp, #4]
+    ldr r3, [sp]
     bl memmove
-    LDM SP, {r1, r2, r3}
+    LDM SP, {r2, r3}
     mov r4, r0
     ldr r5, =2
     sdiv r6, r2, r5
-    STM SP, {r1, r2, r3}
-    ldr r0, [sp, #8]
-    ldr r1, [sp, #8]
+    STM SP, {r2, r3}
+    ldr r0, [sp, #4]
+    ldr r1, [sp, #4]
     bl multiply
-    LDM SP, {r1, r2, r3}
+    LDM SP, {r2, r3}
     mov r5, r0
-    STM SP, {r1, r2, r3}
-    ldr r0, [sp, #36]
-    ldr r1, [sp]
+    STM SP, {r2, r3}
+    ldr r0, [r11, #-4]
+    ldr r1, [r11, #-8]
     mov r2, r6
     mov r3, r5
     bl fft
-    LDM SP, {r1, r2, r3}
+    LDM SP, {r2, r3}
     mov r7, r0
     ldr r5, =2
     sdiv r6, r2, r5
-    add r5, r1, r6
+    str r0, [sp, #20]
+    ldr r0, [r11, #-8]
+    add r5, r0, r6
     ldr r6, =2
     sdiv r8, r2, r6
-    STM SP, {r1, r2, r3}
-    ldr r0, [sp, #8]
-    ldr r1, [sp, #8]
+    STM SP, {r2, r3}
+    ldr r0, [sp, #4]
+    ldr r1, [sp, #4]
     bl multiply
-    LDM SP, {r1, r2, r3}
+    LDM SP, {r2, r3}
     mov r6, r0
-    STM SP, {r1, r2, r3}
-    ldr r0, [sp, #36]
+    STM SP, {r2, r3}
+    ldr r0, [r11, #-4]
     mov r1, r5
     mov r2, r8
     mov r3, r6
     bl fft
-    LDM SP, {r1, r2, r3}
+    LDM SP, {r2, r3}
     mov r9, r0
+    ldr r0, [sp, #20]
     push {lr}
     Ldr r4, =1
     Ldr r5, =0
     pop {lr}
     b bb3_8
 bb3_5:
+    str r1, [sp, #20]
+    ldr r1, [r11, #-8]
     add r0, r4, r1
     str r0, [sp, #20]
-    ldr r0, [sp, #36]
-    add r5, r0, #0
-    ldr r6, =4
+    ldr r0, [r11, #-4]
+    add r1, r0, #0
+    ldr r5, =4
     ldr r0, [sp, #20]
-    mul r7, r0, r6
-    add r0, r5, r7
-    ldr r5, [r0]
+    mul r6, r0, r5
+    add r0, r1, r6
+    ldr r1, [r0]
     ldr r0, =2
-    sdiv r6, r4, r0
+    sdiv r5, r4, r0
     ldr r0, Addr3_0
-    ldr r7, =4
-    mul r8, r6, r7
-    add r6, r0, r8
-    str r5, [r6]
+    ldr r6, =4
+    mul r7, r5, r6
+    add r5, r0, r7
+    str r1, [r5]
     b bb3_7
 bb3_6:
+    str r1, [sp, #20]
+    ldr r1, [r11, #-8]
     add r0, r4, r1
     str r0, [sp, #20]
-    ldr r0, [sp, #36]
-    add r5, r0, #0
-    ldr r6, =4
+    ldr r0, [r11, #-4]
+    add r1, r0, #0
+    ldr r5, =4
     ldr r0, [sp, #20]
+    mul r6, r0, r5
+    add r0, r1, r6
+    ldr r1, [r0]
+    ldr r0, =2
+    sdiv r5, r2, r0
+    ldr r0, =2
+    sdiv r6, r4, r0
+    add r0, r5, r6
+    ldr r5, Addr3_0
+    ldr r6, =4
     mul r7, r0, r6
     add r0, r5, r7
-    ldr r5, [r0]
-    ldr r0, =2
-    sdiv r6, r2, r0
-    ldr r0, =2
-    sdiv r7, r4, r0
-    add r0, r6, r7
-    ldr r6, Addr3_0
-    ldr r7, =4
-    mul r8, r0, r7
-    add r0, r6, r8
-    str r5, [r0]
+    str r1, [r0]
     b bb3_7
 bb3_7:
     b litpool3_1
@@ -430,77 +438,82 @@ bb3_8:
     bne bb3_9
     b bb3_10
 bb3_9:
-    add r6, r1, r5
     str r0, [sp, #20]
-    ldr r0, [sp, #36]
+    ldr r0, [r11, #-8]
+    add r6, r0, r5
+    ldr r0, [r11, #-4]
     add r7, r0, #0
     ldr r8, =4
     mul r9, r6, r8
     add r6, r7, r9
     ldr r7, [r6]
-    add r6, r1, r5
+    ldr r0, [r11, #-8]
+    add r6, r0, r5
     ldr r8, =2
     sdiv r9, r2, r8
     add r8, r6, r9
-    ldr r0, [sp, #36]
+    ldr r0, [r11, #-4]
     add r6, r0, #0
     ldr r9, =4
     mul r10, r8, r9
     add r8, r6, r10
     ldr r6, [r8]
-    STM SP, {r1, r2, r3}
+    STM SP, {r2, r3}
     mov r0, r4
     mov r1, r6
     bl multiply
-    LDM SP, {r1, r2, r3}
+    LDM SP, {r2, r3}
     mov r8, r0
     add r9, r7, r8
     ldr r8, =998244353
     sdiv r10, r9, r8
     ldr r8, =998244353
-    mul r11, r10, r8
-    sub r8, r9, r11
-    add r9, r1, r5
-    ldr r0, [sp, #36]
-    add r10, r0, #0
-    ldr r11, =4
-    mul r0, r9, r11
-    add r9, r10, r0
-    str r8, [r9]
-    STM SP, {r0, r1, r2, r3}
+    mul r0, r10, r8
+    sub r8, r9, r0
+    str r1, [sp, #20]
+    ldr r1, [r11, #-8]
+    add r0, r1, r5
+    ldr r1, [r11, #-4]
+    add r9, r1, #0
+    ldr r10, =4
+    mul r1, r0, r10
+    add r0, r9, r1
+    str r8, [r0]
+    STM SP, {r0, r2, r3}
     mov r0, r4
     mov r1, r6
     bl multiply
-    LDMIB SP, {r1, r2, r3}
-    sub r6, r7, r0
+    LDMIB SP, {r2, r3}
+    sub r1, r7, r0
     ldr r0, =998244353
-    add r7, r6, r0
+    add r6, r1, r0
     ldr r0, =998244353
-    sdiv r6, r7, r0
+    sdiv r1, r6, r0
     ldr r0, =998244353
-    mul r8, r6, r0
-    sub r0, r7, r8
-    add r6, r1, r5
-    ldr r7, =2
-    sdiv r8, r2, r7
-    add r7, r6, r8
+    mul r7, r1, r0
+    sub r0, r6, r7
     str r0, [sp, #20]
-    ldr r0, [sp, #36]
-    add r6, r0, #0
-    ldr r8, =4
-    mul r9, r7, r8
-    add r7, r6, r9
+    ldr r0, [r11, #-8]
+    add r1, r0, r5
+    ldr r6, =2
+    sdiv r7, r2, r6
+    add r6, r1, r7
+    ldr r0, [r11, #-4]
+    add r1, r0, #0
+    ldr r7, =4
+    mul r8, r6, r7
+    add r6, r1, r8
     ldr r0, [sp, #20]
-    str r0, [r7]
-    STM SP, {r0, r1, r2, r3}
+    str r0, [r6]
+    STM SP, {r0, r2, r3}
     mov r0, r4
-    ldr r1, [sp, #12]
+    ldr r1, [sp, #8]
     bl multiply
-    LDMIB SP, {r1, r2, r3}
-    add r4, r5, #1
+    LDMIB SP, {r2, r3}
+    add r1, r5, #1
     push {lr}
-    Mov r5, r4
     Mov r4, r0
+    Mov r5, r1
     pop {lr}
     b bb3_8
 bb3_10:

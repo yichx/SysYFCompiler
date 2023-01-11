@@ -8,600 +8,640 @@ main:
     mov r11, sp
     ldr lr, =556
     sub sp, sp, lr
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =1
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =2
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =3
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =3
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =4
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =4
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =5
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =5
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =6
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =6
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =7
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =7
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =8
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =8
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =9
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =9
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =10
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =11
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =12
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =3
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =13
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =4
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =14
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =5
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =15
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =6
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =16
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =7
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =17
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =8
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =18
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =9
     str r0, [r1]
-    add r0, sp, #36
+    ldr r0, =-80
+    add r0, r11, r0
     ldr r1, =19
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =1
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =3
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =2
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =4
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =3
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =4
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =5
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =5
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =7
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =6
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =9
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =7
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =9
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =8
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =9
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =10
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =9
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =11
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =8
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =12
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =7
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =13
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =6
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =14
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =4
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =15
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =3
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =16
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =17
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =1
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =18
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    add r0, sp, #116
+    ldr r0, =-160
+    add r0, r11, r0
     ldr r1, =19
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =2
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =1
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =2
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =3
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =4
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =5
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =6
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =7
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =8
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =9
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =10
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =11
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =12
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =13
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =14
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =15
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =16
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =17
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =18
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =19
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =20
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =21
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =22
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =23
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =24
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =25
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =26
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =27
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =28
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =29
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =30
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =31
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =32
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =33
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =34
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =35
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =36
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =37
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =38
     ldr r2, =4
     mul r3, r1, r2
     add r1, r0, r3
     ldr r0, =0
     str r0, [r1]
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =39
     ldr r2, =4
     mul r3, r1, r2
@@ -630,12 +670,14 @@ litpool0_0:
     bne bb0_1
     b bb0_2
 bb0_1:
-    add r1, sp, #36
+    ldr r1, =-80
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3
     ldr r1, [r2]
-    add r2, sp, #196
+    ldr r2, =-260
+    add r2, r11, r2
     ldr r3, =4
     mul r4, r0, r3
     add r3, r2, r4
@@ -665,13 +707,14 @@ bb0_3:
     bne bb0_4
     b bb0_5
 bb0_4:
-    add r1, sp, #116
+    ldr r1, =-160
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3
     ldr r1, [r2]
-    ldr r2, =296
-    add r2, sp, r2
+    ldr r2, =-360
+    add r2, r11, r2
     ldr r3, =4
     mul r4, r0, r3
     add r3, r2, r4
@@ -706,8 +749,8 @@ litpool0_1:
     bne bb0_7
     b bb0_8
 bb0_7:
-    ldr r2, =396
-    add r2, sp, r2
+    ldr r2, =-520
+    add r2, r11, r2
     ldr r3, =4
     mul r4, r1, r3
     add r3, r2, r4
@@ -742,8 +785,8 @@ bb0_9:
     bne bb0_10
     b bb0_11
 bb0_10:
-    ldr r2, =296
-    add r2, sp, r2
+    ldr r2, =-360
+    add r2, r11, r2
     ldr r3, =4
     mul r5, r4, r3
     add r3, r2, r5
@@ -755,8 +798,8 @@ bb0_10:
     pop {lr}
     b bb0_12
 bb0_11:
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
@@ -793,13 +836,14 @@ litpool0_2:
     bne bb0_13
     b bb0_14
 bb0_13:
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r5, =4
     mul r6, r1, r5
     add r5, r0, r6
     ldr r0, [r5]
-    add r5, sp, #196
+    ldr r5, =-260
+    add r5, r11, r5
     ldr r6, =4
     mul r7, r3, r6
     add r6, r5, r7
@@ -828,15 +872,15 @@ bb0_14:
     pop {lr}
     b bb0_9
 bb0_15:
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r6, =4
     mul r7, r1, r6
     add r6, r0, r7
     str r5, [r6]
     sub r0, r1, #1
-    ldr r6, =396
-    add r6, sp, r6
+    ldr r6, =-520
+    add r6, r11, r6
     ldr r7, =4
     mul r8, r0, r7
     add r0, r6, r8
@@ -845,16 +889,16 @@ bb0_15:
     sdiv r7, r5, r0
     add r0, r6, r7
     sub r6, r1, #1
-    ldr r7, =396
-    add r7, sp, r7
+    ldr r7, =-520
+    add r7, r11, r7
     ldr r8, =4
     mul r9, r6, r8
     add r6, r7, r9
     str r0, [r6]
     b bb0_17
 bb0_16:
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r6, =4
     mul r7, r1, r6
     add r6, r0, r7
@@ -873,8 +917,8 @@ bb0_18:
     b litpool0_3
     .pool
 litpool0_3:
-    ldr r0, =396
-    add r0, sp, r0
+    ldr r0, =-520
+    add r0, r11, r0
     ldr r1, =0
     ldr r2, =4
     mul r3, r1, r2
@@ -907,8 +951,8 @@ bb0_20:
     bne bb0_21
     b bb0_22
 bb0_21:
-    ldr r1, =396
-    add r1, sp, r1
+    ldr r1, =-520
+    add r1, r11, r1
     ldr r2, =4
     mul r3, r0, r2
     add r2, r1, r3

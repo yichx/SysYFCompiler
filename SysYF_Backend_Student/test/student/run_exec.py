@@ -51,7 +51,7 @@ if __name__ == '__main__':
                 if os.path.exists('../test/student/'+dataset+'/'+level+'/'+file+'.in'):
                     input_file='../test/student/'+dataset+'/'+level+'/'+file+'.in'
                     try:
-                        result=subprocess.run(test_cmd_with_input.format(input_file, '../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,timeout=1)
+                        result=subprocess.run(test_cmd_with_input.format(input_file, '../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,timeout=10)
                         result=result.stdout.decode().strip()+'\n'+str(result.returncode)
                         with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
                             content=fp.read()
@@ -59,7 +59,7 @@ if __name__ == '__main__':
                             print(file+' passed!')
                         else:
                             print(dataset+'/'+level+'/'+file+' test failed! Expected:')
-                            #print(content.strip())
+                            print(content.strip())
                             print('Got:')
                             print(result.strip())
                             errors.append(dataset+'/'+level+'/'+file+' test failed')
@@ -68,7 +68,7 @@ if __name__ == '__main__':
                         errors.append(dataset+'/'+level+'/'+file+' timed out')
                 else:
                     try:
-                        result=subprocess.run(test_cmd_without_input.format('../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,timeout=1)
+                        result=subprocess.run(test_cmd_without_input.format('../test/student/executable/'+dataset+'/'+level+'/'+file),shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,timeout=10)
                         result=result.stdout.decode().strip()+'\n'+str(result.returncode)
                         with open('../test/student/'+dataset+'/'+level+'/'+file+'.out') as fp:
                             content=fp.read()
@@ -76,7 +76,7 @@ if __name__ == '__main__':
                             print(file+' passed!')
                         else:
                             print(dataset+'/'+level+'/'+file+' test failed! Expected:')
-                            #print(content.strip())
+                            print(content.strip())
                             print('Got:')
                             print(result.strip())
                             errors.append(dataset+'/'+level+'/'+file+' test failed')

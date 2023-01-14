@@ -137,7 +137,8 @@ void RegAlloc::execute() {
     compute_block_order();
     number_operations();
     build_intervals();
-    walk_intervals();
+    color_intervals();
+    Assert_Alloc();
     set_unused_reg_num();
 }
 
@@ -256,8 +257,6 @@ bool RegAlloc::try_insert_current()
         if(caninsert)
         {
             reg_for_intervals[reg_id].insert(current);
-            if(unused_reg_id.count(reg_id))
-                unused_reg_id.erase(reg_id);
             return true;
         }
     }
@@ -322,18 +321,6 @@ void RegAlloc::walk_intervals() {
             inter->reg_num = reg_id;
         reg_for_intervals[reg_id].clear();
     }
-    for(auto InterA : interval_list)
-    if(InterA->reg_num != -1)
-    {
-        for(auto InterB : interval_list)
-            if(InterB->reg_num != -1 && InterA != InterB)
-                if(InterA->intersects(InterB) && InterA->reg_num == InterB->reg_num)
-                {
-                    puts("ERROR");
-                    exit(0);
-                }
-    }
-    puts("register allocation ok");
     //puts("OUT");
 }
 
@@ -363,15 +350,16 @@ void RegAlloc::color_intervals()
         for(auto &u : interval_list)
             if(!In_Stack[u])
             {
-                if(Deg[u] < 12) {
+                if(Deg[u] < 11) {
                     run = true;
                     Stack.push(u);
+                    //std::cout<<u->val->get_name()<<std::endl;
                     In_Stack[u] = true;
                     for(auto v : Graph[u])
                         if(!In_Stack[v])
                             Deg[v]--;
                 }
-                else if(Deg[u] > Deg[max_deg_interval])
+                else if(max_deg_interval == NULL || Deg[u] > Deg[max_deg_interval])
                     max_deg_interval = u;
             }
         if(run) continue;
@@ -379,19 +367,22 @@ void RegAlloc::color_intervals()
             break;
         In_Stack[max_deg_interval] = true;
         Stack.push(max_deg_interval);
+        std::cout<<max_deg_interval->val->get_name()<<std::endl;
         for(auto v : Graph[max_deg_interval])
             if(!In_Stack[v])
                 Deg[v]--;
+        run = true;
     }
+    //printf("%d\n", Stack.size());
     while(!Stack.empty())
     {
         auto u = Stack.top(); Stack.pop();
-        bool can_use[12] = {0};
+        bool occ_reg[11] = {0};
         for(auto v : Graph[u])
             if(v->reg_num != -1)
-                can_use[v->reg_num] = false;
-        for(int reg_i = 0;reg_i < 12; ++reg_i)
-            if(can_use[reg_i]) {
+                occ_reg[v->reg_num] = true;
+        for(int reg_i = 0;reg_i < 11; ++reg_i)
+            if(!occ_reg[reg_i]) {
                 u->reg_num = reg_i;
                 break;
             }
@@ -401,4 +392,30 @@ void RegAlloc::color_intervals()
 
 void RegAlloc::set_unused_reg_num() {
     func->set_unused_reg_num(unused_reg_id);
+}
+
+void RegAlloc::Assert_Alloc()
+{
+    for(auto InterA : interval_list)
+    if(InterA->reg_num != -1)
+    {
+        for(auto InterB : interval_list)
+            if(InterB->reg_num != -1 && InterA != InterB)
+                if(InterA->intersects(InterB) && InterA->reg_num == InterB->reg_num)
+                {
+                    puts("ERROR");
+                    exit(0);
+                }
+    }
+    puts("register allocation ok");
+    unused_reg_id = {all_reg_id.begin(), all_reg_id.end()};
+    for(auto Inter : interval_list) {
+        if(unused_reg_id.count(Inter->reg_num))
+            unused_reg_id.erase(Inter->reg_num);
+        /*std::cout<<"Inter "<<Inter->val->get_name()<<" ";
+        printf("%d\n", Inter->reg_num);
+        for(auto x : Inter->range_list)
+            printf("[%d, %d] ", x->from, x->to);
+        puts("");*/
+    }
 }

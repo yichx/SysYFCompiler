@@ -54,7 +54,9 @@ class CodeGen{
     std::vector<std::string> Circle;
     std::map<std::string, std::set<std::string>>MoveTo;
     std::map<std::string, IR2asm::Location*>CodeToLoc;
+    std::vector<std::pair<IR2asm::Location*, IR2asm::Location*>> MovePath;
     bool Dfs_Move(std::string u, std::string &code, std::string &cmpop);
+    bool single_data_move_isusereg(IR2asm::Location* src_loc, IR2asm::Location* target_loc);
 public:
     std::string tmp_reg_restore(Instruction* inst);
     std::string ld_tmp_regs(Instruction* inst);

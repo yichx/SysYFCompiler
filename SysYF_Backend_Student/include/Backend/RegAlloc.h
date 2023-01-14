@@ -122,6 +122,7 @@ private:
     void add_reg_to_pool(Interval* inter);
     bool try_alloc_free_reg();
     bool try_insert_current();
+    void Assert_Alloc();
     bool Spill();
     void build_graph();
     std::set<int> unused_reg_id = {all_reg_id.begin(),all_reg_id.end()};

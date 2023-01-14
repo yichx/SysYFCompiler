@@ -37,10 +37,7 @@
                 iscircle = true;
             }
             else if(IsDone[nxt] || !Dfs_Move(nxt, code, cmpop)) //nxt is done or not in circle
-            {
-                //std::cout<<u<<" "<<nxt<<std::endl;
-                code += single_data_move(CodeToLoc[u], CodeToLoc[nxt], new IR2asm::Reg(IR2asm::lr), cmpop); //move data in order
-            }
+                MovePath.push_back({CodeToLoc[u], CodeToLoc[nxt]});
             else //both u and nxt in circle
                 iscircle = true;
         }
@@ -55,10 +52,11 @@
                                    std::string cmpop){
         std::string code;
         /* TODO: put your code here */
-        std::vector<int>reg_list = {IR2asm::lr};
-        code += push_regs(reg_list); //保存临时寄存器
+        std::vector<int>reg_list;
         auto tmp_Reg = new IR2asm::Reg(IR2asm::lr);//临时寄存器
+        bool usetmp = false;
         auto unUsed_RegLoc = new IR2asm::RegLoc(12);//处理环用的闲置寄存器
+        bool usereg12 = false;
         MoveTo.clear();
         CodeToLoc.clear();
         for(int i = 0;i < src.size(); ++i)//记录数据移动边
@@ -71,22 +69,42 @@
         IsDone.clear();//表示这个点访问过
         Stack.clear();//dfs栈
         In_Stack.clear();//当前节点是否在栈里面
-        /*puts("IN");
+        MovePath.clear();
+        puts("IN");
         for(int i = 0;i < src.size(); ++i)
-            std::cout<<src[i]->get_code()<<" "<<dst[i]->get_code()<<std::endl;*/
+            std::cout<<src[i]->get_code()<<" "<<dst[i]->get_code()<<std::endl;
         for(auto &src_loc : src)
             if(!IsDone[src_loc->get_code()] && Dfs_Move(src_loc->get_code(), code, cmpop))
             {
                 if(Circle.size() == 1) // move itself
                     continue;
-                code += single_data_move(CodeToLoc[Circle.back()], unUsed_RegLoc, tmp_Reg, cmpop);
+                MovePath.push_back({CodeToLoc[Circle.back()], unUsed_RegLoc});
                 for(int i = Circle.size() - 2;i >= 0; --i)
-                    code += single_data_move(CodeToLoc[Circle[i]], CodeToLoc[Circle[i + 1]], tmp_Reg, cmpop);
-                code += single_data_move(unUsed_RegLoc, CodeToLoc[*Circle.begin()], tmp_Reg, cmpop);
+                    MovePath.push_back({CodeToLoc[Circle[i]], CodeToLoc[Circle[i + 1]]});
+                MovePath.push_back({unUsed_RegLoc, CodeToLoc[*Circle.begin()]});
+                usereg12 = true;
             }
-        code += pop_regs(reg_list); //恢复临时寄存器
-        //std::cout<<code<<std::endl;
-        //puts("OUT");
+
+        for(auto src_to_dst : MovePath)
+            if(single_data_move_isusereg(src_to_dst.first, src_to_dst.second))
+            {
+                usetmp = true;
+                break;
+            }
+
+        if(usetmp)
+            reg_list.push_back(IR2asm::lr);
+        if(usereg12)
+            reg_list.push_back(12);
+        
+        if(!reg_list.empty())
+            code += push_regs(reg_list, cmpop);
+        for(auto src_to_dst : MovePath)
+            code += single_data_move(src_to_dst.first, src_to_dst.second, tmp_Reg, cmpop);
+        if(!reg_list.empty())
+            code += pop_regs(reg_list, cmpop); //恢复临时寄存器
+        std::cout<<code<<std::endl;
+        puts("OUT");
         return code;
     }
 
@@ -146,4 +164,18 @@
             }
         }
         return code;
+    }
+
+    bool CodeGen::single_data_move_isusereg(IR2asm::Location* src_loc,
+                                 IR2asm::Location* target_loc){
+        if(dynamic_cast<IR2asm::RegLoc *>(src_loc)) 
+        {
+            auto regloc = dynamic_cast<IR2asm::RegLoc *>(src_loc);
+            if(regloc->is_constant())
+                return !dynamic_cast<IR2asm::RegLoc*>(target_loc);
+            else
+                return false;
+        }
+        else
+            return !dynamic_cast<IR2asm::RegLoc*>(target_loc);
     }

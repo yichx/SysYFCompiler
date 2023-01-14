@@ -54,7 +54,7 @@ int CodeGen::stack_space_allocation(Function *fun)
           int _sizeof=reg_interval_map->first->get_type()->get_size();
           if(_sizeof<4) _sizeof=4;
           size+=_sizeof;
-          stack_map.insert(std::make_pair(reg_interval_map->first,new IR2asm::Regbase(IR2asm::frame_ptr,-size)));
+          stack_map[reg_interval_map->first]=new IR2asm::Regbase(IR2asm::frame_ptr,-size);
         }
       }
       for(auto bb:fun->get_basic_blocks()) //处理alloca
@@ -77,6 +77,8 @@ int CodeGen::stack_space_allocation(Function *fun)
     }
     else //无函数调用，从sp开始从上往下
     {
+	    if(have_temp_reg)
+		    size+=temp_reg_store_num*reg_size;
       for(auto reg_interval_map = _reg_map->begin(); reg_interval_map != _reg_map->end(); reg_interval_map++) //溢出到栈的局部变量
       {
         if(reg_interval_map->second->reg_num==-1)
